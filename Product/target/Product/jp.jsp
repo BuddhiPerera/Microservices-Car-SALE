@@ -16,7 +16,7 @@
 
             <h1 class="m-3">Student details</h1>
 
-            <form method="post" action="http://localhost/Product/rest/item">
+            <form method="post" action="http://localhost/Product/rest/products">
                 <!-- NAME -->
 
                 <div class="input-group input-group-sm mb-3">
