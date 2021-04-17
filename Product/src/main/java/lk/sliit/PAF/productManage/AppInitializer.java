@@ -1,7 +1,7 @@
 package lk.sliit.PAF.productManage;
 
 
-import lk.sliit.PAF.productManage.controller.Product;
+import lk.sliit.PAF.productManage.dto.ProductDTO;
 import org.glassfish.jersey.client.ClientConfig;
 
 import javax.ws.rs.client.Client;
@@ -43,15 +43,15 @@ public class AppInitializer {
     static void testGet() {
         WebTarget target = getWebTarget();
         String productId = "1";
-        Product product = target.path(productId)
+        ProductDTO product = target.path(productId)
                 .request().accept(MediaType.APPLICATION_JSON)
-                .get(Product.class);
+                .get(ProductDTO.class);
 
         System.out.println(product);
     }
     static void testAdd() {
         WebTarget target = getWebTarget();
-        Product product = new Product("ZenFoneX", 888.88f);
+        ProductDTO product = new ProductDTO("ZenFoneX", 888.88f);
         Response response = target.request()
                 .post(Entity.entity(product, MediaType.APPLICATION_JSON), Response.class);
 
@@ -59,7 +59,7 @@ public class AppInitializer {
     }
     private static void testUpdate() {
         WebTarget target = getWebTarget();
-        Product product = new Product("ZenFoneX", 100f);
+        ProductDTO product = new ProductDTO("ZenFoneX", 100f);
         String productId = "1";
         Response response = target.path(productId).request()
                 .put(Entity.entity(product, MediaType.APPLICATION_JSON), Response.class);

@@ -1,33 +1,34 @@
-package lk.sliit.PAF.productManage.controller;
+package lk.sliit.PAF.productManage.dao;
+
+
+import lk.sliit.PAF.productManage.dto.ProductDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAO {
-    private static ProductDAO instance;
-    private static List<Product> data = new ArrayList<>();
+public class ProductDAOImpl {
+    private static ProductDAOImpl instance;
+    private static List<ProductDTO> data = new ArrayList<>();
 
     static {
-        data.add(new Product(1, "iPhone X", 999.99f));
-        data.add(new Product(2, "XBOX 360", 329.50f));
+        data.add(new ProductDTO(1, "iPhone X", 999.99f));
+        data.add(new ProductDTO(2, "XBOX 360", 329.50f));
     }
 
-    private ProductDAO() {
 
-    }
 
-    public static ProductDAO getInstance() {
+    public static ProductDAOImpl getInstance() {
         if (instance == null) {
-            instance = new ProductDAO();
+            instance = new ProductDAOImpl();
         }
         return instance;
     }
 
-    public List<Product> listAll() {
+    public List<ProductDTO> listAll() {
         return new ArrayList<>(data);
     }
 
-    public int add(Product product) {
+    public int add(ProductDTO product) {
         int newId = data.size() + 1;
         product.setId(newId);
         data.add(product);
@@ -35,8 +36,8 @@ public class ProductDAO {
         return newId;
     }
 
-    public Product get(int id) {
-        Product productToFind = new Product(id);
+    public ProductDTO get(int id) {
+        ProductDTO productToFind = new ProductDTO(id);
         int index = data.indexOf(productToFind);
         if (index >= 0) {
             return data.get(index);
@@ -45,7 +46,7 @@ public class ProductDAO {
     }
 
     public boolean delete(int id) {
-        Product productToFind = new Product(id);
+        ProductDTO productToFind = new ProductDTO(id);
         int index = data.indexOf(productToFind);
         if (index >= 0) {
             data.remove(index);
@@ -55,7 +56,7 @@ public class ProductDAO {
         return false;
     }
 
-    public boolean update(Product product) {
+    public boolean update(ProductDTO product) {
         int index = data.indexOf(product);
         if (index >= 0) {
             data.set(index, product);

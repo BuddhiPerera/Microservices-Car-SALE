@@ -7,7 +7,7 @@
     <title>Student details</title>
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="vendors/jquery/dist/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+<%--    <script src="js/main.js"></script>--%>
 </head>
 <body>
 <div class="container">
@@ -16,40 +16,37 @@
 
             <h1 class="m-3">Student details</h1>
 
-            <form id="formStudent">
+            <form method="post" action="http://localhost/Product/rest/item">
                 <!-- NAME -->
+
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="lblName">Name: </span>
+                        <span class="input-group-text" id="lblitemCode">Name: </span>
                     </div>
-                    <input type="text" id="txtName" name="txtName">
+                    <input type="text" id="itemCode" name="itemCode">
                 </div>
-                <!-- GENDER -->
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="lblName2">Gender: </span>
+                        <span class="input-group-text" id="lblitemName">Name: </span>
                     </div>
-                    &nbsp;&nbsp;Male
-                    <input type="radio" id="rdoGenderMale" name="rdoGender" value="Male">
-                    &nbsp;&nbsp;Female
-                    <input type="radio" id="rdoGenderFemale" name="rdoGender" value="Female">
+                    <input type="text" id="itemName" name="itemName">
                 </div>
-                <!-- YEAR -->
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="lblName1">Year: </span>
+                        <span class="input-group-text" id="lblitemPrice">Name: </span>
                     </div>
-                    <select id="ddlYear" name="ddlYear">
-                        <option value="0">--Select year--</option>
-                        <option value="1">1st year</option>
-                        <option value="2">2nd year</option>
-                        <option value="3">3rd year</option>
-                        <option value="4">4th year</option>
-                    </select>
+                    <input type="text" id="itemPrice" name="itemPrice">
                 </div>
+                <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="lblitemDesc">Name: </span>
+                </div>
+                <input type="text" id="itemDesc" name="itemDesc">
+            </div>
+
                 <div id="alertSuccess" class="alert alert-success"></div>
                 <div id="alertError" class="alert alert-danger"></div>
-                <input type="button" id="btnSave" value="Save" class="btn btn-primary">
+                <input type="submit" id="btnSave" value="Save" class="btn btn-primary">
             </form>
         </div>
     </div>

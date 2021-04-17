@@ -1,25 +1,25 @@
-package lk.sliit.PAF.productManage.controller;
+package lk.sliit.PAF.productManage.dto;
 
-public class Product {
+public class ProductDTO {
     private int id;
     private String name;
     private float price;
 
-    public Product() {
+    public ProductDTO() {
     }
 
-    public Product(int id) {
+    public ProductDTO(int id) {
         this.id = id;
     }
 
-    public Product(int id, String name, float price) {
+    public ProductDTO(int id, String name, float price) {
         super();
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    public Product(String name, float price) {
+    public ProductDTO(String name, float price) {
         this.name = name;
         this.price = price;
     }
@@ -66,9 +66,10 @@ public class Product {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Product other = (Product) obj;
+        ProductDTO other = (ProductDTO) obj;
         if (id != other.id)
             return false;
         return true;
     }
 }
+
