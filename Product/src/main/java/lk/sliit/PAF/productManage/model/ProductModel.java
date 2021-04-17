@@ -3,7 +3,7 @@ import java.sql.*;
 public class ProductModel {
 
   //A common method to connect to the DB
-        private Connection connect()
+        public static Connection connect()
         {
             Connection con = null;
             try
@@ -17,12 +17,22 @@ public class ProductModel {
             {e.printStackTrace();}
             return con;
         }
+    public int getLastID() throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT itemID FROM items ORDER BY itemID DESC LIMIT 1");
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }
+        else {
+            return 0;
+        }
+    }
         public String insertItem(String code, String name, String price, String desc)
         {
             String output = "";
             try
             {
                 Connection con = connect();
+                int id = getLastID();
                 if (con == null)
                 {return "Error while connecting to the database for inserting."; }
                 // create a prepared statement
@@ -30,7 +40,7 @@ public class ProductModel {
                     + " values (?, ?, ?, ?, ?)";
                 PreparedStatement preparedStmt = con.prepareStatement(query);
                 // binding values
-                preparedStmt.setInt(1, 0);
+                preparedStmt.setInt(1, id+1);
                 preparedStmt.setString(2, code);
                 preparedStmt.setString(3, name);
                 preparedStmt.setDouble(4, Double.parseDouble(price));
