@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+
+<!DOCTYPE html
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -6,7 +12,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  
+
     <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
@@ -153,7 +159,7 @@
                         <li><a href="#level1_2">Level One</a>
                         </li>
                     </ul>
-                  </li>                  
+                  </li>
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
                 </ul>
               </div>
@@ -202,7 +208,7 @@
                       <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>
                   </li>
-  
+
                   <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-envelope-o"></i>
@@ -317,53 +323,70 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                    <form method="post" action="http://localhost/Product/rest/products">
 
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">First Name <span class="required">*</span>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" > Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                          <input type="text" id="first-name" required="required" class="form-control ">
+                          <input type="text" id="name" name="name"  required="required" class="form-control ">
                         </div>
                       </div>
-                      <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Last Name <span class="required">*</span>
+                      <div class="form-group row">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" > Description <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                          <input type="text" id="last-name" name="last-name" required="required" class="form-control">
+                          <textarea class="form-control" name="description"  id="description" rows="3"></textarea>
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Middle Name / Initial</label>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align"> Price</label>
                         <div class="col-md-6 col-sm-6 ">
-                          <input id="middle-name" class="form-control" type="text" name="middle-name">
+                          <input id="price" class="form-control" type="text" name="price">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align">Av Qty <span class="required">*</span>
+                        </label>
                         <div class="col-md-6 col-sm-6 ">
-                          <div id="gender" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="male" class="join-btn"> &nbsp; Male &nbsp;
-                            </label>
-                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="female" class="join-btn"> Female
+                          <input id="qty" name = "qty" class="date-picker form-control" required="required" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align">Shipping Method <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                          <input id="shipping" name="shipping" class="date-picker form-control" required="required" type="text">
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                        <div class="col-md-5 col-lg-5 col-xl-5">
+
+                          <label for="img-preview">Image</label>
+                          <div class="img-upload-card ">
+                            <c:choose>
+                              <c:when test="${empty itemImg1}">
+                                <img name="image" id="img-preview"
+                                     style="width: 100%; height: 40px"/>
+                              </c:when>
+                              <c:otherwise>
+                                <img name="image" id="img-preview"
+                                     style="width: 100%;height: 40px"/>
+                              </c:otherwise>
+                            </c:choose>
+                            <label class="file-upload-container" for="file-upload"
+                                   style="font-size: 13px; padding: -10px 5px 0px 5px; height: 30px">
+                              <input id="file-upload" type="file" style="display:none;">
+                              Select
                             </label>
                           </div>
                         </div>
                       </div>
-                      <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Date Of Birth <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="birthday" class="date-picker form-control" required="required" type="text">
-                        </div>
-                      </div>
+                      <form:hidden id="imgUrl" path="image"  name ="image" value="../../images/picture.jpg"/>
                       <div class="ln_solid"></div>
                       <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">
-                          <button class="btn btn-primary" type="button">Cancel</button>
-						  <button class="btn btn-primary" type="reset">Reset</button>
                           <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                       </div>
@@ -422,6 +445,30 @@
     <script src="vendors/starrr/dist/starrr.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.min.js"></script>
-	
+<script>
+    let imgPreview = document.getElementById('img-preview');
+    let fileUpload = document.getElementById('file-upload');
+    let imgUrl = document.getElementById("imgUrl");
+    let CLOUDINARY_API_URL = 'https://api.cloudinary.com/v1_1/dwdv5hhga/upload';
+    let CLOUDINARY_UPLOAD_PRESET = 'sqdn7zkx';
+    fileUpload.addEventListener('change', function (event) {
+        let file = event.target.files[0];
+        let formData = new FormData();
+        formData.append('file', file);
+        console.log("form-data", file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        axios({
+            url: CLOUDINARY_API_URL, method: 'POST', headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }, data:
+            formData
+        }).then(function (res) {
+            imgPreview.src = res.data.secure_url;
+            imgUrl.value = res.data.secure_url;
+        }).catch(function (err) {
+            console.error(err);
+        });
+    });
+</script>
   </body>
 </html>

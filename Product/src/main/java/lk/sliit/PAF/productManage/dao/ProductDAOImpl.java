@@ -32,7 +32,6 @@ public class ProductDAOImpl {
         int newId = data.size() + 1;
         product.setId(newId);
         data.add(product);
-
         return newId;
     }
 
@@ -52,7 +51,6 @@ public class ProductDAOImpl {
             data.remove(index);
             return true;
         }
-
         return false;
     }
 

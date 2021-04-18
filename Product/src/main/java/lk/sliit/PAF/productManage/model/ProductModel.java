@@ -18,7 +18,7 @@ public class ProductModel {
             return con;
         }
     public int getLastID() throws Exception {
-        ResultSet resultSet = CrudUtil.execute("SELECT itemID FROM items ORDER BY itemID DESC LIMIT 1");
+        ResultSet resultSet = CrudUtil.execute("SELECT id FROM products ORDER BY id DESC LIMIT 1");
         if(resultSet.next()){
             return resultSet.getInt(1);
         }
@@ -160,4 +160,38 @@ public class ProductModel {
         return output;
     }
 
+    public String insertItem(String name, String description, String price, String qty, String shipping, String image)
+    {
+        image = "s";
+        String output = "";
+        try
+        {
+            Connection con = connect();
+            int id = getLastID();
+            if (con == null)
+            {return "Error while connecting to the database for inserting."; }
+            // create a prepared statement
+            String query = " insert into  products (`id`,`name`,`description`,`price`,`qty`,`shipping`,`image`)"
+                    + " values (?, ?, ?, ?, ?,?,?)";
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            // binding values
+            preparedStmt.setInt(1, id+1);
+            preparedStmt.setString(2, name);
+            preparedStmt.setString(3, description);
+            preparedStmt.setDouble(4, Double.parseDouble(price));
+            preparedStmt.setString(5, qty);
+            preparedStmt.setString(6, shipping);
+            preparedStmt.setString(7, image);
+// execute the statement
+            preparedStmt.execute();
+            con.close();
+            System.out.println("Inserted successfully");
+        }
+        catch (Exception e)
+        {
+            output = "Error while inserting the item.";
+            System.err.println(e.getMessage());
+        }
+        return output;
+    }
 }
