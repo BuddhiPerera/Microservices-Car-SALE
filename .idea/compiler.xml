@@ -14,6 +14,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Funding" target="8" />
+      <module name="Funding (1)" target="8" />
       <module name="Payment" target="8" />
       <module name="Product" target="8" />
       <module name="Project" target="8" />
