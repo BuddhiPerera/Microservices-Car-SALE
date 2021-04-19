@@ -12,6 +12,6 @@
 
 </head>
 <body>
-<a href="buyerRegistration.jsp">Dashboard</a>
+<a href="buyerRegistration.html">Dashboard</a>
 </body>
 </html>
