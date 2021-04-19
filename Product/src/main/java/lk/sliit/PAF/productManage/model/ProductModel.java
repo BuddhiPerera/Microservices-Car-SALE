@@ -1,6 +1,20 @@
 package lk.sliit.PAF.productManage.model;
+import lk.sliit.PAF.productManage.dao.ProductDAOImpl;
+import lk.sliit.PAF.productManage.dto.ProDTO;
+import lk.sliit.PAF.productManage.dto.ProductDTO;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductModel {
+    private static ProductModel instance;
+    public static ProductModel getInstance() {
+        if (instance == null) {
+            instance = new ProductModel();
+        }
+        return instance;
+    }
 
   //A common method to connect to the DB
         public static Connection connect()
@@ -26,6 +40,76 @@ public class ProductModel {
             return 0;
         }
     }
+
+    public String insertItem(String name, String description, String price, String qty, String shipping, String image)
+    {
+        image = "s";
+        String output = "";
+        try
+        {
+            Connection con = connect();
+            int id = getLastID();
+            if (con == null)
+            {return "Error while connecting to the database for inserting."; }
+            // create a prepared statement
+            String query = " insert into  products (`id`,`name`,`description`,`price`,`qty`,`shipping`,`image`)"
+                    + " values (?, ?, ?, ?, ?,?,?)";
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            // binding values
+            preparedStmt.setInt(1, id+1);
+            preparedStmt.setString(2, name);
+            preparedStmt.setString(3, description);
+            preparedStmt.setDouble(4, Double.parseDouble(price));
+            preparedStmt.setString(5, qty);
+            preparedStmt.setString(6, shipping);
+            preparedStmt.setString(7, image);
+// execute the statement
+            preparedStmt.execute();
+            con.close();
+            System.out.println("Inserted successfully");
+        }
+        catch (Exception e)
+        {
+            output = "Error while inserting the item.";
+            System.err.println(e.getMessage());
+        }
+        return output;
+    }
+
+
+    public List<ProDTO> listAll() throws Exception {
+
+        Connection con = connect();
+        int id = getLastID();
+        if (con == null)
+        {return null; }
+        List<ProDTO> patient = new ArrayList<>();
+        String query = "Select * from products";
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                ProDTO p = new ProDTO();
+                p.setId(rs.getString(1));
+                p.setName(rs.getString(2));
+                p.setDescription(rs.getString(3));
+                p.setPrice(rs.getString(4));
+                p.setQty(rs.getString(5));
+                p.setShipping(rs.getString(6));
+                p.setImage(rs.getString(7));
+                patient.add(p);
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        return patient;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
         public String insertItem(String code, String name, String price, String desc)
         {
             String output = "";
@@ -160,38 +244,5 @@ public class ProductModel {
         return output;
     }
 
-    public String insertItem(String name, String description, String price, String qty, String shipping, String image)
-    {
-        image = "s";
-        String output = "";
-        try
-        {
-            Connection con = connect();
-            int id = getLastID();
-            if (con == null)
-            {return "Error while connecting to the database for inserting."; }
-            // create a prepared statement
-            String query = " insert into  products (`id`,`name`,`description`,`price`,`qty`,`shipping`,`image`)"
-                    + " values (?, ?, ?, ?, ?,?,?)";
-            PreparedStatement preparedStmt = con.prepareStatement(query);
-            // binding values
-            preparedStmt.setInt(1, id+1);
-            preparedStmt.setString(2, name);
-            preparedStmt.setString(3, description);
-            preparedStmt.setDouble(4, Double.parseDouble(price));
-            preparedStmt.setString(5, qty);
-            preparedStmt.setString(6, shipping);
-            preparedStmt.setString(7, image);
-// execute the statement
-            preparedStmt.execute();
-            con.close();
-            System.out.println("Inserted successfully");
-        }
-        catch (Exception e)
-        {
-            output = "Error while inserting the item.";
-            System.err.println(e.getMessage());
-        }
-        return output;
-    }
+
 }

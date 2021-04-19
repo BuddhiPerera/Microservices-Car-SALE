@@ -3,6 +3,9 @@ package lk.sliit.PAF.productManage.dao;
 
 import lk.sliit.PAF.productManage.dto.ProductDTO;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +27,7 @@ public class ProductDAOImpl {
         return instance;
     }
 
-    public List<ProductDTO> listAll() {
-        return new ArrayList<>(data);
-    }
+
 
     public int add(ProductDTO product) {
         int newId = data.size() + 1;

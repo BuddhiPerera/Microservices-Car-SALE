@@ -70,7 +70,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
+                      <li><a href="manage-customers.html">Dashboard</a></li>
                       <li><a href="index2.html">Dashboard2</a></li>
                       <li><a href="index3.html">Dashboard3</a></li>
                     </ul>
@@ -388,17 +388,19 @@
                       <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">
                           <button type="submit" class="btn btn-success">Submit</button>
+
                         </div>
                       </div>
 
                     </form>
+
                   </div>
                 </div>
               </div>
             </div>
 </div>
 </div>
-
+        <button href="" type="submit"  class="btn btn-success">View All</button>
         <!-- footer content -->
         <footer>
           <div class="pull-right">
