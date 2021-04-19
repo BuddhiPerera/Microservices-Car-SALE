@@ -1,10 +1,9 @@
 package lk.sliit.PAF.productManage.controller;
 
-
 import lk.sliit.PAF.productManage.dao.ProductDAOImpl;
+import lk.sliit.PAF.productManage.dto.ProDTO;
 import lk.sliit.PAF.productManage.dto.ProductDTO;
 import lk.sliit.PAF.productManage.model.ProductModel;
-
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -14,23 +13,30 @@ import java.util.List;
 @Path("/products")
 public class ProductRestController {
      ProductDAOImpl dao = ProductDAOImpl.getInstance();
+    ProductModel dao2 = ProductModel.getInstance();
+
+
 
     @GET
+    @Path("/getProducts")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ProductDTO> list() {
-        return dao.listAll();
+    public List<ProDTO> list() throws Exception {
+        System.out.println(dao2.listAll());
+        return dao2.listAll();
     }
+
 
     ProductModel itemObj = new ProductModel();
     @POST
     @Produces(MediaType.TEXT_PLAIN)
-    public String insertItem(@FormParam("itemCode") String itemCode,
-                             @FormParam("itemName") String itemName,
-                             @FormParam("itemPrice") String itemPrice,
-                             @FormParam("itemDesc") String itemDesc) {
-        String output = itemObj.insertItem(itemCode, itemName, itemPrice, itemDesc);
-        System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddddd");
-        return output;
+    public void insertItem(@FormParam("name") String name,
+                             @FormParam("description") String description,
+                             @FormParam("price") String price,
+                             @FormParam("qty") String qty,
+                             @FormParam("shipping") String shipping,
+                             @FormParam("image") String image) {
+        String output = itemObj.insertItem(name, description, price, qty,shipping,image);
+
     }
 
   /*  @POST
