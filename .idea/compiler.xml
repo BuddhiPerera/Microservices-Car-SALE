@@ -10,7 +10,7 @@
         <module name="Project" />
         <module name="Funding (1)" />
         <module name="Payment" />
-        <module name="demo2" />
+        <module name="USER" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

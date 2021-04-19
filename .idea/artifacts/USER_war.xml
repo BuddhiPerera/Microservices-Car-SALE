@@ -8,7 +8,6 @@
       </options>
     </properties>
     <root id="archive" name="USER.war">
-
       <element id="artifact" artifact-name="USER:war exploded" />
     </root>
   </artifact>
