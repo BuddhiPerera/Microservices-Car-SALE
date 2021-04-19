@@ -1,6 +1,15 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="USER:war exploded">
-    <output-path>C:/Program Files/Apache Software Foundation/Tomcat 9.0_Tomcat90/artifacts/USER_war_exploded</output-path>
+
+    <output-path>$PROJECT_DIR$/USER/target/USER</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>USER</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -47,6 +56,11 @@
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpmime:4.4" />
         </element>
       </element>
+
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/USER/target/USER/META-INF/MANIFEST.MF" />
+      </element>
+
       <element id="javaee-facet-resources" facet="USER/web/Web" />
     </root>
   </artifact>
