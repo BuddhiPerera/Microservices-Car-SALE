@@ -22,6 +22,5 @@
         <servlet-name>Jersey1</servlet-name>
         <url-pattern>/rest1/*</url-pattern>
     </servlet-mapping>
-
 </web-app>
 
