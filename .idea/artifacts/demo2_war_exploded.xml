@@ -1,17 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="Product:war exploded">
-    <output-path>$PROJECT_DIR$/Product/target/Product</output-path>
+  <artifact type="exploded-war" name="demo2:war exploded">
+    <output-path>$PROJECT_DIR$/USER/target/USER</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
-        <module>Product</module>
+        <module>demo2</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Product" />
+          <element id="module-output" name="demo2" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.8.1" />
@@ -57,9 +57,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/Product/target/Product/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/USER/target/USER/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="Product/web/Web" />
+      <element id="javaee-facet-resources" facet="demo2/web/Web" />
     </root>
   </artifact>
 </component>

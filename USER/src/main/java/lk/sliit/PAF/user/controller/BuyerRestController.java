@@ -1,9 +1,9 @@
-package user.controller;
+package lk.sliit.PAF.user.controller;
 
 
-import user.dao.BuyerDAOImpl;
-import user.dto.BuyerDTO;
-import user.model.BuyerModel;
+import lk.sliit.PAF.user.dao.BuyerDAOImpl;
+import lk.sliit.PAF.user.dto.BuyerDTO;
+import lk.sliit.PAF.user.model.BuyerModel;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

@@ -1,4 +1,4 @@
-package user.model;
+package lk.sliit.PAF.user.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

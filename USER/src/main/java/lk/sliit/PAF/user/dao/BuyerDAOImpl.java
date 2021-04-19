@@ -1,7 +1,7 @@
-package user.dao;
+package lk.sliit.PAF.user.dao;
 
 
-import user.dto.BuyerDTO;
+import lk.sliit.PAF.user.dto.BuyerDTO;
 
 import java.util.ArrayList;
 import java.util.List;

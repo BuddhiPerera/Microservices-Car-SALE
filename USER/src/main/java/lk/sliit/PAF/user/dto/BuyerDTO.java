@@ -1,4 +1,4 @@
-package user.dto;
+package lk.sliit.PAF.user.dto;
 
 import java.util.Objects;
 
