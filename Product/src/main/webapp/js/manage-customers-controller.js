@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> test
 var ajaxConfig = {
     url: "http://localhost/Product/rest/products/getProducts",
     method: "GET",
@@ -22,8 +25,12 @@ $.ajax(ajaxConfig).done(function (product, status, jQXHB) {
     console.log(product)
 }).fail(function (jqXHB, status, error) {
     console.log(error)
+<<<<<<< HEAD
 
 })
 
 
+=======
+>>>>>>> test
 
+})

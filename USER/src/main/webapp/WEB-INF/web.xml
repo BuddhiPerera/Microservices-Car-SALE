@@ -4,24 +4,24 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-<!--    <display-name>demo</display-name>
+    <display-name>demo2</display-name>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>buyerRegistration.jsp</welcome-file>
     </welcome-file-list>
-
     <servlet>
-        <servlet-name>JerseyBuyer</servlet-name>
+        <servlet-name>Jersey1</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>lk.sliit.PAF.user.controller</param-value>
+            <param-value>user.controller</param-value>
         </init-param>
-        <load-on-startup>1</load-on-startup>
+        <load-on-startup>2</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>JerseyBuyer</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>-->
+        <servlet-name>Jersey1</servlet-name>
+        <url-pattern>/rest1/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>
 

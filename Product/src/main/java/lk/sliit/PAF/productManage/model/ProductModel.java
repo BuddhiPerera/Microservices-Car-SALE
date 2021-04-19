@@ -16,21 +16,21 @@ public class ProductModel {
         return instance;
     }
 
-  //A common method to connect to the DB
-        public static Connection connect()
+    //A common method to connect to the DB
+    public static Connection connect()
+    {
+        Connection con = null;
+        try
         {
-            Connection con = null;
-            try
-            {
-                Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
 
-                //Provide the correct details: DBServer/DBName, username, password
-                con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "root", "1234");
-            }
-            catch (Exception e)
-            {e.printStackTrace();}
-            return con;
+            //Provide the correct details: DBServer/DBName, username, password
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "root", "1234");
         }
+        catch (Exception e)
+        {e.printStackTrace();}
+        return con;
+    }
     public int getLastID() throws Exception {
         ResultSet resultSet = CrudUtil.execute("SELECT id FROM products ORDER BY id DESC LIMIT 1");
         if(resultSet.next()){
@@ -46,6 +46,7 @@ public class ProductModel {
         image = "s";
         String output = "";
         try
+
         {
             Connection con = connect();
             int id = getLastID();
@@ -110,37 +111,37 @@ public class ProductModel {
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////
-        public String insertItem(String code, String name, String price, String desc)
+    public String insertItem(String code, String name, String price, String desc)
+    {
+        String output = "";
+        try
         {
-            String output = "";
-            try
-            {
-                Connection con = connect();
-                int id = getLastID();
-                if (con == null)
-                {return "Error while connecting to the database for inserting."; }
-                // create a prepared statement
-                String query = " insert into items (`itemID`,`itemCode`,`itemName`,`itemPrice`,`itemDesc`)"
+            Connection con = connect();
+            int id = getLastID();
+            if (con == null)
+            {return "Error while connecting to the database for inserting."; }
+            // create a prepared statement
+            String query = " insert into items (`itemID`,`itemCode`,`itemName`,`itemPrice`,`itemDesc`)"
                     + " values (?, ?, ?, ?, ?)";
-                PreparedStatement preparedStmt = con.prepareStatement(query);
-                // binding values
-                preparedStmt.setInt(1, id+1);
-                preparedStmt.setString(2, code);
-                preparedStmt.setString(3, name);
-                preparedStmt.setDouble(4, Double.parseDouble(price));
-                preparedStmt.setString(5, desc);
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            // binding values
+            preparedStmt.setInt(1, id+1);
+            preparedStmt.setString(2, code);
+            preparedStmt.setString(3, name);
+            preparedStmt.setDouble(4, Double.parseDouble(price));
+            preparedStmt.setString(5, desc);
 // execute the statement
-                preparedStmt.execute();
-                con.close();
-                output = "Inserted successfully";
-            }
-            catch (Exception e)
-            {
-                output = "Error while inserting the item.";
-                System.err.println(e.getMessage());
-            }
-            return output;
+            preparedStmt.execute();
+            con.close();
+            output = "Inserted successfully";
         }
+        catch (Exception e)
+        {
+            output = "Error while inserting the item.";
+            System.err.println(e.getMessage());
+        }
+        return output;
+    }
     public String readItems()
     {
         String output = "";
@@ -173,10 +174,10 @@ public class ProductModel {
                 output += "<td>" + itemDesc + "</td>";
                 // buttons
                 output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-secondary'></td>"
-                    + "<td><form method='post' action='items.jsp'>"
-                    + "<input name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
-                    + "<input name='itemID' type='hidden' value='" + itemID
-                    + "'>" + "</form></td></tr>";
+                        + "<td><form method='post' action='items.jsp'>"
+                        + "<input name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
+                        + "<input name='itemID' type='hidden' value='" + itemID
+                        + "'>" + "</form></td></tr>";
             }
             con.close();
             // Complete the html table
@@ -246,3 +247,4 @@ public class ProductModel {
 
 
 }
+

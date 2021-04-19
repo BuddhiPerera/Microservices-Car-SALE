@@ -15,6 +15,8 @@ public class ProductRestController {
      ProductDAOImpl dao = ProductDAOImpl.getInstance();
     ProductModel dao2 = ProductModel.getInstance();
 
+
+
     @GET
     @Path("/getProducts")
     @Produces(MediaType.APPLICATION_JSON)
@@ -22,6 +24,7 @@ public class ProductRestController {
         System.out.println(dao2.listAll());
         return dao2.listAll();
     }
+
 
     ProductModel itemObj = new ProductModel();
     @POST

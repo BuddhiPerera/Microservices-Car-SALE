@@ -7,7 +7,11 @@
         <packaging>war</packaging>
       </options>
     </properties>
+<<<<<<< HEAD
     <root id="archive" name="user.war">
+=======
+    <root id="archive" name="USER.war">
+>>>>>>> test
       <element id="artifact" artifact-name="USER:war exploded" />
     </root>
   </artifact>

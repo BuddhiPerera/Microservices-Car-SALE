@@ -17,16 +17,20 @@
 <h2> GadgetBadget Buyer Portal</h2>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form method="post" action="http://localhost/User/rest/buyers/save">
+
+        <form method="post" action="http://localhost:8081/USER/rest1/buyer">
+
             <h1>Create Account</h1>
             <span>Buyer Registration</span>
             <input required type="text" placeholder="First Name" name="fName" />
             <input required type="text" placeholder="Last Name" name="lName" />
             <input required type="email" placeholder="Email" name="email" />
-            <input required type="number" placeholder="Contact No" name="contact"/>
+            <input required type="number" placeholder="Contact No" name="contactNo"/>
             <input required type="text" placeholder="Address" name="address" />
-            <input required type="text" placeholder="Zip-Code" name="zipcode" />
-            <input  required type="password" placeholder="Password" name="pass" />
+
+            <input required type="text" placeholder="Zip-Code" name="zipCode" />
+            <input  required type="password" placeholder="Password"  name="pass" />
+
             <button type="submit">Sign Up</button>
         </form>
     </div>
