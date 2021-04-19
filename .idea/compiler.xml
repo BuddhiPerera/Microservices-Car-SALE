@@ -9,6 +9,7 @@
         <module name="Product" />
         <module name="Project" />
         <module name="Payment" />
+        <module name="USER" />
         <module name="Funding" />
       </profile>
     </annotationProcessing>
