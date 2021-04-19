@@ -8,15 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Product" />
         <module name="Project" />
-        <module name="Funding (1)" />
         <module name="Payment" />
         <module name="USER" />
-      </profile>
-      <profile name="Annotation profile for Funding" enabled="true">
-        <sourceOutputDir name="Funding/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="Funding/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="Funding" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

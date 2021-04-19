@@ -7,23 +7,23 @@ public class BuyerDTO {
     private String fName;
     private String lName;
     private String email;
-    private String contactNo;
+    private String contact;
     private String address;
     private String zipCode;
-    private String password;
+    private String pass;
 
     public BuyerDTO() {
     }
 
-    public BuyerDTO(int id, String fName, String lName, String email, String contactNo, String address, String zipCode, String password) {
+    public BuyerDTO(int id, String fName, String lName, String email, String contact, String address, String zipCode, String pass) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
         this.email = email;
-        this.contactNo = contactNo;
+        this.contact = contact;
         this.address = address;
         this.zipCode = zipCode;
-        this.password = password;
+        this.pass = pass;
     }
 
     public BuyerDTO(int id) {
@@ -62,12 +62,12 @@ public class BuyerDTO {
         this.email = email;
     }
 
-    public String getContactNo() {
-        return contactNo;
+    public String getContact() {
+        return contact;
     }
 
-    public void setContactNo(String contactNo) {
-        this.contactNo = contactNo;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getAddress() {
@@ -86,12 +86,12 @@ public class BuyerDTO {
         this.zipCode = zipCode;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPass() {
+        return pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     @Override
@@ -110,6 +110,6 @@ public class BuyerDTO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getfName(), getlName(), getEmail(), getContactNo(), getAddress(), getZipCode(), getPassword());
+        return Objects.hash(getId(), getfName(), getlName(), getEmail(), getContact(), getAddress(), getZipCode(), getPass());
     }
 }

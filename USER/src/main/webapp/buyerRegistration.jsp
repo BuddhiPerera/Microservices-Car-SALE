@@ -1,3 +1,8 @@
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +17,7 @@
 <h2> GadgetBadget Buyer Portal</h2>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form method="post" action="http://localhost/USER/rest/buyers">
+        <form method="post" action="http://localhost/User/rest/buyers/save">
             <h1>Create Account</h1>
             <span>Buyer Registration</span>
             <input required type="text" placeholder="First Name" name="fName" />
