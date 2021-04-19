@@ -2,6 +2,7 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/Product" />
+    <file type="web" url="file://$PROJECT_DIR$/USER" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -14,5 +15,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://C:/Program Files/Apache Software Foundation/Tomcat 9.0_Tomcat90" />
+  </component>
 </project>

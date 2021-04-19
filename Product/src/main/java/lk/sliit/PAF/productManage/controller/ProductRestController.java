@@ -1,6 +1,7 @@
 package lk.sliit.PAF.productManage.controller;
 
 import lk.sliit.PAF.productManage.dao.ProductDAOImpl;
+import lk.sliit.PAF.productManage.dto.ProDTO;
 import lk.sliit.PAF.productManage.dto.ProductDTO;
 import lk.sliit.PAF.productManage.model.ProductModel;
 
@@ -13,11 +14,16 @@ import java.util.List;
 public class ProductRestController {
      ProductDAOImpl dao = ProductDAOImpl.getInstance();
 
+    ProductModel dao2 = ProductModel.getInstance();
+
     @GET
+    @Path("/getProducts")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ProductDTO> list() {
-        return dao.listAll();
+    public List<ProDTO> list() throws Exception {
+        System.out.println(dao2.listAll());
+        return dao2.listAll();
     }
+
 
     ProductModel itemObj = new ProductModel();
     @POST
