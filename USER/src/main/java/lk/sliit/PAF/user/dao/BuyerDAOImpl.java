@@ -46,10 +46,10 @@ public class BuyerDAOImpl {
         return false;
     }
 
-    public boolean update(BuyerDTO product) {
-        int index = buyerDTOList.indexOf(product);
+    public boolean update(BuyerDTO buyerDTO) {
+        int index = buyerDTOList.indexOf(buyerDTO);
         if (index >= 0) {
-            buyerDTOList.set(index, product);
+            buyerDTOList.set(index, buyerDTO);
             return true;
         }
         return false;
