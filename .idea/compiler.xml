@@ -11,6 +11,12 @@
         <module name="Payment" />
         <module name="USER" />
       </profile>
+      <profile name="Annotation profile for Funding" enabled="true">
+        <sourceOutputDir name="Funding/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="Funding/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Funding" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Funding" target="8" />

@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <title>GadgetBadget</title>
 
-    <link rel="stylesheet" href="../build/css/style.css">
+    <link rel="stylesheet" href="build/css/style.css">
 </head>
 <body class="nav-md" style="cursor: pointer">
 <!-- Sign up form -->
 <small style="font-weight: bolder"><a href="onlineDashboard"> << Back to Home</a> </small>
-<h2> GadgetBadget Buyer Portal</h2>
+<h2> GadgetBadget Researcher Portal</h2>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
         <form method="post" action="onlineCustomerSave" name="onlineCustomerSave">
             <h1>Create Account</h1>
-            <span>Buyer Registration</span>
+            <span>Researcher Registration</span>
             <input required type="text" placeholder="First Name" name="fName" />
             <input required type="text" placeholder="Last Name" name="lName" />
             <input required type="email" placeholder="Email" name="email" />
             <input required type="number" placeholder="Contact No" name="contact"/>
             <input required type="text" placeholder="Address" name="address" />
             <input required type="text" placeholder="Zip-Code" name="zipcode" />
+            <input required type="text" placeholder="Rate" name="rate" />
             <input  required type="password" placeholder="Password"  />
             <button type="submit">Sign Up</button>
         </form>
@@ -50,6 +51,6 @@
         </div>
     </div>
 </div>
-<script src="../build/js/main.js"></script>
+<script src="build/js/main.js"></script>
 </body>
 </html>

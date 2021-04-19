@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Funding/Funding.iml" filepath="$PROJECT_DIR$/Funding/Funding.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Funding/Funding/Funding (1).iml" filepath="$PROJECT_DIR$/Funding/Funding/Funding (1).iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/PAF.iml" filepath="$PROJECT_DIR$/.idea/PAF.iml" />
       <module fileurl="file://$PROJECT_DIR$/Payment/Payment.iml" filepath="$PROJECT_DIR$/Payment/Payment.iml" />
       <module fileurl="file://$PROJECT_DIR$/Product/Product.iml" filepath="$PROJECT_DIR$/Product/Product.iml" />
