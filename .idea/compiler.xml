@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Product" />
         <module name="Project" />
+        <module name="Funding (1)" />
         <module name="Payment" />
         <module name="USER" />
       </profile>

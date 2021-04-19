@@ -35,7 +35,7 @@ public class BuyerModel {
             if(connection == null){
                 return "Error connecting to the database";
             }
-            String query = "insert into buyers (`id`, `fName`, `lName`, `email`, `contactNo`, `address` , `zipCode` , `password`) values(?,?,?,?,?,?,?,?)";
+            String query = "insert into buyers (`id`, `fName`, `lName`, `email`, `contactNo`, `address` , `zipCode` , `pass`) values(?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setInt(1, id+1);
