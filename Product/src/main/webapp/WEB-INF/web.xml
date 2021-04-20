@@ -23,5 +23,6 @@
         <servlet-name>Jersey</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
+
 </web-app>
 

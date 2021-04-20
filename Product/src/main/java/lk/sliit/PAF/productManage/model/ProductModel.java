@@ -1,7 +1,5 @@
 package lk.sliit.PAF.productManage.model;
-import lk.sliit.PAF.productManage.dao.ProductDAOImpl;
 import lk.sliit.PAF.productManage.dto.ProDTO;
-import lk.sliit.PAF.productManage.dto.ProductDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -219,19 +217,19 @@ public class ProductModel {
         }
         return output;
     }
-    public String deleteItem(String itemID)
+    public boolean deleteItem(int itemID)
     {
         String output = "";
         try
         {
             Connection con = connect();
             if (con == null)
-            {return "Error while connecting to the database for deleting."; }
+            {return false; }
             // create a prepared statement
-            String query = "delete from items where itemID=?";
+            String query = "delete from products where id=?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             // binding values
-            preparedStmt.setInt(1, Integer.parseInt(itemID));
+            preparedStmt.setInt(1, (itemID));
             // execute the statement
             preparedStmt.execute();
             con.close();
@@ -242,7 +240,7 @@ public class ProductModel {
             output = "Error while deleting the item.";
             System.err.println(e.getMessage());
         }
-        return output;
+        return true;
     }
 
 

@@ -44,7 +44,7 @@
           <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="index.html" class="nav-link">
+            <a href="allProducts.jsp" class="nav-link">
               <i class="fa fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
@@ -114,28 +114,70 @@
               <!-- /.card-header -->
               <!-- form start -->
               <form role="form" id="submitform">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="txtId">Customer ID</label>
-                    <input type="id" class="form-control" id="txtId" placeholder="Enter Customer ID">
-                  </div>
-                  <div class="form-group">
-                    <label for="txtName">Customer Name</label>
-                    <input type="text" class="form-control" id="txtName" placeholder="Enter Customer Name">
-                  </div>
-                  <div class="form-group">
-                    <label for="price">Customer Adddress</label>
-                    <input type="text" class="form-control" id="price" placeholder="Enter Customer Address">
+
+                <div class="item form-group">
+                 <input type="text" id="id">
+                  <label class="col-form-label col-md-3 col-sm-3 label-align" > Name <span class="required">*</span>
+                  </label>
+
+                  <div class="col-md-6 col-sm-6 ">
+                    <input type="text" id="name" name="name"  required="required" class="form-control ">
                   </div>
                 </div>
-                <!-- /.card-body -->
+                <div class="form-group row">
+                  <label class="col-form-label col-md-3 col-sm-3 label-align" > Description <span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 ">
+                    <textarea class="form-control" name="description"  id="description" rows="3"></textarea>
+                  </div>
+                </div>
+                <div class="item form-group">
+                  <label class="col-form-label col-md-3 col-sm-3 label-align"> Price</label>
+                  <div class="col-md-6 col-sm-6 ">
+                    <input id="price" class="form-control" type="text" name="price">
+                  </div>
+                </div>
+                <div class="item form-group">
+                  <label class="col-form-label col-md-3 col-sm-3 label-align">Av Qty <span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 ">
+                    <input id="qty" name = "qty" class="date-picker form-control" required="required" type="text">
+                  </div>
+                </div>
+                <div class="item form-group">
+                  <label class="col-form-label col-md-3 col-sm-3 label-align">Shipping Method <span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 ">
+                    <input id="shipping" name="shipping" class="date-picker form-control" required="required" type="text">
+                  </div>
+                </div>
 
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                  <div class="col-md-5 col-lg-5 col-xl-5">
+
+
+                    <div class="img-upload-card ">
+
+                      <label class="file-upload-container" for="file-upload"
+                             style="font-size: 13px; padding: -10px 5px 0px 5px; height: 30px">
+                        <input id="file-upload" type="file" style="display:none;">
+                        Select
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ln_solid"></div>
                 <div class="card-footer">
                   <button type="button" id="btnsubmit" class="btn btn-primary">Add table</button>
                   <button id="btnClear" type="reset" class="btn btn-warning">Clear</button>
                   <!--<button type="button" id="Save" class="btn btn-primary">Submit</button>-->
                 </div>
+
               </form>
+
+<!--              ////////////////////////////////////////////////////////////////////////////-->
+
             </div>
             <!-- /.card -->
           </div>
@@ -197,7 +239,7 @@
 <script src="js/adminlte.js"></script>
 <!-- Our little scripts  -->
 <script src="js/database.js"></script>
-<script src="js/manage-customers-controller.js"></script>
+<script src="js/manage-products-controller.js"></script>
 </body>
 
 </html>

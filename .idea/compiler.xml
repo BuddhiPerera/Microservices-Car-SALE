@@ -6,9 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Product" />
         <module name="Project" />
-        <module name="Funding (1)" />
+        <module name="Product" />
         <module name="Payment" />
         <module name="USER" />
       </profile>
