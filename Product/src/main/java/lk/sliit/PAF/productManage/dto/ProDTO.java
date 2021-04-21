@@ -1,5 +1,8 @@
 package lk.sliit.PAF.productManage.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class ProDTO {
 
 

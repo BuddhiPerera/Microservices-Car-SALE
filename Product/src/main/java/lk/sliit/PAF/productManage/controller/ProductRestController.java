@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.bind.JAXBElement;
 import javax.xml.ws.spi.http.HttpContext;
 import java.io.IOException;
 import java.net.URI;
@@ -30,6 +31,11 @@ public class ProductRestController {
 
     ProductModel dao2 = ProductModel.getInstance();
 
+    ProductModel itemObj = new ProductModel();
+//*******************************************************************************************************
+//*******************************************************************************************************
+//*******************************************************************************************************
+//*******************************************************************************************************
 
     @GET
     @Path("/getProducts")
@@ -39,8 +45,71 @@ public class ProductRestController {
         return dao2.listAll();
     }
 
+    //*******************************************************************************************************
+//*******************************************************************************************************
+//*******************************************************************************************************
+//*******************************************************************************************************
 
-    ProductModel itemObj = new ProductModel();
+
+    @POST
+    @Path("/save")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public void addProduct(ProDTO proDTO) {
+
+        itemObj.insertItem(proDTO.getName(), proDTO.getDescription(),proDTO.getPrice(),proDTO.getQty(),proDTO.getShipping(),proDTO.getImage());
+
+    }
+    @PUT
+    @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public void updateProduct(ProDTO proDTO) {
+
+        itemObj.updateItem(proDTO.getId(),proDTO.getName(), proDTO.getDescription(),proDTO.getPrice(),proDTO.getQty(),proDTO.getShipping(),proDTO.getImage());
+
+    }
+
+    //*******************************************************************************************************
+//*******************************************************************************************************
+//*******************************************************************************************************
+//*******************************************************************************************************
+    @DELETE
+    @Path("/delete/{id}")
+    public Response delete(@PathParam("id") int id) {
+        if (dao2.deleteItem(id)) {
+            return Response.ok().build();
+        } else {
+            return Response.notModified().build();
+        }
+    }
+//*******************************************************************************************************
+//*******************************************************************************************************
+//*******************************************************************************************************
+//*******************************************************************************************************
+
+
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_XML)
+    public Response putTodo(JAXBElement<ProDTO> todo) {
+        ProDTO c = todo.getValue();
+        System.out.println(c);
+        return null;
+    }
+
+
+//*******************************************************************************************************
+//*******************************************************************************************************
+//*******************************************************************************************************
+//*******************************************************************************************************
+
+
+
+
+
+
+
 
 /*   @POST
     @Produces(MediaType.TEXT_PLAIN)
@@ -53,43 +122,21 @@ public class ProductRestController {
         String output = itemObj.insertItem(name, description, price, qty, shipping, image);
 
     }*/
-    @POST
-    @Path("/save")
-    @Produces(MediaType.TEXT_PLAIN)
-    public void doGet(HttpServletRequest request) throws ServletException, IOException {
-
-        String userName = request.getParameter("id").trim();
-        System.out.println(userName+"ssssssssssssssssssssssssssssssssssssssssssssss");
- /*       if(userName == null || "".equals(userName)){
-            userName = "Guest";
-        }*/
-        System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
-
-
-    }
 
 
 
-    @PUT
-    @Path("/")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
-    public String updateItem(String itemData) {
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 
-        String itemID = null, itemCode = null, itemName = null, itemPrice = null, itemDesc = null;
 
-            JSONObject object = new JSONObject();
-            itemID = (object.getString("id"));
-            itemCode = (object.getString("Name"));
-            itemName = (object.getString("Name"));
-            itemPrice = (object.getString("Name"));
-            itemDesc = (object.getString("Name"));
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 
-//Read the values from the JSON object
 
-        String output = itemObj.updateItem(itemID, itemCode, itemName, itemPrice, itemDesc);
-        return output;
-    }
 
 
 
@@ -106,17 +153,6 @@ public class ProductRestController {
         }
     }*/
 
-/*
-    @DELETE
-    @Path("/delete/{id}")
-    public Response delete(@PathParam("id") int id) {
-        if (dao2.deleteItem(id)) {
-            return Response.ok().build();
-        } else {
-            return Response.notModified().build();
-        }
-    }
-*/
 
  /*   @PUT
     @Consumes(MediaType.APPLICATION_JSON)
