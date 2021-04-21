@@ -174,7 +174,7 @@
                   <thead>
                   <tr>
                     <th class="text-center">ID</th>
-                    <th> Name</th>
+                    <th>Name</th>
                     <th>description</th>
                     <th>price</th>
                     <th>qty</th>

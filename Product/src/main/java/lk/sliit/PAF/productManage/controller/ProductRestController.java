@@ -10,7 +10,9 @@ import javax.json.JsonObject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBElement;
@@ -40,11 +42,29 @@ public class ProductRestController {
     @GET
     @Path("/getProducts")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ProDTO> list() throws Exception {
+    public List<ProDTO> list(@Context HttpServletRequest req) throws Exception {
+        HttpSession session= req.getSession(true);
+        Object foo = session.getAttribute("foo");
+        if (foo!=null) {
+            System.out.println(foo.toString());
+        } else {
+            session.setAttribute("foo", "");
+        }
+
+
+        String onlineCustomerId = (session.getAttribute("foo").toString());
+        System.out.println(onlineCustomerId+" sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
         System.out.println(dao2.listAll());
         return dao2.listAll();
     }
-
+    @GET
+    @Path("/login")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void list2( @Context HttpServletRequest req) throws Exception {
+        System.out.println("sssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        HttpSession session= req.getSession(true);
+        session.setAttribute("foo", "3333332");
+    }
     //*******************************************************************************************************
 //*******************************************************************************************************
 //*******************************************************************************************************
