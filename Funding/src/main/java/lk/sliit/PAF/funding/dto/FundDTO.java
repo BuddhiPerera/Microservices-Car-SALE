@@ -29,6 +29,20 @@ public class FundDTO {
         this.amount = amount;
     }
 
+    @Override
+    public String toString() {
+        return "FundDTO{" +
+                "id=" + id +
+                ", fundID='" + fundID + '\'' +
+                ", fundName='" + fundName + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                ", fundMethod='" + fundMethod + '\'' +
+                ", amount='" + amount + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
