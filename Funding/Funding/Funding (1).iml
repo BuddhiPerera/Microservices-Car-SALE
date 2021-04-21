@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+<<<<<<< HEAD
     <output url="file://$MODULE_DIR$/../target/classes" />
     <output-test url="file://$MODULE_DIR$/../target/test-classes" />
+=======
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+>>>>>>> ca3d6aa3cab20145a28af51fe7d9dfc5e89f4477
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
