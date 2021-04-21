@@ -32,22 +32,25 @@ function loadProducts() {
     })
 
 }
+$("#btnDelete").click(function (){
+    $("#datatable tbody").on('click', "tr td:last-child", function (eventData) {
+        var row = $(this).parents("tr");
+        eventData.stopPropagation();
+        if (confirm("Are you sure whether you want delete this Item?")) {
+            $.ajax({
+                method: 'DELETE',
+                url:  'http://localhost:8085/Funding/rest2/funds/delete/' + row.find('td:first-child').text(),
+                async: true
+            }).done(function (response, status, jqXHR) {
+                row.remove();
+            }).fail(function (jqXHR, status, error) {
+                console.log(error);
+            });
+        }
+    });
 
-$("#datatable tbody").on('click', "tr td:last-child", function (eventData) {
-    var row = $(this).parents("tr");
-    eventData.stopPropagation();
-    if (confirm("Are you sure whether you want delete this Item?")) {
-        $.ajax({
-            method: 'DELETE',
-            url: 'http://localhost/Funding/rest2/funds/delete/' + row.find('td:first-child').text(),
-            async: true
-        }).done(function (response, status, jqXHR) {
-            row.remove();
-        }).fail(function (jqXHR, status, error) {
-            console.log(error);
-        });
-    }
-});
+})
+
 
 $("#btnsubmit").click(function () {
     var funds = {
@@ -113,7 +116,12 @@ $("#btnsubmit").click(function () {
 });
 
 
-$("#dtble tbody").on('click', 'tr', function () {
+
+
+
+
+
+$("#datatable tbody").on('click', 'tr', function () {
     selectedRow = $(this);
     $("#id").val($(this).find("td:first-child").text());
     $("#fundName").val($(this).find("td:nth-child(2)").text());
@@ -121,7 +129,7 @@ $("#dtble tbody").on('click', 'tr', function () {
     $("#address").val($(this).find("td:nth-child(4)").text());
     $("#contactNumber").val($(this).find("td:nth-child(5)").text());
     $("#amount").val($(this).find("td:nth-child(6)").text());
-    $("#fundMethod").val($(this).find("td:nth-child(6)").text());
+    $("#setType").val($(this).find("td:nth-child(7)").text());
 
 
 

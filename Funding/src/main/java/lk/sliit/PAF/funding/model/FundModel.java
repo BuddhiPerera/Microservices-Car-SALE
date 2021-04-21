@@ -195,16 +195,16 @@ public class FundModel {
         }
         return output;
     }
-    public String deleteFund(String fundID)
+    public boolean deleteFund(String fundID)
     {
         String output = "";
         try
         {
             Connection con = connect();
             if (con == null)
-            {return "Error while connecting to the database for deleting."; }
+            {return false; }
             // create a prepared statement
-            String query = "delete from fund where fundID=?";
+            String query = "delete from fund where id=?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             // binding values
             preparedStmt.setInt(1, Integer.parseInt(fundID));
@@ -218,7 +218,7 @@ public class FundModel {
             output = "Error while deleting the item.";
             System.err.println(e.getMessage());
         }
-        return output;
+        return true;
     }
 
 
