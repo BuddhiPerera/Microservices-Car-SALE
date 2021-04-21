@@ -13,7 +13,7 @@
 <h2> GadgetBadget Buyer Portal</h2>
 <div class="container" id="container">
     <div class="form-container sign-up-container" id="registration">
-        <form method="post" action="http://localhost:8081/USER/rest1/buyer">
+        <form method="post" action="http://localhost:8081/USER/rest1/researcher">
             <h1>Create Account</h1>
             <span>Buyer Registration</span>
             <input required type="text" placeholder="First Name" name="fName" id="fname" />
@@ -23,20 +23,9 @@
             <input required type="text" placeholder="Address" name="address" id="add"/>
             <input required type="text" placeholder="Zip-Code" name="zipCode" id="zip"/>
             <input  required type="password" placeholder="Password"  name="pass" id="password"/>
-            <button type="submit" onclick="submitForm()">Sign Up</button>
+            <button type="submit">Sign Up</button>
         </form>
     </div>
-    <script>
-        function submitForm(){
-           document.getElementById('fname').value='';
-           document.getElementById('lname').value='';
-           document.getElementById('email').value='';
-           document.getElementById('contact').value='';
-           document.getElementById('add').value='';
-           document.getElementById('zip').value='';
-           document.getElementById('password').value='';
-        }
-    </script>
 
     <!-- Sign in form -->
     <div class="form-container sign-in-container" id="sign">

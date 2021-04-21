@@ -6,7 +6,7 @@
 
     <display-name>demo</display-name>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>manageItems.jsp</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -23,5 +23,6 @@
         <servlet-name>Jersey</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
+
 </web-app>
 
