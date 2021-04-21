@@ -83,12 +83,13 @@
 
 
 
-                <form class="form-horizontal form-label-left" action="http://localhost:8085/Funding/rest2/funds/" method="post">
+                <form class="form-horizontal form-label-left" method="post">
                     <br><br><br>
                     <div class="form-group row ">
                         <label class="control-label col-md-3 col-sm-3 ">Fund ID</label>
+                        <input type="hidden" name="id" id="id">
                         <div class="col-md-9 col-sm-9 ">
-                            <input type="text" class="form-control" name="id" id="id" placeholder="Enter Fund ID">
+                            <input type="text" class="form-control" name="fundID" id="fundID" placeholder="Enter Fund ID">
                         </div>
                     </div>
 
@@ -187,10 +188,13 @@
 <script src="build/js/custom.min.js"></script>
 
 <!-- AdminLTE App -->
-
-<!-- Our little scripts  -->
-
 <script src="js/manage-fund-controller.js"></script>
+<!-- Our little scripts  -->
+<script>
+
+</script>
+
+
 </body>
 
 </html>

@@ -15,7 +15,8 @@ function loadProducts() {
         for (var i = 0; i < funds.length; i++) {
             var html =
                 '<tr>' +
-                '<td>' + funds[i].id + '</td>' +
+                '<td style="visibility: hidden">' + funds[i].id + '</td>' +
+                '<td>' + funds[i].fundID + '</td>' +
                 '<td>' + funds[i].fundName + '</td>' +
                 '<td>' + funds[i].email + '</td>' +
                 '<td>' + funds[i].address + '</td>' +
@@ -32,24 +33,51 @@ function loadProducts() {
     })
 
 }
-$("#btnDelete").click(function (){
-    $("#datatable tbody").on('click', "tr td:last-child", function (eventData) {
-        var row = $(this).parents("tr");
-        eventData.stopPropagation();
-        if (confirm("Are you sure whether you want delete this Item?")) {
-            $.ajax({
-                method: 'DELETE',
-                url:  'http://localhost:8085/Funding/rest2/funds/delete/' + row.find('td:first-child').text(),
-                async: true
-            }).done(function (response, status, jqXHR) {
-                row.remove();
-            }).fail(function (jqXHR, status, error) {
-                console.log(error);
-            });
-        }
-    });
 
-})
+
+$("#datatable tbody").on('click', 'tr', function () {
+    selectedRow = $(this);
+    $("#id").val($(this).find("td:first-child").text());
+    $("#fundID").val($(this).find("td:nth-child(2)").text());
+    $("#fundName").val($(this).find("td:nth-child(3)").text());
+    $("#email").val($(this).find("td:nth-child(4)").text());
+    $("#address").val($(this).find("td:nth-child(5)").text());
+    $("#contactNumber").val($(this).find("td:nth-child(6)").text());
+    $("#amount").val($(this).find("td:nth-child(7)").text());
+    $("#setType").val($(this).find("td:nth-child(8)").text());
+
+
+    $("#id").attr("disabled", 'true');
+    $("#datatable tbody tr").removeClass('row-selected');
+    selectedRow.addClass('row-selected');
+});
+
+
+
+
+function deleteFund(){
+
+    var id = document.getElementById('id').value;
+
+    if (confirm("Are you sure whether you want delete this Item?")) {
+        $.ajax({
+            method: 'DELETE',
+            url:  'http://localhost:8085/Funding/rest2/funds/delete/' + id,
+            async: true
+        }).done(function (response, status, jqXHR) {
+
+        }).fail(function (jqXHR, status, error) {
+            console.log(error);
+        });
+    }
+    window.location.reload();
+}
+
+
+
+
+
+
 
 
 $("#btnsubmit").click(function () {
@@ -66,7 +94,7 @@ $("#btnsubmit").click(function () {
     if (!selectedRow) {
         var ajaxConfig = {
             method: 'POST',
-            url: 'http://localhost/Funding/rest2/fundss/save/',
+            url: 'http://localhost/Funding/rest2/funds/save/',
             async: true,
             contentType: 'application/json',
             data: JSON.stringify(product)
@@ -116,28 +144,6 @@ $("#btnsubmit").click(function () {
 });
 
 
-
-
-
-
-
-$("#datatable tbody").on('click', 'tr', function () {
-    selectedRow = $(this);
-    $("#id").val($(this).find("td:first-child").text());
-    $("#fundName").val($(this).find("td:nth-child(2)").text());
-    $("#email").val($(this).find("td:nth-child(3)").text());
-    $("#address").val($(this).find("td:nth-child(4)").text());
-    $("#contactNumber").val($(this).find("td:nth-child(5)").text());
-    $("#amount").val($(this).find("td:nth-child(6)").text());
-    $("#setType").val($(this).find("td:nth-child(7)").text());
-
-
-
-
-    $("#id").attr("disabled", 'true');
-    $("#datatable tbody tr").removeClass('row-selected');
-    selectedRow.addClass('row-selected');
-});
 
 function initializePagination(totalElements) {
 
