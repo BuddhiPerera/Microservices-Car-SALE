@@ -1,7 +1,5 @@
 package lk.sliit.PAF.productManage.model;
-import lk.sliit.PAF.productManage.dao.ProductDAOImpl;
 import lk.sliit.PAF.productManage.dto.ProDTO;
-import lk.sliit.PAF.productManage.dto.ProductDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -107,6 +105,39 @@ public class ProductModel {
         return patient;
     }
 
+
+    public String updateItem(String ID, String name, String description, String price, String qty,String shipping,String image)
+    {
+        String output = "";
+        try
+        {
+            Connection con = connect();
+            if (con == null)
+            {return "Error while connecting to the database for updating."; }
+            // create a prepared statement
+            String query = "UPDATE products SET `name`=?,description=?,price=?,qty=?,shipping=?,image=? WHERE id=?";
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            // binding values
+            preparedStmt.setString(1, name);
+            preparedStmt.setString(2, description);
+            preparedStmt.setString(3, price);
+            preparedStmt.setString(4, qty);
+            preparedStmt.setString(5, shipping);
+            preparedStmt.setString(6, image);
+            preparedStmt.setInt(7, Integer.parseInt(ID));
+            // execute the statement
+            preparedStmt.execute();
+            con.close();
+            output = "Updated successfully";
+        }
+        catch (Exception e)
+        {
+            output = "Error while updating the item.";
+            System.err.println(e.getMessage());
+        }
+        return output;
+    }
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -142,6 +173,22 @@ public class ProductModel {
         }
         return output;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public String readItems()
     {
         String output = "";
@@ -190,48 +237,20 @@ public class ProductModel {
         }
         return output;
     }
-    public String updateItem(String ID, String code, String name, String price, String desc)
+
+    public boolean deleteItem(int itemID)
     {
         String output = "";
         try
         {
             Connection con = connect();
             if (con == null)
-            {return "Error while connecting to the database for updating."; }
+            {return false; }
             // create a prepared statement
-            String query = "UPDATE items SET itemCode=?,itemName=?,itemPrice=?,itemDesc=? WHERE itemID=?";
+            String query = "delete from products where id=?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             // binding values
-            preparedStmt.setString(1, code);
-            preparedStmt.setString(2, name);
-            preparedStmt.setDouble(3, Double.parseDouble(price));
-            preparedStmt.setString(4, desc);
-            preparedStmt.setInt(5, Integer.parseInt(ID));
-            // execute the statement
-            preparedStmt.execute();
-            con.close();
-            output = "Updated successfully";
-        }
-        catch (Exception e)
-        {
-            output = "Error while updating the item.";
-            System.err.println(e.getMessage());
-        }
-        return output;
-    }
-    public String deleteItem(String itemID)
-    {
-        String output = "";
-        try
-        {
-            Connection con = connect();
-            if (con == null)
-            {return "Error while connecting to the database for deleting."; }
-            // create a prepared statement
-            String query = "delete from items where itemID=?";
-            PreparedStatement preparedStmt = con.prepareStatement(query);
-            // binding values
-            preparedStmt.setInt(1, Integer.parseInt(itemID));
+            preparedStmt.setInt(1, (itemID));
             // execute the statement
             preparedStmt.execute();
             con.close();
@@ -242,7 +261,7 @@ public class ProductModel {
             output = "Error while deleting the item.";
             System.err.println(e.getMessage());
         }
-        return output;
+        return true;
     }
 
 

@@ -31,8 +31,9 @@ public class FundingController {
                              @FormParam("email") String email,
                              @FormParam("address") String address,
                              @FormParam("contactNumber") String contactNumber,
+                             @FormParam("amount") String amount,
                              @FormParam("fundMethod") String fundMethod) {
-        String output = fundObj.insertFund(id,fundName, email, address, contactNumber,fundMethod);
+        String output = fundObj.insertFund(id,fundName, email, address, contactNumber,fundMethod,amount);
         System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddddd");
         return output;
     }

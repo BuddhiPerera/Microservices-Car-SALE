@@ -3,6 +3,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/Funding" />
     <file type="web" url="file://$PROJECT_DIR$/Product" />
+    <file type="web" url="file://$PROJECT_DIR$/Project" />
     <file type="web" url="file://$PROJECT_DIR$/USER" />
   </component>
   <component name="MavenProjectsManager">
@@ -10,13 +11,13 @@
       <list>
         <option value="$PROJECT_DIR$/Funding/pom.xml" />
         <option value="$PROJECT_DIR$/Payment/pom.xml" />
+        <option value="$PROJECT_DIR$/USER/pom.xml" />
         <option value="$PROJECT_DIR$/Product/pom.xml" />
         <option value="$PROJECT_DIR$/Project/pom.xml" />
-        <option value="$PROJECT_DIR$/USER/pom.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_14" project-jdk-name="1.8" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/../../../../Program Files/Apache Software Foundation/Tomcat 9.0_Tomcat90" />
+    <output url="file://$USER_HOME$/Program Files/Apache Software Foundation/Tomcat 9.0_Tomcat90" />
   </component>
 </project>
