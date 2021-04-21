@@ -64,7 +64,7 @@
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="manage-customers.html">Dashboard</a></li>
+                                    <li><a href="manageItems.jsp">Dashboard</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
@@ -420,6 +420,7 @@
 <script src="vendors/starrr/dist/starrr.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="build/js/custom.min.js"></script>
+<script src="js/login.js"></script>
 
 </body>
 </html>

@@ -23,14 +23,14 @@ public class ProjectController {
         ProjectModel projectObj = new ProjectModel();
         @POST
         @Produces(MediaType.TEXT_PLAIN)
-        public String insertProject(@FormParam("publisherName") String publisherName,
-                                 @FormParam("projectName") String projectName,
-                                 @FormParam("email") String email,
-                                 @FormParam("status") String status,
-                                 @FormParam("link") String link,
-                                 @FormParam("updatedDate") String updatedDate,
-                                 @FormParam("submittedDate") String submittedDate,
-                                 @FormParam("Description") String Description) {
+        public String insertProject(@FormParam("pubName") String publisherName,
+                                 @FormParam("proName") String projectName,
+                                 @FormParam("Email") String email,
+                                 @FormParam("proStatus") String status,
+                                 @FormParam("proLink") String link,
+                                 @FormParam("proUpDate") String updatedDate,
+                                 @FormParam("proSubDate") String submittedDate,
+                                 @FormParam("proDesc") String Description) {
             String output = projectObj.insertProject(publisherName, projectName, email, status, link, updatedDate, submittedDate,Description);
             System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddddd");
             return output;

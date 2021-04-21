@@ -26,9 +26,9 @@ public class ResearcherRestController {
     public void insertResearcher(@FormParam("fName") String fName,
                                  @FormParam("lName") String lName,
                                  @FormParam("email") String email,
-                                 @FormParam("contactNo") String contactNo,
+                                 @FormParam("contact") String contactNo,
                                  @FormParam("address") String address,
-                                 @FormParam("zipCode") String zipCode,
+                                 @FormParam("zipcode") String zipCode,
                                  @FormParam("rate") String rate,
                                  @FormParam("pass") String pass){
         String output = researcherModel.insertBuyerDetail(fName,lName,email,contactNo,address,zipCode,rate,pass);
