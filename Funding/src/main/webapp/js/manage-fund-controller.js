@@ -35,6 +35,7 @@ function loadProducts() {
 }
 
 
+
 $("#datatable tbody").on('click', 'tr', function () {
     selectedRow = $(this);
     $("#id").val($(this).find("td:first-child").text());
@@ -59,18 +60,18 @@ function deleteFund(){
 
     var id = document.getElementById('id').value;
 
-        if (confirm("Are you sure whether you want delete this Item?")) {
-            $.ajax({
-                method: 'DELETE',
-                url:  'http://localhost:8085/Funding/rest2/funds/delete/' + id,
-                async: true
-            }).done(function (response, status, jqXHR) {
+    if (confirm("Are you sure whether you want delete this Item?")) {
+        $.ajax({
+            method: 'DELETE',
+            url:  'http://localhost:8085/Funding/rest2/funds/delete/' + id,
+            async: true
+        }).done(function (response, status, jqXHR) {
 
-            }).fail(function (jqXHR, status, error) {
-                console.log(error);
-            });
-        }
-        window.location.reload();
+        }).fail(function (jqXHR, status, error) {
+            console.log(error);
+        });
+    }
+    window.location.reload();
 }
 
 
