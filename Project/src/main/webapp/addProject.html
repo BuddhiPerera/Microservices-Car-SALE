@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Add My Project | </title>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="build/css/custom.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+<div class="col-md-6 align center-margin" >
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Add Project Details <small>Project Form Elements</small></h2>
+
+
+
+                <form class ="form-horizontal form-label-left" action="http://localhost:8082/Project/rest2/projects/" method="post">
+                    <br><br><br>
+                    <div class="form-group row ">
+                        <label class="control-label col-md-3 col-sm-3 ">Publisher Name</label>
+                        <div class="col-md-9 col-sm-9 ">
+                            <input type="text" class="form-control" name="pubName" placeholder="Enter Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label class="control-label col-md-3 col-sm-3 ">Project Name</label>
+                        <div class="col-md-9 col-sm-9 ">
+                            <input type="text" class="form-control" name="proName" placeholder="Enter Project Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label class="control-label col-md-3 col-sm-3 ">Publisher E-mail</label>
+                        <div class="col-md-9 col-sm-9 ">
+                            <input type="text" class="form-control" name="Email" placeholder="Enter E-mail">
+                        </div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label class="control-label col-md-3 col-sm-3 ">Project Status</label>
+                        <div class="col-md-9 col-sm-9 ">
+                            <input type="text" class="form-control" name="proStatus" placeholder="Enter Status">
+                        </div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label class="control-label col-md-3 col-sm-3 ">Project Link</label>
+                        <div class="col-md-9 col-sm-9 ">
+                            <input type="text" class="form-control" name="proLink" placeholder="Enter Project Link">
+                        </div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label class="control-label col-md-3 col-sm-3 ">Last Updated Date</label>
+                        <div class="col-md-9 col-sm-9 ">
+                            <input type="text" class="form-control" name="proUpDate" placeholder="Enter Last Updated Date">
+                        </div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label class="control-label col-md-3 col-sm-3 ">Submitted Date</label>
+                        <div class="col-md-9 col-sm-9 ">
+                            <input type="text" class="form-control" name="proSubdate" placeholder="Enter Submitted Date">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-3 col-sm-3 ">Description </label>
+                        <div class="col-md-9 col-sm-9 ">
+                            <textarea class="form-control" name="proDesc" rows=5 placeholder="Description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-9  offset-md-3">
+                            <button type="reset" class="btn btn-primary">Reset</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </form>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
