@@ -27,7 +27,7 @@ public class FundModel {
             return 0;
         }
     }
-        public String insertFund(String fundid,String name, String email, String address, String number, String method)
+        public String insertFund(String fundid,String name, String email, String address, String number, String method,String amount)
         {
             String output = "";
             try
@@ -37,8 +37,8 @@ public class FundModel {
                 if (con == null)
                 {return "Error while connecting to the database for inserting."; }
                 // create a prepared statement
-                String query = " insert into fund (`id`,`fundID`,`fundName`,`email`,`address`,`contactNumber`,`fundMethod`)"
-                    + " values (?, ?, ?, ?, ?,?,?)";
+                String query = " insert into fund (`id`,`fundID`,`fundName`,`email`,`address`,`contactNumber`,`fundMethod`,`amount`)"
+                    + " values (?, ?, ?, ?, ?,?,?,?)";
                 PreparedStatement preparedStmt = con.prepareStatement(query);
                 // binding values
                 preparedStmt.setInt(1, id+1);
@@ -48,6 +48,9 @@ public class FundModel {
                 preparedStmt.setString(5, address);
                 preparedStmt.setString(6, number);
                 preparedStmt.setString(7, method);
+                preparedStmt.setString(8, amount);
+
+
 // execute the statement
                 preparedStmt.execute();
                 con.close();
