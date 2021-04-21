@@ -83,40 +83,41 @@
 
 
 
-                <form class="form-horizontal form-label-left" action="http://localhost:8085/Funding/rest2/funds/" method="post">
+                <form class="form-horizontal form-label-left" method="post">
                     <br><br><br>
                     <div class="form-group row ">
                         <label class="control-label col-md-3 col-sm-3 ">Fund ID</label>
+                        <input type="hidden" name="id" id="id">
                         <div class="col-md-9 col-sm-9 ">
-                            <input type="text" class="form-control" name="id" placeholder="Enter Fund ID">
+                            <input type="text" class="form-control" name="fundID" id="fundID" placeholder="Enter Fund ID">
                         </div>
                     </div>
 
                     <div class="form-group row ">
                         <label class="control-label col-md-3 col-sm-3 ">Fund Name</label>
                         <div class="col-md-9 col-sm-9 ">
-                            <input type="text" class="form-control" name="fundName" placeholder="Enter Fund Name">
+                            <input type="text" class="form-control" name="fundName" id="fundName" placeholder="Enter Fund Name">
                         </div>
                     </div>
 
                     <div class="form-group row ">
                         <label class="control-label col-md-3 col-sm-3 "> E-mail</label>
                         <div class="col-md-9 col-sm-9 ">
-                            <input type="text" class="form-control" name="email" placeholder="Enter E-mail">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Enter E-mail">
                         </div>
                     </div>
 
                     <div class="form-group row ">
                         <label class="control-label col-md-3 col-sm-3 ">Address</label>
                         <div class="col-md-9 col-sm-9 ">
-                            <input type="text" class="form-control" name="address" placeholder="Address">
+                            <input type="text" class="form-control" name="address" id="address" placeholder="Address">
                         </div>
                     </div>
 
                     <div class="form-group row ">
                         <label class="control-label col-md-3 col-sm-3 ">Contact Number</label>
                         <div class="col-md-9 col-sm-9 ">
-                            <input type="text" class="form-control" id="inputSuccess5" name="contactNumber" placeholder="Phone">
+                            <input type="text" class="form-control"  name="contactNumber" id="contactNumber"  placeholder="Phone">
                             <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
                         </div>
                     </div>
@@ -124,7 +125,7 @@
                     <div class="form-group row ">
                         <label class="control-label col-md-3 col-sm-3 ">Amount</label>
                         <div class="col-md-9 col-sm-9 ">
-                            <input type="text" class="form-control" name="amount" placeholder="Amount">
+                            <input type="text" class="form-control" name="amount" id="amount" placeholder="Amount">
                         </div>
                     </div>
 
@@ -153,7 +154,7 @@
                             <div class="center-margin"></div>
                             <div class="vertical center-margin">
                                 <div class="col-md-14 col-sm-14  offset-md-3 align center-margin">
-                                    <button type="submit" class="btn btn-danger">Delete Fund</button>
+                                    <button type="submit" class="btn btn-danger" onclick="deleteFund()" id="btnDelete">Delete Fund</button>
                                 </div>
                             </div>
                         </div>
@@ -187,10 +188,13 @@
 <script src="build/js/custom.min.js"></script>
 
 <!-- AdminLTE App -->
-
-<!-- Our little scripts  -->
-
 <script src="js/manage-fund-controller.js"></script>
+<!-- Our little scripts  -->
+<script>
+
+</script>
+
+
 </body>
 
 </html>

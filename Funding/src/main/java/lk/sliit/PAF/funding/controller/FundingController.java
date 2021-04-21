@@ -69,9 +69,9 @@ public class FundingController {
     }
 
     @DELETE
-    @Path("{id}")
-    public Response delete(@PathParam("id") int id) {
-        if (dao.delete(id)) {
+    @Path("/delete/{id}")
+    public Response delete(@PathParam("id") String id) {
+        if (model.deleteFund(id)) {
             return Response.ok().build();
         } else {
             return Response.notModified().build();
