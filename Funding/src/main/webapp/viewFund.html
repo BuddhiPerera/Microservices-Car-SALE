@@ -36,7 +36,17 @@
         <div class="x_title">
             <h1 style="text-align:center">View Fund Details </h1>
 
-            <table id="datatable" class="table table-striped table-bordered" style="width:100% ">
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button">Go!</button>
+                    </span>
+                    </div>
+                </div>
+
+            <table id="datatable"  class="table table-striped table-bordered" style="width:100% ">
                 <thead>
                 <tr>
                     <th>Fund ID</th>
@@ -44,55 +54,121 @@
                     <th>E-mail</th>
                     <th>Address</th>
                     <th>Phone</th>
+                    <th>Amount</th>
                     <th>Method</th>
 
                 </tr>
                 </thead>
 
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Arya</td>
-                    <td>arya@gmail.com</td>
-                    <td>61/B Rajagiriya</td>
-                    <td>0716777777</td>
-                    <td>Cash</td>
 
-
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>suwaya</td>
-                    <td>suwaya@gmail.com</td>
-                    <td>55/A Athurugiriya</td>
-                    <td>0778899777</td>
-                    <td>Cheque</td>
-
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>kapruka</td>
-                    <td>kapruka@gmail.com</td>
-                    <td>78/C Malabe</td>
-                    <td>07109887765</td>
-                    <td>Cash</td>
-
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Domex</td>
-                    <td>domex@gmail.com</td>
-                    <td>88/D gamnpaha</td>
-                    <td>0742357688</td>
-                    <td>Cash</td>
-
-                </tr>
                 </tbody>
             </table>
 
 
+
+
+
+
         </div>
     </div>
+</div>
+
+</head>
+<body>
+<div class="col-md-7 align center-margin" >
+    <div class="x_panel">
+        <div class="x_title">
+            <h1 style="text-align:center">Manage Fund</h1>
+
+
+
+            <form class="form-horizontal form-label-left" action="http://localhost:8085/Funding/rest2/funds/" method="post">
+                <br><br><br>
+                <div class="form-group row ">
+                    <label class="control-label col-md-3 col-sm-3 ">Fund ID</label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" class="form-control" name="id" placeholder="Enter Fund ID">
+                    </div>
+                </div>
+
+                <div class="form-group row ">
+                    <label class="control-label col-md-3 col-sm-3 ">Fund Name</label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" class="form-control" name="fundName" placeholder="Enter Fund Name">
+                    </div>
+                </div>
+
+                <div class="form-group row ">
+                    <label class="control-label col-md-3 col-sm-3 "> E-mail</label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" class="form-control" name="email" placeholder="Enter E-mail">
+                    </div>
+                </div>
+
+                <div class="form-group row ">
+                    <label class="control-label col-md-3 col-sm-3 ">Address</label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" class="form-control" name="address" placeholder="Address">
+                    </div>
+                </div>
+
+                <div class="form-group row ">
+                    <label class="control-label col-md-3 col-sm-3 ">Contact Number</label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" class="form-control" id="inputSuccess5" name="contactNumber" placeholder="Phone">
+                        <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row ">
+                    <label class="control-label col-md-3 col-sm-3 ">Amount</label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" class="form-control" name="amount" placeholder="Amount">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row ">
+                    <label class="control-label col-md-3 col-sm-3 ">Fund Method</label>
+
+                    <div class="col-md-9 col-sm-9 ">
+                        <select name ="fundMethod" class="form-control" id="setType" style="width: 100%">
+                            <option value ="Cash">Cash</option>
+                            <option value ="Cheque">Cheque</option>
+                        </select>
+                    </div>
+
+
+
+
+
+                    <div class="center-margin"></div>
+                    <div class="vertical center-margin">
+                        <div class="col-md-14 col-sm-14  offset-md-3 align center-margin">
+                            <button type="submit" class="btn btn-success" name="btnsubmit">Update Fund</button>
+                        </div>
+
+                        <div class="center-margin"></div>
+                        <div class="vertical center-margin">
+                            <div class="col-md-14 col-sm-14  offset-md-3 align center-margin">
+                                <button type="submit" class="btn btn-danger">Delete Fund</button>
+                            </div>
+                    </div>
+                </div>
+                </div>
+            </form>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+
 </div>
 
 

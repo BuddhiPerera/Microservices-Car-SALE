@@ -8,6 +8,7 @@ import lk.sliit.PAF.funding.dto.FundDTO;
 import lk.sliit.PAF.funding.model.FundModel;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -15,11 +16,14 @@ import java.util.List;
 @Path("/funds")
 public class FundingController {
      FundDAOImpl dao = FundDAOImpl.getInstance();
+     FundModel model = new FundModel();
+
 
     @GET
+    @Path("/getfunds")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<FundDTO> list() {
-        return dao.listAll();
+    public List<FundDTO> list() throws Exception {
+        return model.listAll();
     }
 
     FundModel fundObj = new FundModel();
@@ -48,6 +52,10 @@ public class FundingController {
         return Response.created(uri).build();
     }
 */
+
+
+
+
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)

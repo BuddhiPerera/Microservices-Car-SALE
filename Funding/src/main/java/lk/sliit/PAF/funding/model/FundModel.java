@@ -1,5 +1,9 @@
 package lk.sliit.PAF.funding.model;
+import lk.sliit.PAF.funding.dto.FundDTO;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FundModel {
 
@@ -62,7 +66,42 @@ public class FundModel {
                 System.err.println(e.getMessage());
             }
             return output;
+
         }
+
+    public List<FundDTO> listAll() throws Exception {
+
+        Connection con = connect();
+        int id = getLastID();
+        if (con == null)
+        {return null; }
+        List<FundDTO> funds = new ArrayList<>();
+        String query = "Select * from funds";
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                FundDTO p = new FundDTO();
+                p.setId(rs.getInt(1));
+                p.setFundID(rs.getString(2));
+                p.setFundName(rs.getString(3));
+                p.setEmail(rs.getString(4));
+                p.setAddress(rs.getString(5));
+                p.setContactNumber(rs.getString(6));
+                p.setFundMethod(rs.getString(7));
+                p.setAmount(rs.getString(8));
+                funds.add(p);
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        return funds;
+    }
+
+
+
+
     public String readFund()
     {
         String output = "";
@@ -77,27 +116,40 @@ public class FundModel {
                     "<th>Item Description</th>" +
                     "<th>Update</th><th>Remove</th></tr>";
 
-            String query = "select * from items";
+
+
+
+
+
+            String query = "select * from fund";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             // iterate through the rows in the result set
             while (rs.next())
             {
-                String itemID = Integer.toString(rs.getInt("itemID"));
-                String itemCode = rs.getString("itemCode");
-                String itemName = rs.getString("itemName");
-                String itemPrice = Double.toString(rs.getDouble("itemPrice"));
-                String itemDesc = rs.getString("itemDesc");
+                Integer id = rs.getInt(getLastID());
+                String fundID = Integer.toString(rs.getInt("fundID"));
+                String fundName = rs.getString("fundName");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
+                String contactNumber = rs.getString("contactNumber");
+                String fundMethod = rs.getString("fundMethod");
+                String amount = rs.getString("amount");
+
                 // Add into the html table
-                output += "<tr><td>" + itemCode + "</td>";
-                output += "<td>" + itemName + "</td>";
-                output += "<td>" + itemPrice + "</td>";
-                output += "<td>" + itemDesc + "</td>";
+                output += "<tr><td>" + fundID + "</td>";
+                output += "<td>" + fundName + "</td>";
+                output += "<td>" + email + "</td>";
+                output += "<td>" + address + "</td>";
+                output += "<td>" + contactNumber + "</td>";
+                output += "<td>" + fundMethod + "</td>";
+                output += "<td>" + amount + "</td>";
+
                 // buttons
                 output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-secondary'></td>"
                     + "<td><form method='post' action='items.jsp'>"
                     + "<input name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
-                    + "<input name='itemID' type='hidden' value='" + itemID
+                    + "<input name='itemID' type='hidden' value='" + fundID
                     + "'>" + "</form></td></tr>";
             }
             con.close();
@@ -111,7 +163,7 @@ public class FundModel {
         }
         return output;
     }
-    public String updateItem(String ID, String code, String name, String price, String desc)
+    public String updateFund(Integer ID, String fundID, String fundName, String email, String address, String contactNumber, String fundMethod,String amount)
     {
         String output = "";
         try
@@ -120,14 +172,17 @@ public class FundModel {
             if (con == null)
             {return "Error while connecting to the database for updating."; }
             // create a prepared statement
-            String query = "UPDATE items SET itemCode=?,itemName=?,itemPrice=?,itemDesc=? WHERE itemID=?";
+            String query = "UPDATE fund SET fundID=?,fundName=?,email=?,address=?,contactNumber=?, fundMethod=?, amount=? WHERE id=?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             // binding values
-            preparedStmt.setString(1, code);
-            preparedStmt.setString(2, name);
-            preparedStmt.setDouble(3, Double.parseDouble(price));
-            preparedStmt.setString(4, desc);
-            preparedStmt.setInt(5, Integer.parseInt(ID));
+            preparedStmt.setString(1, fundID);
+            preparedStmt.setString(2, fundName);
+            preparedStmt.setString(3,email );
+            preparedStmt.setString(4, address);
+            preparedStmt.setString(4, contactNumber);
+            preparedStmt.setString(4, fundMethod);
+            preparedStmt.setString(4, amount);
+
             // execute the statement
             preparedStmt.execute();
             con.close();
@@ -140,7 +195,7 @@ public class FundModel {
         }
         return output;
     }
-    public String deleteItem(String itemID)
+    public String deleteFund(String fundID)
     {
         String output = "";
         try
@@ -149,10 +204,10 @@ public class FundModel {
             if (con == null)
             {return "Error while connecting to the database for deleting."; }
             // create a prepared statement
-            String query = "delete from items where itemID=?";
+            String query = "delete from fund where fundID=?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             // binding values
-            preparedStmt.setInt(1, Integer.parseInt(itemID));
+            preparedStmt.setInt(1, Integer.parseInt(fundID));
             // execute the statement
             preparedStmt.execute();
             con.close();
@@ -165,5 +220,6 @@ public class FundModel {
         }
         return output;
     }
+
 
 }
