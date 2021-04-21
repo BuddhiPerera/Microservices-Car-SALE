@@ -38,7 +38,6 @@ public class ProductRestController {
 //*******************************************************************************************************
 //*******************************************************************************************************
 //*******************************************************************************************************
-
     @GET
     @Path("/getProducts")
     @Produces(MediaType.APPLICATION_JSON)
@@ -108,19 +107,17 @@ public class ProductRestController {
 //*******************************************************************************************************
 //*******************************************************************************************************
 
+    @GET
+    @Path("/buy/{id}")
+    @Produces(MediaType.TEXT_HTML)
+    public String  buyProduct(@PathParam("id") String id) throws Exception {
 
-/*
 
-    @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public Response putTodo(JAXBElement<ProDTO> todo) {
-        ProDTO c = todo.getValue();
-        System.out.println(c);
-        return null;
+        System.out.println(dao2.findOne(id)+"heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+        System.out.println(id+"gggggggggggggggggggggggggggggggggggggggggggggggggggg");
+       // Response.temporaryRedirect(URI);
+        return "";
     }
-
-*/
-
 //*******************************************************************************************************
 //*******************************************************************************************************
 //*******************************************************************************************************
