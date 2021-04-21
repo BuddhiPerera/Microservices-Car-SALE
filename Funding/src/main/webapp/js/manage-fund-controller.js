@@ -1,4 +1,4 @@
-$(document).ready(function () {
+(document).ready(function () {
 
     loadProducts();
 });
@@ -6,14 +6,15 @@ var selectedRow = null;
 function loadProducts() {
 
     var ajaxConfig = {
-        url: "http://localhost/Funding/rest2/funds/getfunds",
+        url: "http://localhost:8085/Funding/rest2/funds/getfunds",
         method: "GET",
         async: 'json'
     }
     var i = 0;
     $.ajax(ajaxConfig).done(function (funds, status, jQXHB) {
         for (var i = 0; i < funds.length; i++) {
-            var html = '<tr>' +
+            var html =
+                '<tr>' +
                 '<td>' + funds[i].id + '</td>' +
                 '<td>' + funds[i].fundName + '</td>' +
                 '<td>' + funds[i].email + '</td>' +

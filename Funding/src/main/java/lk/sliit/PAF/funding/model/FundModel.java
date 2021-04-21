@@ -76,7 +76,7 @@ public class FundModel {
         if (con == null)
         {return null; }
         List<FundDTO> funds = new ArrayList<>();
-        String query = "Select * from funds";
+        String query = "Select * from fund";
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
