@@ -107,23 +107,4 @@ public class BuyerDTO {
                 ", password='" + password + '\'' +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null)
-            return false;
-        if (getClass() != o.getClass())
-            return false;
-        BuyerDTO other = (BuyerDTO) o;
-        if (id != other.id)
-            return false;
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getfName(), getlName(), getEmail(), getContactNo(), getAddress(), getZipCode(), getPassword());
-    }
 }

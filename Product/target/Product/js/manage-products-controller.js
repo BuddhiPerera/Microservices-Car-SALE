@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     loadProducts();
 });
 var selectedRow = null;
@@ -28,9 +27,7 @@ function loadProducts() {
         console.log(product)
     }).fail(function (jqXHB, status, error) {
         console.log(error)
-
     })
-
 }
 
 $("#datatable tbody").on('click', "tr td:last-child", function (eventData) {
@@ -57,7 +54,7 @@ $("#btnsubmit").click(function () {
         price: $("#price").val(),
         qty: $("#qty").val(),
         shipping: $("#shipping").val(),
-        image: $("#shipping").val()
+        image: $("#image").val()
     };
     if (!selectedRow) {
         var ajaxConfig = {
