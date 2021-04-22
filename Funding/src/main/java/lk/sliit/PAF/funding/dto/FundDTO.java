@@ -2,8 +2,14 @@ package lk.sliit.PAF.funding.dto;
 
 public class FundDTO {
     private int id;
-    private String name;
-    private float price;
+    private String fundID;
+    private String fundName;
+    private String email;
+    private String address;
+    private String contactNumber;
+    private String fundMethod;
+    private String amount;
+
 
     public FundDTO() {
     }
@@ -12,18 +18,30 @@ public class FundDTO {
         this.id = id;
     }
 
-    public FundDTO(int id, String name, float price) {
-        super();
+    public FundDTO(int id, String fundID, String fundName, String email, String address, String contactNumber, String fundMethod, String amount) {
         this.id = id;
-        this.name = name;
-        this.price = price;
+        this.fundID = fundID;
+        this.fundName = fundName;
+        this.email = email;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.fundMethod = fundMethod;
+        this.amount = amount;
     }
 
-    public FundDTO(String name, float price) {
-        this.name = name;
-        this.price = price;
+    @Override
+    public String toString() {
+        return "FundDTO{" +
+                "id=" + id +
+                ", fundID='" + fundID + '\'' +
+                ", fundName='" + fundName + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                ", fundMethod='" + fundMethod + '\'' +
+                ", amount='" + amount + '\'' +
+                '}';
     }
-
 
     public int getId() {
         return id;
@@ -33,22 +51,61 @@ public class FundDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFundID() {
+        return fundID;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFundID(String fundID) {
+        this.fundID = fundID;
     }
 
-    public float getPrice() {
-        return price;
+    public String getFundName() {
+        return fundName;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setFundName(String fundName) {
+        this.fundName = fundName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getFundMethod() {
+        return fundMethod;
+    }
+
+    public void setFundMethod(String fundMethod) {
+        this.fundMethod = fundMethod;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
 
     @Override
     public int hashCode() {

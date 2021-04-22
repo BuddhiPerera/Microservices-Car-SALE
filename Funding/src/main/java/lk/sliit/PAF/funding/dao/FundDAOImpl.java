@@ -13,8 +13,7 @@ public class FundDAOImpl {
     private static List<FundDTO> data = new ArrayList<>();
 
     static {
-        data.add(new FundDTO(1, "iPhone X", 999.99f));
-        data.add(new FundDTO(2, "XBOX 360", 329.50f));
+
     }
 
 
