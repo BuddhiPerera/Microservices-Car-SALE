@@ -17,11 +17,11 @@ public class BuyerRestController {
 
     //save
     @POST
-    @Path("/save")
+    @Path("/saveUser")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public void addBuyer(BuyerDTO buyerDTO){
-        System.out.println(buyerDTO);
+        System.out.println(buyerDTO +"rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
         String s =buyerObject.insertBuyerDetail(
                 buyerDTO.getfName(),
                 buyerDTO.getlName(),

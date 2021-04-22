@@ -5,7 +5,7 @@ var selectedRow = null;
 function loadUser() {
 
     var ajaxConfig = {
-        url: "http://localhost/:8081/USER/rest1/buyer",
+        url: "http://localhost:8081/USER/rest1/buyer",
         method: "GET",
         async: 'json'
     }
@@ -36,7 +36,7 @@ $("#datatable tbody").on('click', "tr td:last-child", function (eventData) {
     if (confirm("Are you sure whether you want delete this Item?")) {
         $.ajax({
             method: 'DELETE',
-            url: 'http://localhost/:8081/USER/rest1/buyer/delete/' + row.find('td:first-child').text(),
+            url: 'http://localhost:8081/USER/rest1/buyer/delete/' + row.find('td:first-child').text(),
             async: true
         }).done(function (response, status, jqXHR) {
             row.remove();
@@ -47,38 +47,27 @@ $("#datatable tbody").on('click', "tr td:last-child", function (eventData) {
 });
 
 $("#btnsubmit").click(function () {
-    alert("sssssssssssssssssssssssssssssssssssssss")
+
     var buyer = {
-        id: $("#id").val(),
+
         fName: $("#fName").val(),
         lName: $("#lName").val(),
         email: $("#email").val(),
-        contactNo: $("#contactNo").val(),
-        address: $("#address").val(),
-        zipCode: $("#zipcode").val(),
+        contactNo: $("#contact").val(),
+        address: $("#add").val(),
+        zipCode: $("#zip").val(),
         password: $("#password").val()
     };
     alert("sssssssssssssssssssssssssssssssssssssss")
         var ajaxConfig = {
             method: 'POST',
-            url: 'http://localhost/:8081/USER/rest1/buyer/save/',
+            url: 'http://localhost:8081/USER/rest1/buyer/saveUser',
             async: true,
             contentType: 'application/json',
             data: JSON.stringify(buyer)
         };
         $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
-            var html = "<tr>" +
-                "<td>" + buyer[i].id + "</td>" +
-                "<td>" + buyer[i].fName + "</td>" +
-                "</td>" + buyer[i].lName + "</td>" +
-                "</td>" + buyer[i].email + "</td>" +
-                "</td>" + buyer[i].contactNo + "</td>" +
-                "</td>" + buyer[i].address + "</td>" +
-                "</td>" + buyer[i].zipcode + "</td>" +
-                "</td>" + buyer[i].password + "</td>" +
-                "</tr>";
-            $("#datatable tbody").append(html);
-            $("#id, #fName, #lName, #email, #contactNo, #address, #zipcode, #password").val("");
+            $("#id, #fName, #lName, #email, #contact, #add, #zip, #password").val("");
             $("#id").focus();
         }).fail(function (jqXHR, status, error) {
             console.log(error);
