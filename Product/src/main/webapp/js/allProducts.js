@@ -39,4 +39,5 @@ $("#datatable tbody").on('click', 'tr', function () {
 
     $("#itemPay").val($(this).find("td:first-child").text());
 
+
 });

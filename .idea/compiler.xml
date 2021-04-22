@@ -17,11 +17,11 @@
       <module name="demo" target="8" />
       <module name="demo2" target="8" />
       <module name="demo3" target="8" />
-      <module name="Funding" target="8" />
+      <module name="Funding" target="1.5" />
       <module name="Funding (1)" target="8" />
       <module name="Payment" target="8" />
       <module name="Product" target="8" />
-      <module name="Project" target="8" />
+      <module name="Project" target="1.5" />
       <module name="USER" target="7" />
     </bytecodeTargetLevel>
   </component>

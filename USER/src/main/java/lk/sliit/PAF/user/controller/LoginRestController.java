@@ -43,10 +43,10 @@ public class LoginRestController {
 
 
     @POST
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/log")
-    public BuyerDTO insertFund(
-            @FormParam("userName") String userName,
+    public void insertFund(
+            @FormParam("email") String userName,
             @FormParam("password") String password,
             @Context HttpServletRequest req
            ) {
@@ -54,7 +54,7 @@ public class LoginRestController {
         session.setAttribute("userId", userName);
         BuyerDTO output = buyerModel.userLogin(userName, password);
         System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddddd"+output);
-        return output;
+
     }
 
 }

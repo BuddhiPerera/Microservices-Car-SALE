@@ -21,7 +21,8 @@ public class BuyerRestController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public void addBuyer(BuyerDTO buyerDTO){
-        buyerObject.insertBuyerDetail(
+        System.out.println(buyerDTO);
+        String s =buyerObject.insertBuyerDetail(
                 buyerDTO.getfName(),
                 buyerDTO.getlName(),
                 buyerDTO.getEmail(),
@@ -30,6 +31,7 @@ public class BuyerRestController {
                 buyerDTO.getZipCode(),
                 buyerDTO.getPassword()
         );
+        System.out.println(s);
     }
 
     //update
