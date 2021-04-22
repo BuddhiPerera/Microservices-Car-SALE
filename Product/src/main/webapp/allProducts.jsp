@@ -248,11 +248,22 @@
                                 </table>
 
                             </div>
+                        <form  action="e-commers.jsp" name="saveOnlineOrder">
+                            <input style="display: none" type="text" id="itemPay" name="orderData">
 
+                            <button type="button" value="Register" id="demo"
+                                    style="background-color: #63060a;color: white;height: 40px;
+                     margin-top: -32%;margin-left: 80%; font-weight: bold;color: #ffffff; width: 10%"
+                                    class="col-1-1  btn btn-success button1x1 "> Payddddddddddddddd <i class="fa fa-save"></i>
+                            </button>
+
+                        </form>
                     </div>
                 </div>
+
             </div>
             <!-- /page content -->
+
 
             <!-- footer content -->
             <footer>

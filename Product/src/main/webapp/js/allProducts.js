@@ -23,10 +23,7 @@ $.ajax(ajaxConfig).done(function (product, status, jQXHB) {
 
         $("#datatable tbody").append(html);
 
-
         var elem = document.querySelector('#some-element');
-
-
 
     }
     console.log(product);
@@ -34,24 +31,12 @@ $.ajax(ajaxConfig).done(function (product, status, jQXHB) {
     console.log(error);
 });
 
+$("#datatable tbody").on('click', 'tr', function () {
+    selectedRow = $(this);
 
-$("#datatable tbody").on('click', 'tr td', function  (eventData) {
-    var row1 = $(this).parents("tr");
-    eventData.stopPropagation();
+    var itemId = $("#datatable tr td:first-child").text();
+    alert(itemId)
 
-        $.ajax({
-            method: 'GET',
-            url: 'http://localhost/Product/rest/products/buy/' + row1.find('td:first-child').text(),
-            async: true,
-            jsonp: 'callback',
-            dataType: "jsonp",
-            success: function(data) {
-                alert("Success: " + JSON.stringify(data));
-            },
-        }).done(function (response, status, jqXHR) {
+    $("#itemPay").val($(this).find("td:first-child").text());
 
-
-        }).fail(function (jqXHR, status, error) {
-            console.log(error);
-        });
 });

@@ -15,6 +15,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
 import javax.xml.bind.JAXBElement;
 import javax.xml.ws.spi.http.HttpContext;
 import java.io.IOException;
@@ -109,7 +110,8 @@ public class ProductRestController {
 
     @GET
     @Path("/buy/{id}")
-    @Produces(MediaType.TEXT_HTML)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     public String  buyProduct(@PathParam("id") String id) throws Exception {
 
 
