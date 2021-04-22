@@ -13,17 +13,17 @@
 <h2> GadgetBadget Buyer Portal</h2>
 <div class="container" id="container">
     <div class="form-container sign-up-container" id="registration">
-        <form method="post" action="http://localhost:8081/USER/rest1/researcher">
+        <form method="post">
             <h1>Create Account</h1>
             <span>Buyer Registration</span>
-            <input required type="text" placeholder="First Name" name="fName" id="fname" />
-            <input required type="text" placeholder="Last Name" name="lName" id="lname"/>
+            <input required type="text" placeholder="First Name" name="fName" id="fName" />
+            <input required type="text" placeholder="Last Name" name="lName" id="lName"/>
             <input required type="email" placeholder="Email" name="email" id="email"/>
             <input required type="text" placeholder="Contact No" name="contactNo" id="contact"/>
             <input required type="text" placeholder="Address" name="address" id="add"/>
             <input required type="text" placeholder="Zip-Code" name="zipCode" id="zip"/>
             <input  required type="password" placeholder="Password"  name="pass" id="password"/>
-            <button type="submit">Sign Up</button>
+            <button type="button" id="btnsubmit">Sign Up</button>
         </form>
     </div>
 
@@ -56,6 +56,32 @@
         </div>
     </div>
 </div>
+
+<!-- jQuery -->
+<script src="vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Datatables -->
+<script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<%--Responsive Table--%>
+<script src="vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+
+<script src="vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FastClick -->
+<script src="vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="vendors/nprogress/nprogress.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="build/js/custom.min.js"></script>
+
 <script src="build/js/main.js"></script>
+
+<script src="js/manage-buyers-controller.js"></script>
+
 </body>
 </html>

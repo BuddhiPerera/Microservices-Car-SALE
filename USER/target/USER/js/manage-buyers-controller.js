@@ -54,7 +54,8 @@ $("#btnsubmit").click(function () {
         email: $("#email").val(),
         contactNo: $("#contactNo").val(),
         address: $("#address").val(),
-        zipcode: $("#zipcode").val()
+        zipCode: $("#zipcode").val(),
+        password: $("#password").val()
     };
     if (!selectedRow) {
         var ajaxConfig = {
@@ -72,11 +73,11 @@ $("#btnsubmit").click(function () {
                 "</td>" + buyer[i].email + "</td>" +
                 "</td>" + buyer[i].contactNo + "</td>" +
                 "</td>" + buyer[i].address + "</td>" +
-                "</td>" + buyer[i].zipcode + "</td>"
-                '<td><i class="fa fa-trash"></i></td>' +
+                "</td>" + buyer[i].zipcode + "</td>" +
+                "</td>" + buyer[i].password + "</td>" +
                 "</tr>";
             $("#datatable tbody").append(html);
-            $("#id, #fName, #lName, #email, #contactNo, #address, #zipcode").val("");
+            $("#id, #fName, #lName, #email, #contactNo, #address, #zipcode, #password").val("");
             $("#id").focus();
         }).fail(function (jqXHR, status, error) {
             console.log(error);
@@ -108,7 +109,6 @@ $("#btnsubmit").click(function () {
 
 
 });
-
 
 $("#datatable tbody").on('click', 'tr', function () {
     selectedRow = $(this);

@@ -21,6 +21,7 @@ public class BuyerRestController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public void addBuyer(BuyerDTO buyerDTO){
+        System.out.println(buyerDTO);
         buyerObject.insertBuyerDetail(
                 buyerDTO.getfName(),
                 buyerDTO.getlName(),

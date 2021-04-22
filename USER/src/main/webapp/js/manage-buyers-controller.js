@@ -54,9 +54,9 @@ $("#btnsubmit").click(function () {
         email: $("#email").val(),
         contactNo: $("#contactNo").val(),
         address: $("#address").val(),
-        zipcode: $("#zipcode").val()
+        zipCode: $("#zipcode").val(),
+        password: $("#password").val()
     };
-    if (!selectedRow) {
         var ajaxConfig = {
             method: 'POST',
             url: 'http://localhost/:8081/USER/rest1/buyer/save/',
@@ -72,43 +72,16 @@ $("#btnsubmit").click(function () {
                 "</td>" + buyer[i].email + "</td>" +
                 "</td>" + buyer[i].contactNo + "</td>" +
                 "</td>" + buyer[i].address + "</td>" +
-                "</td>" + buyer[i].zipcode + "</td>"
-                '<td><i class="fa fa-trash"></i></td>' +
+                "</td>" + buyer[i].zipcode + "</td>" +
+                "</td>" + buyer[i].password + "</td>" +
                 "</tr>";
             $("#datatable tbody").append(html);
-            $("#id, #fName, #lName, #email, #contactNo, #address, #zipcode").val("");
+            $("#id, #fName, #lName, #email, #contactNo, #address, #zipcode, #password").val("");
             $("#id").focus();
         }).fail(function (jqXHR, status, error) {
             console.log(error);
         });
-    } else {
-        var ajaxConfig = {
-            method: 'PUT',
-            url: 'http://localhost/:8081/USER/rest1/buyer/update/',
-            async: true,
-            contentType: 'application/json',
-            data: JSON.stringify(buyer)
-        };
-        $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
-            selectedRow.find("td:nth-child(1)").text(buyer.id);
-            selectedRow.find("td:nth-child(2)").text(buyer.fName);
-            selectedRow.find("td:nth-child(3)").text(buyer.lName);
-            selectedRow.find("td:nth-child(4)").text(buyer.email);
-            selectedRow.find("td:nth-child(5)").text(buyer.contactNo);
-            selectedRow.find("td:nth-child(6)").text(buyer.address);
-            selectedRow.find("td:nth-child(7)").text(buyer.zipcode);
-
-
-        }).fail(function (jqXHR, status, error) {
-            console.log(error);
-        }).always(function(){
-            $("#btnClear").click();
-        });
-    }
-
-
 });
-
 
 $("#datatable tbody").on('click', 'tr', function () {
     selectedRow = $(this);
