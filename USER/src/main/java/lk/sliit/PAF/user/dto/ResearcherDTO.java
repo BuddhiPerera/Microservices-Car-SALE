@@ -104,21 +104,17 @@ public class ResearcherDTO {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null)
-            return false;
-        if (getClass() != o.getClass())
-            return false;
-        ResearcherDTO other = (ResearcherDTO) o;
-        if (id != other.id)
-            return false;
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getfName(), getlName(), getEmail(), getContactNo(), getAddress(), getZipCode(), getRate(), getPassword());
+    public String toString() {
+        return "ResearcherDTO{" +
+                "id=" + id +
+                ", fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
+                ", email='" + email + '\'' +
+                ", contactNo='" + contactNo + '\'' +
+                ", address='" + address + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", rate='" + rate + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
