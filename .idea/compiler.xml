@@ -22,7 +22,7 @@
       <module name="Payment" target="8" />
       <module name="Product" target="8" />
       <module name="Project" target="8" />
-      <module name="USER" target="8" />
+      <module name="USER" target="7" />
     </bytecodeTargetLevel>
   </component>
 </project>
