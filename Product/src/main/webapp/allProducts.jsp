@@ -60,7 +60,7 @@
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
-                        <h3>General</h3>
+
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-home"></i> Home
                                 <span class="fa fa-anchor"></span></a>
@@ -81,7 +81,7 @@
                         </ul>
                     </div>
                     <div class="menu_section">
-                        <h3>Live On</h3>
+
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-bug"></i> Bags & Shoes </a>
                             </li>
@@ -248,11 +248,22 @@
                                 </table>
 
                             </div>
+                        <form  action="e-commers.jsp" name="saveOnlineOrder">
+                            <input style="display: none" type="text" id="itemPay" name="orderData">
 
+                            <button type="button" value="Register" id="demo"
+                                    style="background-color: #63060a;color: white;height: 40px;
+                     margin-top: -32%;margin-left: 80%; font-weight: bold;color: #ffffff; width: 10%"
+                                    class="col-1-1  btn btn-success button1x1 "> Payddddddddddddddd <i class="fa fa-save"></i>
+                            </button>
+
+                        </form>
                     </div>
                 </div>
+
             </div>
             <!-- /page content -->
+
 
             <!-- footer content -->
             <footer>

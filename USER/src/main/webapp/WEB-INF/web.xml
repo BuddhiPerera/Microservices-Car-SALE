@@ -6,7 +6,7 @@
 
     <display-name>demo2</display-name>
     <welcome-file-list>
-        <welcome-file>researcherRegistration.html</welcome-file>
+        <welcome-file>adminBuyer.html</welcome-file>
     </welcome-file-list>
     <servlet>
         <servlet-name>Jersey1</servlet-name>

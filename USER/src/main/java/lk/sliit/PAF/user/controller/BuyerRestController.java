@@ -1,36 +1,65 @@
 package lk.sliit.PAF.user.controller;
 
 
-import lk.sliit.PAF.user.dao.BuyerDAOImpl;
 import lk.sliit.PAF.user.dto.BuyerDTO;
 import lk.sliit.PAF.user.model.BuyerModel;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
+import javax.ws.rs.core.Response;
 
 @Path("/buyer")
 public class BuyerRestController {
-    BuyerDAOImpl buyerDAO = BuyerDAOImpl.getInstance();
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<BuyerDTO> buyerDTOList(){
-        return buyerDAO.listAll();
+    BuyerModel buyerModel = BuyerModel.getInstance();
+
+    BuyerModel buyerObject = new BuyerModel();
+
+    //save
+    @POST
+    @Path("/saveUser")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public void addBuyer(BuyerDTO buyerDTO){
+        System.out.println(buyerDTO +"rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+        String s =buyerObject.insertBuyerDetail(
+                buyerDTO.getfName(),
+                buyerDTO.getlName(),
+                buyerDTO.getEmail(),
+                buyerDTO.getContactNo(),
+                buyerDTO.getAddress(),
+                buyerDTO.getZipCode(),
+                buyerDTO.getPassword()
+        );
+        System.out.println(s);
     }
 
-    BuyerModel buyerModel = new BuyerModel();
-    @POST
+    //update
+    @PUT
+    @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public void insertUser(@FormParam("fName") String fName,
-                           @FormParam("lName") String lName,
-                           @FormParam("email") String email,
-                           @FormParam("contactNo") String contactNo,
-                           @FormParam("address") String address,
-                           @FormParam("zipCode") String zipCode,
-                           @FormParam("pass") String pass) {
-        String output = buyerModel.insertBuyerDetail(fName, lName, email, contactNo, address, zipCode, pass);
+    public void updateBuyer(BuyerDTO buyerDTO){
+        buyerObject.updateBuyerDetail(
+                buyerDTO.getfName(),
+                buyerDTO.getlName(),
+                buyerDTO.getEmail(),
+                buyerDTO.getContactNo(),
+                buyerDTO.getAddress(),
+                buyerDTO.getZipCode()
+        );
+    }
 
+    //delete
+    @DELETE
+    @Path("/delete/{id}")
+    public Response deleteBuyer(@PathParam("id") int id){
+        if(buyerModel.deleteBuyer(id)){
+            return Response.ok().build();
+        }
+        else{
+            return Response.notModified().build();
+        }
     }
 
 }

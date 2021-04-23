@@ -1,11 +1,20 @@
 package lk.sliit.PAF.user.model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import lk.sliit.PAF.user.dto.BuyerDTO;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BuyerModel {
+    private static BuyerModel buyerModelInstance;
+    public static BuyerModel getInstance(){
+        if(buyerModelInstance == null){
+            buyerModelInstance = new BuyerModel();
+        }
+        return buyerModelInstance;
+    }
+
     public static Connection connect(){
         Connection connection = null;
         try{
@@ -55,5 +64,110 @@ public class BuyerModel {
             e.printStackTrace();
         }
         return  output;
+    }
+
+    public String updateBuyerDetail(String fName, String lName, String email, String contactNo, String address, String zipCode){
+        String output = "";
+        try{
+            Connection connection = connect();
+            int id = getLastBuyerId();
+            if(connection == null){
+                return "Error connecting to the database";
+            }
+            String query = "UPDATE buyers SET fName=?, lName=?, email=?, contactNo=?, address=? , zipCode=? , WHERE id=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setString(1, fName);
+            preparedStatement.setString(2, lName);
+            preparedStatement.setString(3, email);
+            preparedStatement.setString(4, contactNo);
+            preparedStatement.setString(5, address);
+            preparedStatement.setString(6, zipCode);
+            preparedStatement.setInt(8, id);
+
+            preparedStatement.execute();
+            connection.close();
+            output = "Buyer Details Updated Successfully";
+        }catch(Exception e){
+            output = "Error while Updating Buyer";
+            e.printStackTrace();
+        }
+        return  output;
+    }
+
+    public boolean deleteBuyer(int buyerId)
+    {
+        String output = "";
+        try
+        {
+            Connection connection = connect();
+            if (connection == null){
+                return false;
+            }
+
+            String query = "delete from buyers where id=?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setInt(1, (buyerId));
+
+            preparedStatement.execute();
+            connection.close();
+            output = "Deleted successfully";
+        }
+        catch (Exception e)
+        {
+            output = "Error while deleting the account.";
+            System.err.println(e.getMessage());
+        }
+        return true;
+    }
+
+    public List<BuyerDTO> listAllBuyers() throws Exception {
+        Connection con = connect();
+        int id = getLastBuyerId();
+        if (con == null)
+        {return null; }
+        List<BuyerDTO> buyers = new ArrayList<>();
+        String query = "Select * from buyers";
+        try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                BuyerDTO buyerDTO = new BuyerDTO();
+                buyerDTO.setId(rs.getInt(1));
+                buyerDTO.setfName(rs.getString(2));
+                buyerDTO.setlName(rs.getString(3));
+                buyerDTO.setEmail(rs.getString(4));
+                buyerDTO.setContactNo(rs.getString(5));
+                buyerDTO.setAddress(rs.getString(6));
+                buyerDTO.setZipCode(rs.getString(7));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return buyers;
+    }
+
+    public BuyerDTO userLogin(String userName, String password) {
+        Connection con = connect();
+
+        //int id = Integer.parseInt(userName);
+
+        String query = "SELECT * FROM buyers WHERE `id`="+userName+" AND `pass`=" + password;
+
+        BuyerDTO buyerDTO = new BuyerDTO();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            if (rs.next()) {
+                buyerDTO.setEmail(rs.getString(4));
+                buyerDTO.setId(rs.getInt(1));
+                buyerDTO.setfName(rs.getString(2));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return buyerDTO;
     }
 }

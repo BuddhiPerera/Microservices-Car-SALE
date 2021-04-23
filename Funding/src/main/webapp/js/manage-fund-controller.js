@@ -35,7 +35,11 @@ function loadProducts() {
 }
 
 
+
 $("#table tbody").on('click', 'tr', function () {
+
+
+
     selectedRow = $(this);
     $("#id").val($(this).find("td:first-child").text());
     $("#fundID").val($(this).find("td:nth-child(2)").text());

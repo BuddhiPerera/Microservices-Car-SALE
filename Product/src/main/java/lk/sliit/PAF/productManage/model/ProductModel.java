@@ -82,7 +82,7 @@ public class ProductModel {
         int id = getLastID();
         if (con == null)
         {return null; }
-        List<ProDTO> patient = new ArrayList<>();
+        List<ProDTO> product = new ArrayList<>();
         String query = "Select * from products";
         try {
             Statement st = con.createStatement();
@@ -96,13 +96,63 @@ public class ProductModel {
                 p.setQty(rs.getString(5));
                 p.setShipping(rs.getString(6));
                 p.setImage(rs.getString(7));
-                patient.add(p);
+                product.add(p);
             }
         } catch (SQLException e) {
 
             e.printStackTrace();
         }
-        return patient;
+        return product;
+    }
+    public ProDTO findOne(String id) throws Exception {
+        Connection con = connect();
+        String sql = "select * from products where id =" + id;
+        ProDTO a = new ProDTO();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+
+                a.setId(rs.getString(1));
+                a.setName(rs.getString(2));
+                a.setDescription(rs.getString(3));
+                a.setPrice(rs.getString(4));
+                a.setQty(rs.getString(5));
+                a.setShipping(rs.getString(6));
+                a.setImage(rs.getString(7));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("cccccccccccccccccccccccccccccccccccccccccccccccccccccc "+a);
+        return a;
+    }
+
+    public boolean deleteItem(int itemID)
+    {
+        String output = "";
+        try
+        {
+            Connection con = connect();
+            if (con == null)
+            {return false; }
+            // create a prepared statement
+            String query = "delete from products where id=?";
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            // binding values
+            preparedStmt.setInt(1, (itemID));
+            // execute the statement
+            preparedStmt.execute();
+            con.close();
+            output = "Deleted successfully";
+        }
+        catch (Exception e)
+        {
+            output = "Error while deleting the item.";
+            System.err.println(e.getMessage());
+        }
+        return true;
     }
 
 
@@ -137,6 +187,31 @@ public class ProductModel {
         }
         return output;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -238,31 +313,7 @@ public class ProductModel {
         return output;
     }
 
-    public boolean deleteItem(int itemID)
-    {
-        String output = "";
-        try
-        {
-            Connection con = connect();
-            if (con == null)
-            {return false; }
-            // create a prepared statement
-            String query = "delete from products where id=?";
-            PreparedStatement preparedStmt = con.prepareStatement(query);
-            // binding values
-            preparedStmt.setInt(1, (itemID));
-            // execute the statement
-            preparedStmt.execute();
-            con.close();
-            output = "Deleted successfully";
-        }
-        catch (Exception e)
-        {
-            output = "Error while deleting the item.";
-            System.err.println(e.getMessage());
-        }
-        return true;
-    }
+
 
 
 }

@@ -15,6 +15,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
 import javax.xml.bind.JAXBElement;
 import javax.xml.ws.spi.http.HttpContext;
 import java.io.IOException;
@@ -38,7 +39,6 @@ public class ProductRestController {
 //*******************************************************************************************************
 //*******************************************************************************************************
 //*******************************************************************************************************
-
     @GET
     @Path("/getProducts")
     @Produces(MediaType.APPLICATION_JSON)
@@ -108,19 +108,18 @@ public class ProductRestController {
 //*******************************************************************************************************
 //*******************************************************************************************************
 
+    @GET
+    @Path("/buy/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String  buyProduct(@PathParam("id") String id) throws Exception {
 
-/*
 
-    @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public Response putTodo(JAXBElement<ProDTO> todo) {
-        ProDTO c = todo.getValue();
-        System.out.println(c);
-        return null;
+        System.out.println(dao2.findOne(id)+"heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+        System.out.println(id+"gggggggggggggggggggggggggggggggggggggggggggggggggggg");
+       // Response.temporaryRedirect(URI);
+        return "";
     }
-
-*/
-
 //*******************************************************************************************************
 //*******************************************************************************************************
 //*******************************************************************************************************
