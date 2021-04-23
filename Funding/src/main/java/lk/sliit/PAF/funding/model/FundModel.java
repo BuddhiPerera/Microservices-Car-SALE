@@ -163,7 +163,7 @@ public class FundModel {
         }
         return output;
     }
-    public String updateFund(Integer ID, String fundID, String fundName, String email, String address, String contactNumber, String fundMethod,String amount)
+    public String updateFund(int ID, String fundID, String fundName, String email, String address, String contactNumber, String fundMethod,String amount)
     {
         String output = "";
         try
@@ -179,9 +179,10 @@ public class FundModel {
             preparedStmt.setString(2, fundName);
             preparedStmt.setString(3,email );
             preparedStmt.setString(4, address);
-            preparedStmt.setString(4, contactNumber);
-            preparedStmt.setString(4, fundMethod);
-            preparedStmt.setString(4, amount);
+            preparedStmt.setString(5, contactNumber);
+            preparedStmt.setString(6, fundMethod);
+            preparedStmt.setString(7, amount);
+            preparedStmt.setInt(8, ID);
 
             // execute the statement
             preparedStmt.execute();
