@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>DataTables </title>
+
 
     <!-- Bootstrap -->
     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -47,9 +47,11 @@
                     </div>
                 </div>
 
-                <table id="datatable"  class="table table-striped table-bordered" style="width:100% ">
+                <table id="table"  class="table table-striped table-bordered" style="width:100% ">
                     <thead>
                     <tr>
+
+                        <th style="visibility: hidden"> </th>
                         <th>Fund ID</th>
                         <th>Fund Name</th>
                         <th>E-mail</th>
@@ -148,7 +150,7 @@
                         <div class="center-margin"></div>
                         <div class="vertical center-margin">
                             <div class="col-md-14 col-sm-14  offset-md-3 align center-margin">
-                                <button type="submit" class="btn btn-success" name="btnsubmit">Update Fund</button>
+                                <button type="button" class="btn btn-success" id="btnupdate" name="btnsubmit">Update Fund</button>
                             </div>
 
                             <div class="center-margin"></div>
