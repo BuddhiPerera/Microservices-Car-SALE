@@ -1,5 +1,6 @@
 $(document).ready(function () {
     loadProducts();
+
 });
 var selectedRow = null;
 
@@ -20,12 +21,13 @@ function loadProducts() {
                 + '<img style="height: 160px; width: 100%;" src=' + product[i].image + '>' + '</td>'
                 + '<td style="height: 100px; width: 80%">'
                 + '<h1>' + product[i].name + '</h1>'
-                + '<h4>' + product[i].description + '</h4>'
+                + '<h5>' + product[i].description + '</h5>'
                 + '<h2 style="font-weight: bolder">' + '$ ' + product[i].price + '</h2>'
                 + '<h4>' + product[i].qty + '</h4>'
                 + '<h5>' + product[i].shipping + '</h5>'
-                + '</td>' +
-                '<td >' + '<img style="height: 35px; width: 35px;" src=' + '/images/buy.jpg' + '/>' + '</td>' +
+                + '</td>'
+                + '<td class="addWish" style=" background-color: #5b7f07"><i style=" top: 100px; position: relative; color: white" class="fa fa-shopping-cart"></i></td>'
+                +'<td class="buy" style=" background-color: #9e0808"><i style="top: 100px; position: relative; color: white" class="fa fa-shopping-bag"></i></td>'
                 +'</tr>';
 
             $("#datatable tbody").append(html);
@@ -33,11 +35,29 @@ function loadProducts() {
             var elem = document.querySelector('#some-element');
 
         }
+
+        $("td:nth-child(4)").hover(function(){
+            $(this).css("background-color", "#56bb04");
+            $(this).css("top", "10px");
+
+        }, function(){
+            $(this).css("background-color", "#4c6a03");
+            $(this).css("top", "10px");
+        });
+        $("td:nth-child(5)").hover(function(){
+            $(this).css("background-color", "#e80000");
+            $(this).css("top", "10px");
+        }, function(){
+            $(this).css("background-color", "#9e0808");
+            $(this).css("top", "100px");
+        });
         console.log(product);
     }).fail(function (jqXHB, status, error) {
         console.log(error);
     });
 }
+
+
 
 /*$("#datatable tbody").on('click', 'tr td', function () {
     var row = $(this).parents("tr");

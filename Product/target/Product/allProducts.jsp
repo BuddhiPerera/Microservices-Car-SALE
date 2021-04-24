@@ -18,16 +18,8 @@
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
     <style>
-        .addMore {
-            border: none;
-            transition: all ease-in-out 0.1s;
-            cursor: pointer;
-        }
 
-        .addMore:hover {
-            border: 1px solid #888;
 
-        }
     </style>
     <link href="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
