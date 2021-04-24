@@ -1,6 +1,7 @@
 package lk.sliit.PAF.user.controller;
 
-import lk.sliit.PAF.user.dto.AdminDTO;
+import lk.sliit.PAF.user.dto.AdminBuyerDTO;
+import lk.sliit.PAF.user.dto.AdminResearcherDTO;
 import lk.sliit.PAF.user.model.AdminModel;
 
 import javax.ws.rs.*;
@@ -16,7 +17,7 @@ public class AdminRestController {
     @GET
     @Path("/researcher")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<AdminDTO> loadAdmin() throws SQLException {
+    public List<AdminResearcherDTO> loadAdminResearcher() throws SQLException {
         return adminModel.findAllResearchers();
     }
 
@@ -24,8 +25,26 @@ public class AdminRestController {
     @Path("/delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteResearcher(@PathParam("id")int id) throws SQLException {
-        System.out.println(id + "ggggggggggggggggggggggggggggggggggggggggggggg");
         if(adminModel.deleteResearcher(id)){
+            return Response.ok().build();
+        }
+        else{
+            return Response.notModified().build();
+        }
+    }
+
+    @GET
+    @Path("/buyer")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<AdminBuyerDTO> loadAdminBuyer() throws SQLException {
+        return adminModel.findAllBuyers();
+    }
+
+    @DELETE
+    @Path("/deleteBuyer/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteBuyer(@PathParam("id") int id) throws SQLException {
+        if(adminModel.deleteBuyer(id)){
             return Response.ok().build();
         }
         else{
