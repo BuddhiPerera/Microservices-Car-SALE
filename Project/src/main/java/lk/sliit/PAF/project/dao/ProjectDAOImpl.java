@@ -13,8 +13,7 @@ public class ProjectDAOImpl {
     private static List<ProjectDTO> data = new ArrayList<>();
 
     static {
-        data.add(new ProjectDTO(1, "iPhone X", 999.99f));
-        data.add(new ProjectDTO(2, "XBOX 360", 329.50f));
+
     }
 
 
@@ -32,7 +31,7 @@ public class ProjectDAOImpl {
 
     public int add(ProjectDTO product) {
         int newId = data.size() + 1;
-        product.setId(newId);
+        product.setProjectID(newId);
         data.add(product);
 
         return newId;

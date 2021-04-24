@@ -42,6 +42,7 @@ $("#datatable tbody").on('click', "tr td:last-child", function (eventData) {
             row.remove();
         }).fail(function (jqXHR, status, error) {
             console.log(error);
+
         });
     }
 });

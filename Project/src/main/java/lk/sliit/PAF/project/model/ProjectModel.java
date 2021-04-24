@@ -1,5 +1,9 @@
 package lk.sliit.PAF.project.model;
+import lk.sliit.PAF.project.dto.ProjectDTO;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProjectModel {
 
@@ -12,7 +16,7 @@ public class ProjectModel {
                 Class.forName("com.mysql.jdbc.Driver");
 
                 //Provide the correct details: DBServer/DBName, username, password
-                con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "root", "1234");
+                con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "root", "dulshan");
             }
             catch (Exception e)
             {e.printStackTrace();}
@@ -62,6 +66,50 @@ public class ProjectModel {
             }
             return output;
         }
+
+
+
+
+    public List<ProjectDTO> listAll() throws Exception {
+
+        Connection con = connect();
+
+        if (con == null)
+        {return null; }
+        List<ProjectDTO> projects = new ArrayList<>();
+        String query = "Select * from project";
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                ProjectDTO p = new ProjectDTO();
+                p.setProjectID(rs.getInt(1));
+                p.setPublisherName(rs.getString(2));
+                p.setProjectName(rs.getString(3));
+                p.setEmail(rs.getString(4));
+                p.setStatus(rs.getString(5));
+                p.setLink(rs.getString(6));
+                p.setUpdatedDate(rs.getString(7));
+                p.setSubmittedDate(rs.getString(8));
+                p.setdescription(rs.getString(9));
+
+                projects.add(p);
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        return projects;
+    }
+
+
+
+
+
+
+
+
     public String readProject()
     {
         String output = "";
@@ -110,7 +158,8 @@ public class ProjectModel {
         }
         return output;
     }
-    public String updateItem(String ID, String code, String name, String price, String desc)
+    public String updateProject(int projectID, String publisherName, String projectName, String email,
+                                String status, String link, String updatedDate, String submittedDate, String description)
     {
         String output = "";
         try
@@ -119,14 +168,19 @@ public class ProjectModel {
             if (con == null)
             {return "Error while connecting to the database for updating."; }
             // create a prepared statement
-            String query = "UPDATE items SET itemCode=?,itemName=?,itemPrice=?,itemDesc=? WHERE itemID=?";
+            String query = "UPDATE project SET `publisherName`=?,projectName=?,`email`=?,`status`=?, `link`=?, " +
+                    "updatedDate=?, `submittedDate`=?, `Description`=? WHERE projectID=?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             // binding values
-            preparedStmt.setString(1, code);
-            preparedStmt.setString(2, name);
-            preparedStmt.setDouble(3, Double.parseDouble(price));
-            preparedStmt.setString(4, desc);
-            preparedStmt.setInt(5, Integer.parseInt(ID));
+            preparedStmt.setString(1, publisherName);
+            preparedStmt.setString(2, projectName);
+            preparedStmt.setString(3, email);
+            preparedStmt.setString(4, status);
+            preparedStmt.setString(5, link);
+            preparedStmt.setString(6, updatedDate);
+            preparedStmt.setString(7, submittedDate);
+            preparedStmt.setString(8, description);
+            preparedStmt.setInt(9, (projectID));
             // execute the statement
             preparedStmt.execute();
             con.close();
@@ -139,19 +193,19 @@ public class ProjectModel {
         }
         return output;
     }
-    public String deleteItem(String itemID)
+    public boolean deleteProject(String projectID)
     {
         String output = "";
         try
         {
             Connection con = connect();
             if (con == null)
-            {return "Error while connecting to the database for deleting."; }
+            {return false; }
             // create a prepared statement
-            String query = "delete from items where itemID=?";
+            String query = "delete from projects where projectID=?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             // binding values
-            preparedStmt.setInt(1, Integer.parseInt(itemID));
+            preparedStmt.setInt(1, Integer.parseInt(projectID));
             // execute the statement
             preparedStmt.execute();
             con.close();
@@ -162,7 +216,7 @@ public class ProjectModel {
             output = "Error while deleting the item.";
             System.err.println(e.getMessage());
         }
-        return output;
+        return true;
     }
 
 }

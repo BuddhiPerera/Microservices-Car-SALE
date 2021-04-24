@@ -1,60 +1,127 @@
 package lk.sliit.PAF.project.dto;
 
 public class ProjectDTO {
-    private int id;
-    private String name;
-    private float price;
+    private int projectID;
+    private String publisherName;
+    private String projectName;
+    private String email;
+    private String status;
+    private String link;
+    private String updatedDate;
+    private String submittedDate;
+    private String description;
 
     public ProjectDTO() {
     }
 
     public ProjectDTO(int id) {
-        this.id = id;
+        this.projectID = id;
     }
 
-    public ProjectDTO(int id, String name, float price) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.price = price;
+    public ProjectDTO(int projectID, String publisherName, String projectName, String email, String status, String link, String updatedDate, String submittedDate, String description) {
+        this.projectID = projectID;
+        this.publisherName = publisherName;
+        this.projectName = projectName;
+        this.email = email;
+        this.status = status;
+        this.link = link;
+        this.updatedDate = updatedDate;
+        this.submittedDate = submittedDate;
+        this.description = description;
     }
 
-    public ProjectDTO(String name, float price) {
-        this.name = name;
-        this.price = price;
+    @Override
+    public String toString() {
+        return "ProjectDTO{" +
+                "projectID=" + projectID +
+                ", publisherName='" + publisherName + '\'' +
+                ", projectName='" + projectName + '\'' +
+                ", email='" + email + '\'' +
+                ", status='" + status + '\'' +
+                ", link='" + link + '\'' +
+                ", updatedDate='" + updatedDate + '\'' +
+                ", submittedDate='" + submittedDate + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 
-
-    public int getId() {
-        return id;
+    public int getProjectID() {
+        return projectID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setProjectID(int projectID) {
+        this.projectID = projectID;
     }
 
-    public String getName() {
-        return name;
+    public String getPublisherName() {
+        return publisherName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPublisherName(String publisherName) {
+        this.publisherName = publisherName;
     }
 
-    public float getPrice() {
-        return price;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(String updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public String getSubmittedDate() {
+        return submittedDate;
+    }
+
+    public void setSubmittedDate(String submittedDate) {
+        this.submittedDate = submittedDate;
+    }
+
+    public String getdescription() {
+        return description;
+    }
+
+    public void setdescription(String description) {
+        this.description = description;
+    }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + id;
+        result = prime * result + projectID;
         return result;
     }
 
@@ -67,7 +134,7 @@ public class ProjectDTO {
         if (getClass() != obj.getClass())
             return false;
         ProjectDTO other = (ProjectDTO) obj;
-        if (id != other.id)
+        if (projectID != other.projectID)
             return false;
         return true;
     }

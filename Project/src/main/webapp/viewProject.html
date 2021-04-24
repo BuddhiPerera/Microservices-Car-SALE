@@ -50,9 +50,10 @@
                 </div>
             </div>
 
-            <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+            <table id="table" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr>
+                    <th style="visibility: hidden"></th>
                     <th>Publisher Name</th>
                     <th>Project Name</th>
                     <th>Publisher E-mail</th>
@@ -73,7 +74,7 @@
 
 
 
-</table>>
+</table>
         </div>
     </div>
 </div>
@@ -81,9 +82,6 @@
 
 
 
-</body>
-
-<body>
 <div class="col-md-6 align center-margin" >
     <div class="x_panel">
         <div class="x_title">
@@ -91,69 +89,70 @@
 
 
 
-            <form class ="form-horizontal form-label-left" action="http://localhost:8082/Project/rest2/projects/" method="post">
+            <form class ="form-horizontal form-label-left" method="post">
                 <br><br><br>
+                <input style="visibility: hidden" id = "id" name="projectID">
                 <div class="form-group row ">
                     <label class="control-label col-md-3 col-sm-3 ">Publisher Name</label>
                     <div class="col-md-9 col-sm-9 ">
-                        <input type="text" class="form-control" name="pubName" placeholder="Enter Name">
+                        <input type="text" class="form-control" name="pubName" id="pubName" placeholder="Enter Name">
                     </div>
                 </div>
 
                 <div class="form-group row ">
                     <label class="control-label col-md-3 col-sm-3 ">Project Name</label>
                     <div class="col-md-9 col-sm-9 ">
-                        <input type="text" class="form-control" name="proName" placeholder="Enter Project Name">
+                        <input type="text" class="form-control" name="proName" id="proName" placeholder="Enter Project Name">
                     </div>
                 </div>
 
                 <div class="form-group row ">
                     <label class="control-label col-md-3 col-sm-3 ">Publisher E-mail</label>
                     <div class="col-md-9 col-sm-9 ">
-                        <input type="text" class="form-control" name="Email" placeholder="Enter E-mail">
+                        <input type="text" class="form-control" name="Email" id="Email" placeholder="Enter E-mail">
                     </div>
                 </div>
 
                 <div class="form-group row ">
                     <label class="control-label col-md-3 col-sm-3 ">Project Status</label>
                     <div class="col-md-9 col-sm-9 ">
-                        <input type="text" class="form-control" name="proStatus" placeholder="Enter Status">
+                        <input type="text" class="form-control" name="proStatus" id="proStatus" placeholder="Enter Status">
                     </div>
                 </div>
 
                 <div class="form-group row ">
                     <label class="control-label col-md-3 col-sm-3 ">Project Link</label>
                     <div class="col-md-9 col-sm-9 ">
-                        <input type="text" class="form-control" name="proLink" placeholder="Enter Project Link">
+                        <input type="text" class="form-control" name="proLink" id="proLink" placeholder="Enter Project Link">
                     </div>
                 </div>
 
                 <div class="form-group row ">
                     <label class="control-label col-md-3 col-sm-3 ">Last Updated Date</label>
                     <div class="col-md-9 col-sm-9 ">
-                        <input type="text" class="form-control" name="proUpDate" placeholder="Enter Last Updated Date">
+                        <input type="text" class="form-control" name="proUpDate" id="proUpDate" placeholder="Enter Last Updated Date">
                     </div>
                 </div>
 
                 <div class="form-group row ">
                     <label class="control-label col-md-3 col-sm-3 ">Submitted Date</label>
                     <div class="col-md-9 col-sm-9 ">
-                        <input type="text" class="form-control" name="proSubDate" placeholder="Enter Submitted Date">
+                        <input type="text" class="form-control" name="proSubDate" id="proSubDate" placeholder="Enter Submitted Date">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="control-label col-md-3 col-sm-3 ">Description </label>
                     <div class="col-md-9 col-sm-9 ">
-                        <textarea class="form-control" name="proDesc" rows=5 placeholder="Description"></textarea>
+                        <textarea class="form-control" name="proDesc" id="proDesc" rows=5 placeholder="Description"></textarea>
                     </div>
                 </div>
 
                 <div class="ln_solid"></div>
                 <div class="form-group">
                     <div class="col-md-9 col-sm-9  offset-md-3">
-                        <button type="reset" class="btn btn-primary">Update</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-primary" id="btnsubmit">Update</button>
+                        <button type="submit" class="btn btn-danger" onclick="deleteProject()" id="btnDelete">Delete</button>
                     </div>
                 </div>
 
@@ -169,6 +168,36 @@
         </div>
     </div>
 </div>
+
+<script src="vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Datatables -->
+<script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<%--Responsive Table--%>
+<script src="vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+
+<script src="vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FastClick -->
+<script src="vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="vendors/nprogress/nprogress.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="build/js/custom.min.js"></script>
+
+<!-- AdminLTE App -->
+<script src="js/manage-project-controller.js"></script>
+<!-- Our little scripts  -->
+<script>
+
+</script>
+
+
 
 
 </body>

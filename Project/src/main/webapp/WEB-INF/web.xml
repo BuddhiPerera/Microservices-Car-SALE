@@ -6,7 +6,7 @@
 
     <display-name>demo3</display-name>
     <welcome-file-list>
-        <welcome-file>addProject.html</welcome-file>
+        <welcome-file>viewProject.html</welcome-file>
     </welcome-file-list>
 
     <servlet>
