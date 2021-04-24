@@ -34,17 +34,7 @@
     <link href="vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <script src="vendors/jquery/dist/jquery.min.js"></script>
-    <script>
-        document.getElementById("demo")
-        $(window).scroll(function () {
-            if ($(document).scrollTop() > 200) {
-                $(".button1x1").show();
-            } else {
-                $(".button1x1").hide();
-            }
-        });
 
-    </script>
 </head>
 
 <body class="nav-md">
@@ -238,16 +228,7 @@
                 </div>
 
                 <div class="clearfix"></div>
-                <form >
-                    <input style="display: none" type="text" id="itemPay" name="orderData">
 
-                    <button type="submit" value="Register" id="demo"
-                            style="background-color: #63060a;color: white;height: 40px;
-                     margin-top: 32%;margin-left: 80%; font-weight: bold;color: #ffffff; width: 10%"
-                            class="col-1-1  btn btn-success button1x1 "> Pay <i class="fa fa-save"></i>
-                    </button>
-
-                </form>
                 <div class="row">
                     <div class="x_panel">
                         <div class="title_right">
