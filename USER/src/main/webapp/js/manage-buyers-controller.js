@@ -19,7 +19,7 @@ function loadUser() {
                 '<td>' + buyer[i].email + '</td>' +
                 '<td>' + buyer[i].contactNo + '</td>' +
                 '<td>' + buyer[i].address + '</td>' +
-                '<td>' + buyer[i].zipcode + '</td>'
+                '<td>' + buyer[i].zipcode + '</td>'+
                 '<td><i class="fas fa-trash"></i></td>' +
                 '</tr>';
             $("#datatable tbody").append(html);
