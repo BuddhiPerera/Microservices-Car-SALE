@@ -355,7 +355,7 @@
                                             <label class="control-label col-md-3 col-sm-3 ">Fund ID</label>
                                             <input type="hidden" name="id" id="id">
                                             <div class="col-md-9 col-sm-9 ">
-                                                <input type="text" class="form-control" name="fundID" id="fundID"
+                                                <input type="number" class="form-control" name="fundID" id="fundID"
                                                        placeholder="Enter Fund ID">
                                             </div>
                                         </div>
@@ -369,8 +369,8 @@
                                         <div class="form-group row ">
                                             <label class="control-label col-md-3 col-sm-3 "> E-mail</label>
                                             <div class="col-md-9 col-sm-9 ">
-                                                <input type="text" class="form-control" name="email" id="email"
-                                                       placeholder="Enter E-mail">
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                       placeholder="Enter E-mail" >
                                             </div>
                                         </div>
                                         <div class="form-group row ">
@@ -383,8 +383,8 @@
                                         <div class="form-group row ">
                                             <label class="control-label col-md-3 col-sm-3 ">Contact Number</label>
                                             <div class="col-md-9 col-sm-9 ">
-                                                <input type="text" class="form-control" name="contactNumber"
-                                                       id="contactNumber" placeholder="Phone">
+                                                <input type="tel" class="form-control" name="contactNumber"
+                                                       id="contactNumber" placeholder="Phone" pattern="07[1,2,5,6,7,8][0-9]+" minlength="10" maxlength="10">
                                                 <span class="fa fa-phone form-control-feedback right"
                                                       aria-hidden="true"></span>
                                             </div>
@@ -392,7 +392,7 @@
                                         <div class="form-group row ">
                                             <label class="control-label col-md-3 col-sm-3 ">Amount</label>
                                             <div class="col-md-9 col-sm-9 ">
-                                                <input type="text" class="form-control" name="amount" id="amount"
+                                                <input type="number" class="form-control" name="amount" id="amount"
                                                        placeholder="Amount">
                                             </div>
                                         </div>
