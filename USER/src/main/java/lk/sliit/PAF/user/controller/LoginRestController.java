@@ -17,24 +17,24 @@ import java.util.List;
 
 @Path("/Login")
 public class LoginRestController {
-    BuyerModel buyerModel = BuyerModel.getInstance();
-    @GET
-    @Path("/profile")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<BuyerDTO> buyerDTOList (@Context HttpServletRequest request) throws Exception {
-        HttpSession httpSession = request.getSession(true);
-        Object userId = httpSession.getAttribute("userId");
-        if(userId == null){
-            System.out.println(userId.toString());
-        }
-        else {
-            httpSession.setAttribute("userId", "");
-        }
-
-        String customerId = (httpSession.getAttribute("userId").toString());
-        System.out.println(customerId+" sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
-        return buyerModel.listAllBuyers();
-    }
+//    BuyerModel buyerModel = BuyerModel.getInstance();
+//    @GET
+//    @Path("/profile")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public List<BuyerDTO> buyerDTOList (@Context HttpServletRequest request) throws Exception {
+//        HttpSession httpSession = request.getSession(true);
+//        Object userId = httpSession.getAttribute("userId");
+//        if(userId == null){
+//            System.out.println(userId.toString());
+//        }
+//        else {
+//            httpSession.setAttribute("userId", "");
+//        }
+//
+//        String customerId = (httpSession.getAttribute("userId").toString());
+//        System.out.println(customerId+" sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
+//        return buyerModel.listAllBuyers();
+//    }
 
     @GET
     @Path("/login")
@@ -45,17 +45,4 @@ public class LoginRestController {
         session.setAttribute("userId", "1");
     }
 
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    public void insertFund(
-            @FormParam("email") String userName,
-            @FormParam("password") String password,
-            @Context HttpServletRequest req
-           ) {
-        HttpSession session= req.getSession(true);
-        session.setAttribute("userId", userName);
-        BuyerDTO output = buyerModel.userLogin(userName, password);
-        System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddddd"+output);
-
-    }
 }

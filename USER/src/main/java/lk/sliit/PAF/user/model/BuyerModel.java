@@ -124,18 +124,14 @@ public class BuyerModel {
         return true;
     }
 
-    public List<BuyerDTO> listAllBuyers() throws Exception {
+    public BuyerDTO findBuyer(String buyerId) {
         Connection con = connect();
-        int id = getLastBuyerId();
-        if (con == null)
-        {return null; }
-        List<BuyerDTO> buyers = new ArrayList<>();
-        String query = "Select * from buyers";
-        try{
+        String sql = "select * from buyers where `id` =" + buyerId;
+        BuyerDTO buyerDTO = new BuyerDTO();
+        try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            while (rs.next()) {
-                BuyerDTO buyerDTO = new BuyerDTO();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
                 buyerDTO.setId(rs.getInt(1));
                 buyerDTO.setfName(rs.getString(2));
                 buyerDTO.setlName(rs.getString(3));
@@ -144,31 +140,35 @@ public class BuyerModel {
                 buyerDTO.setAddress(rs.getString(6));
                 buyerDTO.setZipCode(rs.getString(7));
             }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        return buyers;
-    }
-
-    public BuyerDTO userLogin(String userName, String password) {
-        Connection con = connect();
-
-        //int id = Integer.parseInt(userName);
-
-        String query = "SELECT * FROM buyers WHERE `id`="+userName+" AND `pass`=" + password;
-
-        BuyerDTO buyerDTO = new BuyerDTO();
-        try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            if (rs.next()) {
-                buyerDTO.setEmail(rs.getString(4));
-                buyerDTO.setId(rs.getInt(1));
-                buyerDTO.setfName(rs.getString(2));
-            }
         } catch (Exception e) {
             System.out.println(e);
         }
         return buyerDTO;
     }
+
+    //    public List<BuyerDTO> listAllBuyers() throws Exception {
+//        Connection con = connect();
+//        int id = getLastBuyerId();
+//        if (con == null)
+//        {return null; }
+//        List<BuyerDTO> buyers = new ArrayList<>();
+//        String query = "Select * from buyers";
+//        try{
+//            Statement st = con.createStatement();
+//            ResultSet rs = st.executeQuery(query);
+//            while (rs.next()) {
+//                BuyerDTO buyerDTO = new BuyerDTO();
+//                buyerDTO.setId(rs.getInt(1));
+//                buyerDTO.setfName(rs.getString(2));
+//                buyerDTO.setlName(rs.getString(3));
+//                buyerDTO.setEmail(rs.getString(4));
+//                buyerDTO.setContactNo(rs.getString(5));
+//                buyerDTO.setAddress(rs.getString(6));
+//                buyerDTO.setZipCode(rs.getString(7));
+//            }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//        return buyers;
+//    }
 }

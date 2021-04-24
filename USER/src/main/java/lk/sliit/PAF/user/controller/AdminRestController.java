@@ -14,6 +14,7 @@ import java.util.List;
 public class AdminRestController {
     AdminModel adminModel = new AdminModel();
 
+    // load all researcher account details
     @GET
     @Path("/researcher")
     @Produces(MediaType.APPLICATION_JSON)
@@ -21,6 +22,7 @@ public class AdminRestController {
         return adminModel.findAllResearchers();
     }
 
+    // delete researcher account
     @DELETE
     @Path("/delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -33,6 +35,7 @@ public class AdminRestController {
         }
     }
 
+    // load all buyer account details
     @GET
     @Path("/buyer")
     @Produces(MediaType.APPLICATION_JSON)
@@ -40,6 +43,7 @@ public class AdminRestController {
         return adminModel.findAllBuyers();
     }
 
+    // delete buyer account
     @DELETE
     @Path("/deleteBuyer/{id}")
     @Produces(MediaType.APPLICATION_JSON)

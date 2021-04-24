@@ -1,0 +1,14 @@
+.form-inline label{
+    margin-left: 20px;
+}
+#customerSelect{
+    width: 55%;
+    margin-left: 0px;
+}
+#txtCusName{
+    width: 25%;
+}
+#selectItem{
+    width: 55%;
+    margin-left: 0px;
+}

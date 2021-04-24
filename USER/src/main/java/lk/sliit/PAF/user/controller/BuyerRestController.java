@@ -1,6 +1,5 @@
 package lk.sliit.PAF.user.controller;
 
-
 import lk.sliit.PAF.user.dto.BuyerDTO;
 import lk.sliit.PAF.user.model.BuyerModel;
 
@@ -10,6 +9,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.sql.SQLException;
 
 @Path("/buyer")
 public class BuyerRestController {
@@ -18,13 +18,12 @@ public class BuyerRestController {
 
     BuyerModel buyerObject = new BuyerModel();
 
-    //save
+    //save a buyer
     @POST
     @Path("/saveUser")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public Response addBuyer(BuyerDTO buyerDTO, @Context HttpServletRequest request) throws Exception {
-        System.out.println(buyerDTO +"rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
         int s =buyerObject.insertBuyerDetail(
                 buyerDTO.getfName(),
                 buyerDTO.getlName(),
@@ -34,7 +33,8 @@ public class BuyerRestController {
                 buyerDTO.getZipCode(),
                 buyerDTO.getPassword()
         );
-        System.out.println(s);
+
+        // save the buyer id in the session
         HttpSession session= request.getSession(true);session.setAttribute("buyerId", s);
         if (s != 0) {
             return Response.ok().build();
@@ -43,7 +43,24 @@ public class BuyerRestController {
         }
     }
 
-    //update
+    // load buyer account detail according to the logged in person
+    @GET
+    @Path("/getBuyer")
+    @Produces(MediaType.APPLICATION_JSON)
+    public BuyerDTO loadBuyer(@Context HttpServletRequest request) throws SQLException {
+        HttpSession httpSession = request.getSession(true);
+        Object userId = httpSession.getAttribute("buyerId");
+        if(userId != null){
+            System.out.println(userId.toString());
+        }
+        else {
+            httpSession.setAttribute("buyerId", "");
+        }
+        String buyerId = (httpSession.getAttribute("buyerId").toString());
+        return buyerModel.findBuyer(buyerId);
+    }
+
+    //update buyer account
     @PUT
     @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -59,7 +76,7 @@ public class BuyerRestController {
         );
     }
 
-    //delete
+    //delete buyer account
     @DELETE
     @Path("/delete/{id}")
     public Response deleteBuyer(@PathParam("id") int id){
@@ -70,5 +87,4 @@ public class BuyerRestController {
             return Response.notModified().build();
         }
     }
-
 }

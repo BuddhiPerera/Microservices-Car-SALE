@@ -9,7 +9,6 @@
 
     <title>Contact Form | Gentelella Alela! by Colorlib</title>
 
-    <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -30,6 +29,22 @@
 
         }
     </style>
+    <link href="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script>
+        document.getElementById("demo")
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > 200) {
+                $(".button1x1").show();
+            } else {
+                $(".button1x1").hide();
+            }
+        });
+
+    </script>
 </head>
 
 <body class="nav-md">
@@ -123,17 +138,18 @@
                 <nav class="nav navbar-nav">
                     <ul class=" navbar-right">
                         <li class="nav-item dropdown open" style="padding-left: 15px;">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
+                            <a class="user-profile dropdown-toggle" aria-haspopup="true"
                                id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
                                 <img src="images/img.jpg" alt="">John Doe
                             </a>
-                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:;"> Profile</a>
-                                <a class="dropdown-item" href="javascript:;">
+                            <div class="dropdown-menu dropdown-user menu pull-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="http://localhost:8081/USER/buyerProfile.html"> Buyer</a>
+                                <a class="dropdown-item" href="http://localhost:8081/USER/researcherProfile.html"> Seller</a>
+                                <a class="dropdown-item">
                                     <span class="badge bg-red pull-right">50%</span>
                                     <span>Settings</span>
                                 </a>
-                                <a class="dropdown-item" href="javascript:;">Help</a>
+                                <a class="dropdown-item">Help</a>
                                 <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i> Log
                                     Out</a>
                             </div>
@@ -219,45 +235,41 @@
                         <h3>All Listings</h3>
                     </div>
 
-                    <div class="title_right">
-                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
                 <div class="clearfix"></div>
+                <form >
+                    <input style="display: none" type="text" id="itemPay" name="orderData">
 
+                    <button type="submit" value="Register" id="demo"
+                            style="background-color: #63060a;color: white;height: 40px;
+                     margin-top: 32%;margin-left: 80%; font-weight: bold;color: #ffffff; width: 10%"
+                            class="col-1-1  btn btn-success button1x1 "> Pay <i class="fa fa-save"></i>
+                    </button>
+
+                </form>
                 <div class="row">
                     <div class="x_panel">
-                        <div class="card-box table-responsive">
-                            <table  id="datatable" class="table table-striped table-bordered">
-                                    <thead style="visibility: hidden">
-                                    <tr>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody style="">
-
-                                    </tbody>
-                                </table>
+                        <div class="title_right">
+                            <div class="col-md-5 col-sm-5  form-group pull-right top_search">
 
                             </div>
-                        <form  action="e-commers.jsp" name="saveOnlineOrder">
-                            <input style="display: none" type="text" id="itemPay" name="orderData">
+                        </div>
+                        <div class="card-box table-responsive">
+                            <table id="datatable" class="table table-striped table-bordered">
+                                <thead style="visibility: hidden">
+                                <tr style="visibility: hidden">
+                                    <th style="visibility: hidden"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                            <button type="button" value="Register" id="demo"
-                                    style="background-color: #63060a;color: white;height: 40px;
-                     margin-top: -32%;margin-left: 80%; font-weight: bold;color: #ffffff; width: 10%"
-                                    class="col-1-1  btn btn-success button1x1 "> Payddddddddddddddd <i class="fa fa-save"></i>
-                            </button>
+                                </tbody>
+                            </table>
 
-                        </form>
+                        </div>
+
                     </div>
                 </div>
 
