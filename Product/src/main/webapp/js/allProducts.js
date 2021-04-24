@@ -24,8 +24,9 @@ function loadProducts() {
                 + '<h2 style="font-weight: bolder">' + '$ ' + product[i].price + '</h2>'
                 + '<h4>' + product[i].qty + '</h4>'
                 + '<h5>' + product[i].shipping + '</h5>'
-                + '</td>'
-                + '</tr>';
+                + '</td>' +
+                '<td >' + '<img style="height: 35px; width: 35px;" src=' +  + '/>' + '</td>' +
+                +'</tr>';
 
             $("#datatable tbody").append(html);
 
@@ -38,17 +39,19 @@ function loadProducts() {
     });
 }
 
-$("#datatable tbody").on('click', 'tr td', function () {
+/*$("#datatable tbody").on('click', 'tr td', function () {
     var row = $(this).parents("tr");
 
     var itemId = row.find('td:first-child').text();
     alert(itemId)
     document.getElementById("itemPay").value = itemId;
-});
+});*/
 
-$("#demo").click(function () {
+$("#datatable tbody").on('click', "tr td:last-child", function (eventData) {
+    var row = $(this).parents("tr");
+    eventData.stopPropagation();
     var value = "";
-    value = $("#itemPay").val();
+    value = row.find('td:first-child').text();
     if (value !== "") {
         var ajaxConfig = {
             url: "http://localhost/Product/rest/products/setProduct/" + value,
@@ -67,12 +70,12 @@ $("#demo").click(function () {
 
 });
 
-    document.getElementById("demo")
-    $(window).scroll(function () {
+document.getElementById("demo")
+$(window).scroll(function () {
     if ($(document).scrollTop() > 200) {
-    $(".button1x1").show();
-} else {
-    $(".button1x1").hide();
-}
+        $(".button1x1").show();
+    } else {
+        $(".button1x1").hide();
+    }
 });
 
