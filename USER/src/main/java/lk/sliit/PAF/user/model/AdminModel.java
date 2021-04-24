@@ -1,11 +1,11 @@
 package lk.sliit.PAF.user.model;
 
-import lk.sliit.PAF.user.dto.AdminDTO;
+import lk.sliit.PAF.user.dto.AdminBuyerDTO;
+import lk.sliit.PAF.user.dto.AdminResearcherDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class AdminModel {
     private static AdminModel adminModelInstance;
@@ -28,30 +28,30 @@ public class AdminModel {
         return connection;
     }
 
-    public List<AdminDTO> findAllResearchers() throws SQLException {
+    public List<AdminResearcherDTO> findAllResearchers() throws SQLException {
         Connection connection = connect();
         if(connection == null){
             return null;
         }
-        List<AdminDTO> adminDTOS = new ArrayList<>();
+        List<AdminResearcherDTO> adminResearcherDTOS = new ArrayList<>();
         String query = "SELECT * FROM researchers";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         while(resultSet.next()){
-            AdminDTO adminDTO = new AdminDTO();
-            adminDTO.setId(resultSet.getInt(1));
-            adminDTO.setfName(resultSet.getString(2));
-            adminDTO.setlName(resultSet.getString(3));
-            adminDTO.setEmail(resultSet.getString(4));
-            adminDTO.setContactNo(resultSet.getString(5));
-            adminDTO.setAddress(resultSet.getString(6));
-            adminDTO.setZipCode(resultSet.getString(7));
-            adminDTO.setRate(resultSet.getString(8));
-            adminDTO.setPassword(resultSet.getString(9));
+            AdminResearcherDTO adminResearcherDTO = new AdminResearcherDTO();
+            adminResearcherDTO.setId(resultSet.getInt(1));
+            adminResearcherDTO.setfName(resultSet.getString(2));
+            adminResearcherDTO.setlName(resultSet.getString(3));
+            adminResearcherDTO.setEmail(resultSet.getString(4));
+            adminResearcherDTO.setContactNo(resultSet.getString(5));
+            adminResearcherDTO.setAddress(resultSet.getString(6));
+            adminResearcherDTO.setZipCode(resultSet.getString(7));
+            adminResearcherDTO.setRate(resultSet.getString(8));
+            adminResearcherDTO.setPassword(resultSet.getString(9));
 
-            adminDTOS.add(adminDTO);
+            adminResearcherDTOS.add(adminResearcherDTO);
         }
-        return  adminDTOS;
+        return adminResearcherDTOS;
     }
 
     public boolean deleteResearcher(int id) throws SQLException {
@@ -60,6 +60,44 @@ public class AdminModel {
             return false;
         }
         String query = "DELETE FROM researchers WHERE `id` = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1,id);
+        preparedStatement.execute();
+        connection.close();
+        return true;
+    }
+
+    public List<AdminBuyerDTO> findAllBuyers() throws SQLException {
+        Connection connection = connect();
+        if(connection == null){
+            return null;
+        }
+        List<AdminBuyerDTO> adminBuyerDTOS = new ArrayList<>();
+        String query = "SELECT * FROM buyers";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        while(resultSet.next()) {
+            AdminBuyerDTO adminBuyerDTO = new AdminBuyerDTO();
+            adminBuyerDTO.setId(resultSet.getInt(1));
+            adminBuyerDTO.setfName(resultSet.getString(2));
+            adminBuyerDTO.setlName(resultSet.getString(3));
+            adminBuyerDTO.setEmail(resultSet.getString(4));
+            adminBuyerDTO.setContactNo(resultSet.getString(5));
+            adminBuyerDTO.setAddress(resultSet.getString(6));
+            adminBuyerDTO.setZipCode(resultSet.getString(7));
+            adminBuyerDTO.setPassword(resultSet.getString(8));
+
+            adminBuyerDTOS.add(adminBuyerDTO);
+        }
+        return adminBuyerDTOS;
+    }
+
+    public boolean deleteBuyer(int id) throws SQLException {
+        Connection connection = connect();
+        if(connection == null){
+            return false;
+        }
+        String query = "DELETE FROM buyers WHERE `id` = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1,id);
         preparedStatement.execute();

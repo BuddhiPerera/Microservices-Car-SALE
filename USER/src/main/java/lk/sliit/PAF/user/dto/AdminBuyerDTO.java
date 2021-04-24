@@ -1,6 +1,6 @@
 package lk.sliit.PAF.user.dto;
 
-public class AdminDTO {
+public class AdminBuyerDTO {
     private int id;
     private String fName;
     private String lName;
@@ -8,13 +8,12 @@ public class AdminDTO {
     private String contactNo;
     private String address;
     private String zipCode;
-    private String rate;
     private String password;
 
-    public AdminDTO() {
+    public AdminBuyerDTO() {
     }
 
-    public AdminDTO(int id, String fName, String lName, String email, String contactNo, String address, String zipCode, String rate, String password) {
+    public AdminBuyerDTO(int id, String fName, String lName, String email, String contactNo, String address, String zipCode, String password) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
@@ -22,7 +21,6 @@ public class AdminDTO {
         this.contactNo = contactNo;
         this.address = address;
         this.zipCode = zipCode;
-        this.rate = rate;
         this.password = password;
     }
 
@@ -82,14 +80,6 @@ public class AdminDTO {
         this.zipCode = zipCode;
     }
 
-    public String getRate() {
-        return rate;
-    }
-
-    public void setRate(String rate) {
-        this.rate = rate;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -100,7 +90,7 @@ public class AdminDTO {
 
     @Override
     public String toString() {
-        return "AdminDTO{" +
+        return "AdminBuyerDTO{" +
                 "id=" + id +
                 ", fName='" + fName + '\'' +
                 ", lName='" + lName + '\'' +
@@ -108,7 +98,6 @@ public class AdminDTO {
                 ", contactNo='" + contactNo + '\'' +
                 ", address='" + address + '\'' +
                 ", zipCode='" + zipCode + '\'' +
-                ", rate='" + rate + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
@@ -129,7 +118,7 @@ public class AdminDTO {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        AdminDTO other = (AdminDTO) obj;
+        AdminBuyerDTO other = (AdminBuyerDTO) obj;
         if (id != other.id)
             return false;
         return true;
