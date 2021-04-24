@@ -4,7 +4,10 @@ package lk.sliit.PAF.user.controller;
 import lk.sliit.PAF.user.dto.BuyerDTO;
 import lk.sliit.PAF.user.model.BuyerModel;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -20,9 +23,9 @@ public class BuyerRestController {
     @Path("/saveUser")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public void addBuyer(BuyerDTO buyerDTO){
+    public Response addBuyer(BuyerDTO buyerDTO, @Context HttpServletRequest request) throws Exception {
         System.out.println(buyerDTO +"rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-        String s =buyerObject.insertBuyerDetail(
+        int s =buyerObject.insertBuyerDetail(
                 buyerDTO.getfName(),
                 buyerDTO.getlName(),
                 buyerDTO.getEmail(),
@@ -32,6 +35,12 @@ public class BuyerRestController {
                 buyerDTO.getPassword()
         );
         System.out.println(s);
+        HttpSession session= request.getSession(true);session.setAttribute("buyerId", s);
+        if (s != 0) {
+            return Response.ok().build();
+        } else {
+            return Response.notModified().build();
+        }
     }
 
     //update

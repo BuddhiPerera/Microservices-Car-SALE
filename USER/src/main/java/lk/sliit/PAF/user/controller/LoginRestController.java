@@ -1,9 +1,13 @@
 package lk.sliit.PAF.user.controller;
 
+import lk.sliit.PAF.user.dto.AdminLoginDTO;
 import lk.sliit.PAF.user.dto.BuyerDTO;
+import lk.sliit.PAF.user.model.AdminModel;
 import lk.sliit.PAF.user.model.BuyerModel;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 
@@ -41,10 +45,8 @@ public class LoginRestController {
         session.setAttribute("userId", "1");
     }
 
-
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/log")
     public void insertFund(
             @FormParam("email") String userName,
             @FormParam("password") String password,
@@ -56,5 +58,4 @@ public class LoginRestController {
         System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddddd"+output);
 
     }
-
 }

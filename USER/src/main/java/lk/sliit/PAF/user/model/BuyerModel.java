@@ -36,13 +36,14 @@ public class BuyerModel {
         }
     }
 
-    public String insertBuyerDetail(String fName, String lName, String email, String contactNo, String address, String zipCode, String password){
+    public int insertBuyerDetail(String fName, String lName, String email, String contactNo, String address, String zipCode, String password) throws Exception {
         String output = "";
+        int id = getLastBuyerId();
         try{
             Connection connection = connect();
-            int id = getLastBuyerId();
+
             if(connection == null){
-                return "Error connecting to the database";
+                return 0;
             }
             String query = "insert into buyers (`id`, `fName`, `lName`, `email`, `contactNo`, `address` , `zipCode` , `pass`) values(?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -63,7 +64,7 @@ public class BuyerModel {
             output = "Error while registering buyer";
             e.printStackTrace();
         }
-        return  output;
+        return  id + 1;
     }
 
     public String updateBuyerDetail(String fName, String lName, String email, String contactNo, String address, String zipCode){

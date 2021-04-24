@@ -6,28 +6,18 @@ import lk.sliit.PAF.productManage.dto.ProDTO;
 import lk.sliit.PAF.productManage.dto.ProductDTO;
 import lk.sliit.PAF.productManage.model.ProductModel;
 
-import javax.json.JsonObject;
-import javax.servlet.ServletException;
+
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
-import javax.xml.bind.JAXBElement;
-import javax.xml.ws.spi.http.HttpContext;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+
 import java.util.List;
 
-import org.apache.http.HttpStatus;
-import org.cloudinary.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.parser.Parser;
-import org.w3c.dom.Document;
 
 @Path("/products")
 public class ProductRestController {
