@@ -7,7 +7,7 @@
     <display-name>demo2</display-name>
     <welcome-file-list>
 
-        <welcome-file>buyerRegistration.html</welcome-file>
+        <welcome-file>researcherRegistration.html</welcome-file>
 
     </welcome-file-list>
     <servlet>

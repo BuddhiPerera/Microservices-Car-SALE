@@ -59,10 +59,10 @@ public class ResearcherModel {
 
             preparedStatement.execute();
             connection.close();
-            output = "Researcher Registered Successfully";
+
 
         }catch(Exception e){
-            output = "Error while registering researcher";
+
             e.printStackTrace();
         }
         return  id + 1;
@@ -70,7 +70,7 @@ public class ResearcherModel {
 
     public ResearcherDTO findResearcher(String researcherId) {
         Connection connection = connect();
-        String sql = "select * from researchers where `id` =" + researcherId;
+        String sql = "select * from `researchers` where `id` =" + researcherId;
         ResearcherDTO researcherDTO = new ResearcherDTO();
         try{
             Statement st = connection.createStatement();
