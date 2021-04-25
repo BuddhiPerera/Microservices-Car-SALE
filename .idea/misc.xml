@@ -2,6 +2,7 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/Funding" />
+    <file type="web" url="file://$PROJECT_DIR$/Payment" />
     <file type="web" url="file://$PROJECT_DIR$/Product" />
     <file type="web" url="file://$PROJECT_DIR$/Project" />
     <file type="web" url="file://$PROJECT_DIR$/USER" />

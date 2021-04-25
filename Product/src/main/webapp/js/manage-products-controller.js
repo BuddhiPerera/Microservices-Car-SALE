@@ -10,10 +10,11 @@ function loadProducts() {
         async: 'json'
     }
     var i = 0;
+
     $.ajax(ajaxConfig).done(function (product, status, jQXHB) {
         for (var i = 0; i < product.length; i++) {
             var html = '<tr>' +
-                '<td>' + product[i].id + '</td>' +
+                '<td >' + product[i].id + '</td>' +
                 '<td>' + product[i].name + '</td>' +
                 '<td style="width: 5%">' + product[i].description + '</td>' +
                 '<td>' + product[i].price + '</td>' +

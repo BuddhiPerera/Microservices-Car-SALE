@@ -1,6 +1,7 @@
 package lk.sliit.PAF.user.model;
 
 import lk.sliit.PAF.user.dto.AdminBuyerDTO;
+import lk.sliit.PAF.user.dto.AdminLoginDTO;
 import lk.sliit.PAF.user.dto.AdminResearcherDTO;
 
 import java.sql.*;

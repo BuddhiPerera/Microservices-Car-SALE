@@ -3,14 +3,13 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Funding/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Funding/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Payment/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Payment/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Product/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Product/src/main/resources" charset="UTF-8" />
-
     <file url="file://$PROJECT_DIR$/Project/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Project/src/main/resources" charset="UTF-8" />
-
     <file url="file://$PROJECT_DIR$/USER/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/USER/src/main/resources" charset="UTF-8" />
-
   </component>
 </project>
