@@ -6,6 +6,13 @@ $(document).ready(function () {
 var selectedRow = null;
 
 function loadProducts() {
+<<<<<<< HEAD
+
+    var url = window.location.href;
+
+    var ajaxConfig = {
+        url: "http://localhost:8090/Payment/rest/payment/getProducts/"+ url,
+=======
     // const slug = str.substring(str.indexOf('-') + 1);
     var url = window.location.href;
 
@@ -21,6 +28,7 @@ function loadProducts() {
 
     var ajaxConfig = {
         url: urlx + id,
+>>>>>>> f7d66c925b4df897ea79153ee54e889927f497bb
         method: "GET",
         async: 'json'
     }

@@ -38,7 +38,6 @@ $("#btnsubmit").click(function () {
             data: JSON.stringify(buyer) // send data to saveUser method in controller
         };
         $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
-            alert(response)
             window.location.href = "http://localhost:8090/Payment/allProducts.jsp?"+response;
             $("#id").focus();
         }).fail(function (jqXHR, status, error) {

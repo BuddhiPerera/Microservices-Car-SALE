@@ -34,9 +34,10 @@ public class ResearcherRestController {
                 researcherDTO.getPassword()
         );
         // save the researcher id in the session
+
         HttpSession session= request.getSession(true);session.setAttribute("researcherId", r);
         if (r != 0) {
-            return Response.ok().build();
+            return Response.ok().entity(r).build();
         } else {
             return Response.notModified().build();
         }
@@ -56,6 +57,7 @@ public class ResearcherRestController {
             httpSession.setAttribute("researcherId", "");
         }
         String researcherId = (httpSession.getAttribute("researcherId").toString());
+        System.out.println("sssssssssssssss"+researcherId);
         return researcherModel.findResearcher(researcherId);
     }
 
