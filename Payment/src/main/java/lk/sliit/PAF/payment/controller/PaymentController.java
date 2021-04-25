@@ -16,7 +16,6 @@ import java.util.List;
 @Path("/payment")
 public class PaymentController {
 
-
     ProductModel dao2 = ProductModel.getInstance();
 
     @GET
