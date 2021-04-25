@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Modern POS | Manage Products</title>
+  <title>Gadget Badget | Manage Products</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -32,7 +32,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link text-center">
-      <span class="brand-text font-weight-light">MODERN POS</span>
+      <span class="brand-text font-weight-light">Gadget Badget</span>
     </a>
 
     <!-- Sidebar -->
@@ -56,19 +56,19 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="manage-item.html" class="nav-link active">
+            <a href="" class="nav-link active">
               <i class="fa fa-sitemap "></i>
               <p>Manage Products</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="place-order-controll.html" class="nav-link">
+            <a href="" class="nav-link">
               <i class="fa fa-shopping-cart "></i>
               <p>Place Orders</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="" class="nav-link">
               <i class="fa fa-search"></i>
               <p>
                 Search Orders
@@ -114,11 +114,6 @@
               <!-- /.card-header -->
               <!-- form start -->
 
-
-
-<%--              ///////////////////////////////////////////////////////////////////////////////////--%>
-<%--              ///////////////////////////////////////////////////////////////////////////////////--%>
-
               <form role="form" id="submitform">
                 <div class="card-body">
                   <div class="form-group">
@@ -157,12 +152,6 @@
                   <!--<button type="button" id="Save" class="btn btn-primary">Submit</button>-->
                 </div>
               </form>
-
-<%--              ///////////////////////////////////////////////////////////////////////////////////--%>
-<%--              ///////////////////////////////////////////////////////////////////////////////////--%>
-
-
-<!--              ////////////////////////////////////////////////////////////////////////////-->
 
             </div>
             <!-- /.card -->
@@ -249,7 +238,6 @@
 
   function checkUSB(){
       window.location.reload();
-
   }
 </script>
 </body>
