@@ -36,7 +36,7 @@ public class ResearcherModel {
         }
     }
 
-    public int insertResearcherDetail(String getfName, String getlName, String email, String contactNo, String address, String zipCode, String rate, String password) throws Exception {
+    public int insertResearcherDetail(String fName, String lName, String email, String contactNo, String address, String zipCode, String rate, String password) throws Exception {
         String output = "";
         int id = getLastResearcherId();
         try{
@@ -48,8 +48,8 @@ public class ResearcherModel {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setInt(1, id+1);
-            preparedStatement.setString(2,getfName);
-            preparedStatement.setString(3,getlName);
+            preparedStatement.setString(2,fName);
+            preparedStatement.setString(3,lName);
             preparedStatement.setString(4,email);
             preparedStatement.setString(5,contactNo);
             preparedStatement.setString(6,address);
@@ -59,10 +59,10 @@ public class ResearcherModel {
 
             preparedStatement.execute();
             connection.close();
-            output = "Researcher Registered Successfully";
+
 
         }catch(Exception e){
-            output = "Error while registering researcher";
+
             e.printStackTrace();
         }
         return  id + 1;
@@ -70,7 +70,7 @@ public class ResearcherModel {
 
     public ResearcherDTO findResearcher(String researcherId) {
         Connection connection = connect();
-        String sql = "select * from researchers where `id` =" + researcherId;
+        String sql = "select * from `researchers` where `id` =" + researcherId;
         ResearcherDTO researcherDTO = new ResearcherDTO();
         try{
             Statement st = connection.createStatement();

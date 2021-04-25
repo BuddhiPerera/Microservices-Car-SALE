@@ -6,7 +6,7 @@
 
     <display-name>Funding</display-name>
     <welcome-file-list>
-        <welcome-file>viewFund.html</welcome-file>
+        <welcome-file>addFund.html</welcome-file>
     </welcome-file-list>
 
     <servlet>
