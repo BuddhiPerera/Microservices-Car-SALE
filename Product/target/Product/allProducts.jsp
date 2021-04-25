@@ -125,7 +125,7 @@
                                 <img src="images/img.jpg" alt="">John Doe
                             </a>
                             <div class="dropdown-menu dropdown-user menu pull-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item"> Profile</a>
+                                <a class="dropdown-item" href="http://localhost:8081/USER/researcherProfile.html"> Profile</a>
                                 <a class="dropdown-item">
                                     <span class="badge bg-red pull-right">50%</span>
                                     <span>Settings</span>

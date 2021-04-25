@@ -12,12 +12,12 @@
 <h2> GadgetBadget Admin Portal</h2>
 <div class="container" id="container">
     <div class="form-container sign-in-container">
-        <form action="onlineSignIn" method="post">
+        <form action="http://localhost:8081/USER/rest1/Login" method="post">
             <h1>Sign in</h1>
             <span>enter your credentials below</span>
             <input type="username" placeholder="Username" name="userName" />
             <input type="password" placeholder="Password" name="password"/>
-            <button>Sign In</button>
+            <button type="submit">Sign In</button>
         </form>
     </div>
     <div class="overlay-container">
