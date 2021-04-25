@@ -12,9 +12,9 @@
       <list>
         <option value="$PROJECT_DIR$/Project/pom.xml" />
         <option value="$PROJECT_DIR$/Funding/pom.xml" />
-        <option value="$PROJECT_DIR$/USER/pom.xml" />
         <option value="$PROJECT_DIR$/Product/pom.xml" />
         <option value="$PROJECT_DIR$/Payment/pom.xml" />
+        <option value="$PROJECT_DIR$/USER/pom.xml" />
       </list>
     </option>
   </component>

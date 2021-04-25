@@ -55,9 +55,7 @@ public class ProductRestController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public void addProduct(ProDTO proDTO) {
-
         itemObj.insertItem(proDTO.getName(), proDTO.getDescription(),proDTO.getPrice(),proDTO.getQty(),proDTO.getShipping(),proDTO.getImage());
-
     }
     @PUT
     @Path("/update")

@@ -1,7 +1,9 @@
 package lk.sliit.PAF.payment.model;
 
 
+import lk.sliit.PAF.payment.dto.BuyerDTO;
 import lk.sliit.PAF.payment.dto.ProDTO;
+import lk.sliit.PAF.payment.dto.SetOrderDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -39,6 +41,7 @@ public class ProductModel {
             return 0;
         }
     }
+
     private int getLastOrderID() throws Exception {
         ResultSet resultSet = CrudUtil.execute("SELECT id FROM `order` ORDER BY id DESC LIMIT 1");
         if (resultSet.next()) {
@@ -48,20 +51,40 @@ public class ProductModel {
         }
     }
 
-    public List<ProDTO> listAll() throws Exception {
+    public List<SetOrderDTO> listAll(String urlId) throws Exception {
 
         Connection con = connect();
         int id = getLastID();
         if (con == null) {
             return null;
         }
-        List<ProDTO> product = new ArrayList<>();
+        String buyerName = "";
+        String buyerEmail = "";
+
+        if (! urlId.equals("-1" )) {
+            String sql = "select * from buyers where `id` =" + urlId;
+            BuyerDTO buyerDTO = new BuyerDTO();
+            try {
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                if (rs.next()) {
+                    buyerName = (rs.getString(2));
+                    buyerEmail = (rs.getString(4));
+
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+
+        List<SetOrderDTO> product = new ArrayList<>();
         String query = "Select * from products";
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                ProDTO p = new ProDTO();
+                SetOrderDTO p = new SetOrderDTO();
                 p.setId(rs.getString(1));
                 p.setName(rs.getString(2));
                 p.setDescription(rs.getString(3));
@@ -69,6 +92,9 @@ public class ProductModel {
                 p.setQty(rs.getString(5));
                 p.setShipping(rs.getString(6));
                 p.setImage(rs.getString(7));
+                p.setBuyerId(urlId);
+                p.setBuyerName(buyerName);
+                p.setEmail(buyerEmail);
                 product.add(p);
             }
         } catch (SQLException e) {
@@ -110,7 +136,8 @@ public class ProductModel {
         try {
             Connection con = connect();
             int orderId = getLastOrderID();
-            if (con == null) {}
+            if (con == null) {
+            }
 
             System.out.println("r rrrrrrrrrrrrrrrrrrrrrrrrrrrrr" + address + name);
             // create a prepared statement

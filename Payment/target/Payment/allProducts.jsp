@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Contact Form | Gentelella Alela! by Colorlib</title>
+    <title>Gadgets Badget</title>
 
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -47,7 +47,7 @@
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>John Doe</h2>
+                        <h2 id="userName"></h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -122,7 +122,7 @@
                         <li class="nav-item dropdown open" style="padding-left: 15px;">
                             <a class="user-profile dropdown-toggle" aria-haspopup="true"
                                id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                <img src="images/img.jpg" alt="">John Doe
+                                <img src="images/img.jpg" alt=""><span id="name2"></span>
                             </a>
                             <div class="dropdown-menu dropdown-user menu pull-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="http://localhost:8081/USER/buyerProfile.html"> Buyer</a>
