@@ -2,6 +2,7 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/Funding" />
+    <file type="web" url="file://$PROJECT_DIR$/Payment" />
     <file type="web" url="file://$PROJECT_DIR$/Product" />
     <file type="web" url="file://$PROJECT_DIR$/Project" />
     <file type="web" url="file://$PROJECT_DIR$/USER" />
@@ -9,10 +10,10 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/Payment/pom.xml" />
         <option value="$PROJECT_DIR$/Project/pom.xml" />
         <option value="$PROJECT_DIR$/Funding/pom.xml" />
         <option value="$PROJECT_DIR$/Product/pom.xml" />
+        <option value="$PROJECT_DIR$/Payment/pom.xml" />
         <option value="$PROJECT_DIR$/USER/pom.xml" />
       </list>
     </option>

@@ -1,34 +1,3 @@
-// $(document).ready(function () {
-//     loadUser();
-// });
-// var selectedRow = null;
-// function loadUser() {
-//
-//     var ajaxConfig = {
-//         url: "http://localhost:8081/USER/rest1/buyer",
-//         method: "GET",
-//         async: 'json'
-//     }
-//     var i = 0;
-//     $.ajax(ajaxConfig).done(function (buyer, status, jQXHB) {
-//         for (var i = 0; i < buyer.length; i++) {
-//             var html = '<tr>' +
-//                 '<td>' + buyer[i].id + '</td>' +
-//                 '<td>' + buyer[i].fName + '</td>' +
-//                 '<td>' + buyer[i].lName + '</td>' +
-//                 '<td>' + buyer[i].email + '</td>' +
-//                 '<td>' + buyer[i].contactNo + '</td>' +
-//                 '<td>' + buyer[i].address + '</td>' +
-//                 '<td>' + buyer[i].zipcode + '</td>'
-//                 '<td><i class="fas fa-trash"></i></td>' +
-//                 '</tr>';
-//             $("#datatable tbody").append(html);
-//         }
-//         console.log(product)
-//     }).fail(function (jqXHB, status, error) {
-//         console.log(error)
-//     })
-// }
 
 // $("#datatable tbody").on('click', "tr td:last-child", function (eventData) {
 //     var row = $(this).parents("tr");
@@ -60,7 +29,7 @@ $("#btnsubmit").click(function () {
         zipCode: $("#zip").val(),
         password: $("#password").val()
     };
-    alert("sssssssssssssssssssssssssssssssssssssss")
+    alert("Registered Successfully!!")
         var ajaxConfig = {
             method: 'POST',
             url: 'http://localhost:8081/USER/rest1/buyer/saveUser',
@@ -69,7 +38,8 @@ $("#btnsubmit").click(function () {
             data: JSON.stringify(buyer) // send data to saveUser method in controller
         };
         $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
-            $("#id, #fName, #lName, #email, #contact, #add, #zip, #password").val(""); // empty fields
+            alert(response)
+            window.location.href = "http://localhost:8090/Payment/allProducts.jsp?"+response;
             $("#id").focus();
         }).fail(function (jqXHR, status, error) {
             console.log(error);

@@ -5,7 +5,7 @@ var selectedRow = null;
 function loadUser() {
 
     var ajaxConfig = {
-        url: "http://localhost/:8081/USER/rest1/Login/login",
+        url: "http://localhost/:8081/USER/rest1/Login/log",
         method: "GET",
         async: 'json'
     }

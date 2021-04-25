@@ -36,13 +36,14 @@ public class BuyerModel {
         }
     }
 
-    public String insertBuyerDetail(String fName, String lName, String email, String contactNo, String address, String zipCode, String password){
+    public int insertBuyerDetail(String fName, String lName, String email, String contactNo, String address, String zipCode, String password) throws Exception {
         String output = "";
+        int id = getLastBuyerId();
         try{
             Connection connection = connect();
-            int id = getLastBuyerId();
+
             if(connection == null){
-                return "Error connecting to the database";
+                return 0;
             }
             String query = "insert into buyers (`id`, `fName`, `lName`, `email`, `contactNo`, `address` , `zipCode` , `pass`) values(?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -63,10 +64,10 @@ public class BuyerModel {
             output = "Error while registering buyer";
             e.printStackTrace();
         }
-        return  output;
+        return  id + 1;
     }
 
-    public String updateBuyerDetail(String fName, String lName, String email, String contactNo, String address, String zipCode){
+    public String updateBuyerDetail(String fName, String lName, String email, String contactNo, String address, String zipCode,String pass){
         String output = "";
         try{
             Connection connection = connect();
@@ -74,7 +75,7 @@ public class BuyerModel {
             if(connection == null){
                 return "Error connecting to the database";
             }
-            String query = "UPDATE buyers SET fName=?, lName=?, email=?, contactNo=?, address=? , zipCode=? , WHERE id=?";
+            String query = "UPDATE buyers SET fName=?, lName=?, email=?, contactNo=?, address=? , zipCode=? ,pass =? WHERE id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, fName);
@@ -83,6 +84,7 @@ public class BuyerModel {
             preparedStatement.setString(4, contactNo);
             preparedStatement.setString(5, address);
             preparedStatement.setString(6, zipCode);
+            preparedStatement.setString(7, pass);
             preparedStatement.setInt(8, id);
 
             preparedStatement.execute();
@@ -123,18 +125,14 @@ public class BuyerModel {
         return true;
     }
 
-    public List<BuyerDTO> listAllBuyers() throws Exception {
+    public BuyerDTO findBuyer(String buyerId) {
         Connection con = connect();
-        int id = getLastBuyerId();
-        if (con == null)
-        {return null; }
-        List<BuyerDTO> buyers = new ArrayList<>();
-        String query = "Select * from buyers";
-        try{
+        String sql = "select * from buyers where `id` =" + buyerId;
+        BuyerDTO buyerDTO = new BuyerDTO();
+        try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            while (rs.next()) {
-                BuyerDTO buyerDTO = new BuyerDTO();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
                 buyerDTO.setId(rs.getInt(1));
                 buyerDTO.setfName(rs.getString(2));
                 buyerDTO.setlName(rs.getString(3));
@@ -143,31 +141,35 @@ public class BuyerModel {
                 buyerDTO.setAddress(rs.getString(6));
                 buyerDTO.setZipCode(rs.getString(7));
             }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        return buyers;
-    }
-
-    public BuyerDTO userLogin(String userName, String password) {
-        Connection con = connect();
-
-        //int id = Integer.parseInt(userName);
-
-        String query = "SELECT * FROM buyers WHERE `id`="+userName+" AND `pass`=" + password;
-
-        BuyerDTO buyerDTO = new BuyerDTO();
-        try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            if (rs.next()) {
-                buyerDTO.setEmail(rs.getString(4));
-                buyerDTO.setId(rs.getInt(1));
-                buyerDTO.setfName(rs.getString(2));
-            }
         } catch (Exception e) {
             System.out.println(e);
         }
         return buyerDTO;
     }
+
+    //    public List<BuyerDTO> listAllBuyers() throws Exception {
+//        Connection con = connect();
+//        int id = getLastBuyerId();
+//        if (con == null)
+//        {return null; }
+//        List<BuyerDTO> buyers = new ArrayList<>();
+//        String query = "Select * from buyers";
+//        try{
+//            Statement st = con.createStatement();
+//            ResultSet rs = st.executeQuery(query);
+//            while (rs.next()) {
+//                BuyerDTO buyerDTO = new BuyerDTO();
+//                buyerDTO.setId(rs.getInt(1));
+//                buyerDTO.setfName(rs.getString(2));
+//                buyerDTO.setlName(rs.getString(3));
+//                buyerDTO.setEmail(rs.getString(4));
+//                buyerDTO.setContactNo(rs.getString(5));
+//                buyerDTO.setAddress(rs.getString(6));
+//                buyerDTO.setZipCode(rs.getString(7));
+//            }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//        return buyers;
+//    }
 }

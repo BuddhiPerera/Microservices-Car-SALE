@@ -1,71 +1,51 @@
 package lk.sliit.PAF.productManage.controller;
 
-import com.mysql.cj.xdevapi.JsonParser;
-import jdk.nashorn.internal.parser.JSONParser;
 import lk.sliit.PAF.productManage.dto.ProDTO;
-import lk.sliit.PAF.productManage.dto.ProductDTO;
 import lk.sliit.PAF.productManage.model.ProductModel;
 
-import javax.json.JsonObject;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
+
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
-import javax.xml.bind.JAXBElement;
-import javax.xml.ws.spi.http.HttpContext;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
-
-import org.apache.http.HttpStatus;
-import org.cloudinary.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.parser.Parser;
-import org.w3c.dom.Document;
 
 @Path("/products")
 public class ProductRestController {
 
     ProductModel dao2 = ProductModel.getInstance();
-
     ProductModel itemObj = new ProductModel();
+
 //*******************************************************************************************************
 //*******************************************************************************************************
-//*******************************************************************************************************
-//*******************************************************************************************************
+
     @GET
     @Path("/getProducts")
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProDTO> list(@Context HttpServletRequest req) throws Exception {
-        HttpSession session= req.getSession(true);
+        HttpSession session = req.getSession(true);
         Object foo = session.getAttribute("foo");
-        if (foo!=null) {
+        if (foo != null) {
             System.out.println(foo.toString());
         } else {
             session.setAttribute("foo", "");
         }
-
-
         String onlineCustomerId = (session.getAttribute("foo").toString());
-        System.out.println(onlineCustomerId+" sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
-        System.out.println(dao2.listAll());
+
         return dao2.listAll();
     }
+
     @GET
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
-    public void list2( @Context HttpServletRequest req) throws Exception {
-        System.out.println("sssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        HttpSession session= req.getSession(true);
+    public void list2(@Context HttpServletRequest req) throws Exception {
+        HttpSession session = req.getSession(true);
         session.setAttribute("foo", "3333332");
     }
-    //*******************************************************************************************************
+//*******************************************************************************************************
 //*******************************************************************************************************
 //*******************************************************************************************************
 //*******************************************************************************************************
@@ -76,18 +56,17 @@ public class ProductRestController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public void addProduct(ProDTO proDTO) {
-
-        itemObj.insertItem(proDTO.getName(), proDTO.getDescription(),proDTO.getPrice(),proDTO.getQty(),proDTO.getShipping(),proDTO.getImage());
-
+        itemObj.insertItem(proDTO.getName(), proDTO.getDescription(), proDTO.getPrice(), proDTO.getQty(), proDTO.getShipping(), proDTO.getImage());
     }
+
     @PUT
     @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public void updateProduct(ProDTO proDTO) {
+    public String updateProduct(ProDTO proDTO) {
 
-        itemObj.updateItem(proDTO.getId(),proDTO.getName(), proDTO.getDescription(),proDTO.getPrice(),proDTO.getQty(),proDTO.getShipping(),proDTO.getImage());
-
+        itemObj.updateItem(proDTO.getId(), proDTO.getName(), proDTO.getDescription(), proDTO.getPrice(), proDTO.getQty(), proDTO.getShipping(), proDTO.getImage());
+        return "success";
     }
 
     //*******************************************************************************************************
@@ -112,12 +91,9 @@ public class ProductRestController {
     @Path("/buy/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public String  buyProduct(@PathParam("id") String id) throws Exception {
+    public String buyProduct(@PathParam("id") String id) throws Exception {
 
-
-        System.out.println(dao2.findOne(id)+"heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-        System.out.println(id+"gggggggggggggggggggggggggggggggggggggggggggggggggggg");
-       // Response.temporaryRedirect(URI);
+        // Response.temporaryRedirect(URI);
         return "";
     }
 //*******************************************************************************************************
@@ -126,9 +102,37 @@ public class ProductRestController {
 //*******************************************************************************************************
 
 
+    @GET
+    @Path("setProduct/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response setProduct(@PathParam("id") int id, @Context HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        session.setAttribute("itemId", id);
+        System.out.println("syyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
 
+        if (id != 0) {
+            return Response.ok().build();
+        } else {
+            return Response.notModified().build();
+        }
+    }
 
+    @GET
+    @Path("/getProduct")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ProDTO getProduct(@Context HttpServletRequest request) throws Exception {
+        HttpSession httpSession = request.getSession(true);
+        Object userId = httpSession.getAttribute("itemId");
+        if (userId != null) {
+            System.out.println(userId.toString());
+        } else {
+            httpSession.setAttribute("itemId", "");
+        }
 
+        String item = (httpSession.getAttribute("itemId").toString());
+        System.out.println(dao2.findOne(item));
+        return dao2.findOne(item);
+    }
 
 
 
@@ -143,7 +147,6 @@ public class ProductRestController {
         String output = itemObj.insertItem(name, description, price, qty, shipping, image);
 
     }*/
-
 
 
 //////////////////////////////////////////////////////////////////////////////////////

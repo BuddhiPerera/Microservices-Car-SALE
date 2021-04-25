@@ -9,14 +9,13 @@
 <body class="nav-md" style="cursor: pointer">
 
 <!-- Sign up form -->
-<small style="font-weight: bolder"><a href="onlineDashboard"> << Back to Home</a> </small>
 <h2> GadgetBadget Buyer Portal</h2>
 <div class="container" id="container">
     <div class="form-container sign-up-container" id="registration">
         <form method="post">
             <h1>Create Account</h1>
             <span>Buyer Registration</span>
-<!-- name & id = DTO -->
+
             <input required type="text" placeholder="First Name" name="fName" id="fName" />
             <input required type="text" placeholder="Last Name" name="lName" id="lName"/>
             <input required type="email" placeholder="Email" name="email" id="email"/>
@@ -35,12 +34,9 @@
             <span>enter your credentials below</span>
             <input type="text" placeholder="Username" name="email" id="userName" />
             <input type="password" placeholder="Password" name="password" id="pass"/>
-            <a href="index.jsp"><button type="submit">Sign In</button></a>
+            <a href="buyerProfile.html"><button type="submit">Sign In</button></a>
         </form>
     </div>
-    <script>
-
-    </script>
 
     <div class="overlay-container">
         <div class="overlay">
@@ -63,7 +59,6 @@
 <!-- Bootstrap -->
 <script src="js/manage-buyers-controller.js"></script>
 
-
 <script src="vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Datatables -->
@@ -84,6 +79,6 @@
 <script src="build/js/custom.min.js"></script>
 
 <script src="build/js/main.js"></script>
-
+<script src="js/login.js"></script>
 </body>
 </html>
