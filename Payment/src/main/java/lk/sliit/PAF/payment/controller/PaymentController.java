@@ -1,5 +1,6 @@
 package lk.sliit.PAF.payment.controller;
 
+import lk.sliit.PAF.payment.dto.PlaceOrderDTO;
 import lk.sliit.PAF.payment.dto.ProDTO;
 import lk.sliit.PAF.payment.model.ProductModel;
 
@@ -65,6 +66,38 @@ public class PaymentController {
         return dao2.findOne(item);
     }
 
+    @POST
+    @Path("/saveOrder")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public void placeOrder(PlaceOrderDTO placeOrderDTO,@Context HttpServletRequest request) {
+        HttpSession httpSession1 = request.getSession(true);
+        Object userId2 = httpSession1.getAttribute("buyerId");
+        if(userId2 != null){
+            System.out.println(userId2.toString());
+        }
+        else {
+            httpSession1.setAttribute("buyerId", "");
+        }
+        String buyerId = (httpSession1.getAttribute("buyerId").toString());
+
+
+        HttpSession httpSession = request.getSession(true);
+        Object userId = httpSession.getAttribute("itemId");
+        if (userId != null) {
+            System.out.println(userId.toString());
+        } else {
+            httpSession.setAttribute("itemId", "");
+        }
+
+        String item = (httpSession.getAttribute("itemId").toString());
+//////////////////////////////////////////////////////////////////////////
+
+        System.out.println(buyerId + " "+ item);
+        dao2.placeOrder(item,buyerId, placeOrderDTO.getName(), placeOrderDTO.getAddress(),placeOrderDTO.getState(),placeOrderDTO.getCountry()
+                ,placeOrderDTO.getZip(),placeOrderDTO.getContact(),placeOrderDTO.getQty());
+
+    }
 
 }
 

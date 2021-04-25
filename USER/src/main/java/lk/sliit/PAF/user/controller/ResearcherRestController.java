@@ -36,7 +36,7 @@ public class ResearcherRestController {
         // save the researcher id in the session
         HttpSession session= request.getSession(true);session.setAttribute("researcherId", r);
         if (r != 0) {
-            return Response.ok().build();
+            return Response.ok().entity(r).build();
         } else {
             return Response.notModified().build();
         }

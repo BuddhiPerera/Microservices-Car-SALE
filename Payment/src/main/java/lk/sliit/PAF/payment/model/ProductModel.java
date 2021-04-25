@@ -39,7 +39,14 @@ public class ProductModel {
             return 0;
         }
     }
-
+    private int getLastOrderID() throws Exception {
+        ResultSet resultSet = CrudUtil.execute("SELECT id FROM `order` ORDER BY id DESC LIMIT 1");
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        } else {
+            return 0;
+        }
+    }
 
     public List<ProDTO> listAll() throws Exception {
 
@@ -94,6 +101,42 @@ public class ProductModel {
         }
 
         return a;
+    }
+
+
+    public void placeOrder(String id, String buyerId, String name, String address, String state, String country,
+                           String zip, String contact, int qty) {
+
+        try {
+            Connection con = connect();
+            int orderId = getLastOrderID();
+            if (con == null) {}
+
+            System.out.println("r rrrrrrrrrrrrrrrrrrrrrrrrrrrrr" + address + name);
+            // create a prepared statement
+            String query = " insert into  `order` (`id`,`itemId`,`buyerId`,`name`,`address`,`state`,`country`,`zip`,`contact`,`qty`)"
+                    + " values (?, ?, ?, ?, ?,?,?,?,?,?)";
+
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            // binding values
+            preparedStmt.setInt(1, orderId + 1);
+            preparedStmt.setString(2, id);
+            preparedStmt.setString(3, buyerId);
+            preparedStmt.setString(4, name);
+            preparedStmt.setString(5, address);
+            preparedStmt.setString(6, state);
+            preparedStmt.setString(7, country);
+            preparedStmt.setString(8, zip);
+            preparedStmt.setString(9, contact);
+            preparedStmt.setInt(10, qty);
+// execute the statement
+            preparedStmt.execute();
+            con.close();
+            System.out.println("Inserted successfully");
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
     }
 
 

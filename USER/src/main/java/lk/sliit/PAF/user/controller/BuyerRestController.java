@@ -37,7 +37,7 @@ public class BuyerRestController {
         // save the buyer id in the session
         HttpSession session= request.getSession(true);session.setAttribute("buyerId", s);
         if (s != 0) {
-            return Response.ok().build();
+            return Response.ok().entity(s).build();
         } else {
             return Response.notModified().build();
         }

@@ -36,7 +36,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gadget Badget!</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -255,18 +255,7 @@
                                         <img id="myImg" alt="..." />
                                     </div>
                                     <div class="product_gallery">
-                                        <a>
-                                            <img src="images/prod-2.jpg" alt="..." />
-                                        </a>
-                                        <a>
-                                            <img src="images/prod-3.jpg" alt="..." />
-                                        </a>
-                                        <a>
-                                            <img src="images/prod-4.jpg" alt="..." />
-                                        </a>
-                                        <a>
-                                            <img src="images/prod-5.jpg" alt="..." />
-                                        </a>
+
                                     </div>
                                 </div>
 

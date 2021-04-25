@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>E-commerce</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -173,17 +173,18 @@
 
                                         <div class="form-group row">
                                             <div class="col-md-9 col-sm-9  ">
-                                                <img src="images/img.jpg">
+                                                <img height="200px" width="400px" src="https://specials-images.forbesimg.com/imageserve/5d3703e2f1176b00089761a6/960x0.jpg?cropX1=836&cropX2=5396&cropY1=799&cropY2=3364">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3  " id="iName"></label>
+                                            <label class="control-label col-md-3 col-sm-3  " id="iName">Ferrari Spider</label>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3  " id="iDescription"> </label>
+                                            <label class="control-label col-md-3 col-sm-3  " id="iDescription">From £510
+                                                The newest version of Rolls-Royce's flagship model sets new standards for opulence and luxury  </label>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3  " id="iShipping"></label>
+                                            <label class="control-label col-md-3 col-sm-3  " id="iShipping">free Shipping</label>
                                         </div>
 
                                     </form>
@@ -260,7 +261,7 @@
 
                                         <div class="form-group row">
                                             <div class="col-md-9 offset-md-3">
-                                                <button type="submit" class="btn btn-danger">Place Order</button>
+                                                <button type="submit" class="btn btn-danger" id="btnsubmit">Place Order</button>
                                                 <button type="reset" class="btn btn-outline-success">Reset</button>
                                             </div>
                                         </div>
@@ -318,6 +319,7 @@
 
 <!-- Custom Theme Scripts -->
 <script src="build/js/custom.min.js"></script>
+<script src="js/placeOrder.js"></script>
 
 <!-- Initialize datetimepicker -->
 </body>

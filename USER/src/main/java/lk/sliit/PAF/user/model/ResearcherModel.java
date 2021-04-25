@@ -36,7 +36,7 @@ public class ResearcherModel {
         }
     }
 
-    public int insertResearcherDetail(String getfName, String getlName, String email, String contactNo, String address, String zipCode, String rate, String password) throws Exception {
+    public int insertResearcherDetail(String fName, String lName, String email, String contactNo, String address, String zipCode, String rate, String password) throws Exception {
         String output = "";
         int id = getLastResearcherId();
         try{
@@ -48,8 +48,8 @@ public class ResearcherModel {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setInt(1, id+1);
-            preparedStatement.setString(2,getfName);
-            preparedStatement.setString(3,getlName);
+            preparedStatement.setString(2,fName);
+            preparedStatement.setString(3,lName);
             preparedStatement.setString(4,email);
             preparedStatement.setString(5,contactNo);
             preparedStatement.setString(6,address);

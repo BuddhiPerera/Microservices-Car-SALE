@@ -1,12 +1,16 @@
 $(document).ready(function () {
+
     loadProducts();
 
 });
 var selectedRow = null;
 
 function loadProducts() {
+
+    var url = window.location.href;
+
     var ajaxConfig = {
-        url: "http://localhost:8090/Payment/rest/payment/getProducts",
+        url: "http://localhost:8090/Payment/rest/payment/getProducts/"+ url,
         method: "GET",
         async: 'json'
     }
