@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <display-name>demo3</display-name>
+    <display-name>Funding</display-name>
     <welcome-file-list>
         <welcome-file>viewFund.html</welcome-file>
     </welcome-file-list>

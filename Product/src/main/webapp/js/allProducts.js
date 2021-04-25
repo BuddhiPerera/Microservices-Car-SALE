@@ -9,6 +9,7 @@ $.ajax(ajaxConfig).done(function (product, status, jQXHB) {
     for (var i = 0; i < product.length; i++) {
         var html =
             '<tr>'
+            +'<td >'+product[i].id +'</td>'
             +'<td style="height: 100px; width: 20%">'
             +'<img style="height: 160px; width: 100%;" src='+product[i].image+'>'+'</td>'
             +'<td style="height: 100px; width: 80%">'
@@ -22,13 +23,21 @@ $.ajax(ajaxConfig).done(function (product, status, jQXHB) {
 
         $("#datatable tbody").append(html);
 
-
         var elem = document.querySelector('#some-element');
-
-
 
     }
     console.log(product);
 }).fail(function (jqXHB, status, error) {
     console.log(error);
+});
+
+$("#datatable tbody").on('click', 'tr', function () {
+    selectedRow = $(this);
+
+    var itemId = $("#datatable tr td:first-child").text();
+    alert(itemId)
+
+    $("#itemPay").val($(this).find("td:first-child").text());
+
+
 });

@@ -42,6 +42,16 @@ public class FundingController {
         return output;
     }
 
+    @PUT
+    @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public void updateProduct(FundDTO fundDTO) {
+        System.out.println(fundDTO);
+        fundObj.updateFund(fundDTO.getId(),fundDTO.getFundID(), fundDTO.getFundName(),fundDTO.getEmail(),fundDTO.getAddress(),fundDTO.getContactNumber(),fundDTO.getFundMethod(),fundDTO.getAmount());
+
+    }
+
 
     @DELETE
     @Path("/delete/{id}")

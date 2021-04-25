@@ -78,14 +78,13 @@ public class ProjectController {
         }
     }
 
+
     @DELETE
     @Path("/delete/{id}")
-    public Response delete(@PathParam("id") String id) {
-        if (model.deleteProject(id)) {
-            return Response.ok().build();
-        } else {
-            return Response.notModified().build();
-        }
+    public void delete(@PathParam("id") String id) {
+
+        System.out.println("dddddddddddddddddddddrrrrrrrrrrrrddddddddddddddd " + id);
+        model.deleteProject(id);
     }
 }
 

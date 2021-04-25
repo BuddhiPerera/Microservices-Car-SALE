@@ -95,7 +95,7 @@ $("#btnsubmit").click(function () {
         description: $("#proDesc").val(),
 
     };
-alert("ssssssssssssssssssssssssssssssssssssssss")
+
         var ajaxConfig = {
             method: 'PUT',
             url: 'http://localhost:8082/Project/rest2/projects/update',

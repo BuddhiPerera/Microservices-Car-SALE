@@ -202,7 +202,7 @@ public class ProjectModel {
             if (con == null)
             {return false; }
             // create a prepared statement
-            String query = "delete from projects where projectID=?";
+            String query = "delete from project where projectID=?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             // binding values
             preparedStmt.setInt(1, Integer.parseInt(projectID));

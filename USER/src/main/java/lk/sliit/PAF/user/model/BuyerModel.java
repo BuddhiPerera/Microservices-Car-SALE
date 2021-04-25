@@ -151,14 +151,18 @@ public class BuyerModel {
 
     public BuyerDTO userLogin(String userName, String password) {
         Connection con = connect();
+
         //int id = Integer.parseInt(userName);
-        String query = "SELECT * FROM buyers WHERE `email` = " + userName + " AND `pass` = " + password;
+
+        String query = "SELECT * FROM buyers WHERE `id`="+userName+" AND `pass`=" + password;
+
         BuyerDTO buyerDTO = new BuyerDTO();
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                buyerDTO.setEmail(rs.getString(1));
+                buyerDTO.setEmail(rs.getString(4));
+                buyerDTO.setId(rs.getInt(1));
                 buyerDTO.setfName(rs.getString(2));
             }
         } catch (Exception e) {

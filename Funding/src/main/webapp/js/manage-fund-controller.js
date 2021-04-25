@@ -24,7 +24,7 @@ function loadProducts() {
                 '<td>' + funds[i].amount + '</td>' +
                 '<td>' + funds[i].fundMethod + '</td>' +
                 '</tr>';
-            $("#datatable tbody").append(html);
+            $("#table tbody").append(html);
         }
         console.log(funds)
     }).fail(function (jqXHB, status, error) {
@@ -35,7 +35,11 @@ function loadProducts() {
 }
 
 
-$("#datatable tbody").on('click', 'tr', function () {
+
+$("#table tbody").on('click', 'tr', function () {
+
+
+
     selectedRow = $(this);
     $("#id").val($(this).find("td:first-child").text());
     $("#fundID").val($(this).find("td:nth-child(2)").text());
@@ -48,7 +52,7 @@ $("#datatable tbody").on('click', 'tr', function () {
 
 
     $("#id").attr("disabled", 'true');
-    $("#datatable tbody tr").removeClass('row-selected');
+    $("#table tbody tr").removeClass('row-selected');
     selectedRow.addClass('row-selected');
 });
 
@@ -80,57 +84,35 @@ function deleteFund(){
 
 
 
-$("#btnsubmit").click(function () {
+$("#btnupdate").click(function () {
     var funds = {
         id: $("#id").val(),
+        fundID: $("#fundID").val(),
         fundName: $("#fundName").val(),
         email: $("#email").val(),
         address: $("#address").val(),
         contactNumber: $("#contactNumber").val(),
         amount: $("#amount").val(),
-        fundMethod: $("#fundMethod").val(),
+        fundMethod: $("#setType").val(),
 
     };
-    if (!selectedRow) {
-        var ajaxConfig = {
-            method: 'POST',
-            url: 'http://localhost/Funding/rest2/funds/save/',
-            async: true,
-            contentType: 'application/json',
-            data: JSON.stringify(product)
-        };
-        $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
-            var html = "<tr>" +
-                "<td>" + funds.id + "</td>" +
-                "<td>" + funds.fundName + "</td>" +
-                "<td>" + funds.email + "</td>" +
-                "<td>" + funds.address + "</td>" +
-                "<td>" + funds.contactNumber + "</td>" +
-                "<td>" + funds.amount + "</td>" +
-                "<td>" + funds.fundMethod + "</td>" +
-                "</tr>";
-            $("#dtble tbody").append(html);
-            $("#id, #fundName, #email, #address,#contactNumber,#amount,#fundMethod").val("");
-            $("#id").focus();
-        }).fail(function (jqXHR, status, error) {
-            console.log(error);
-        });
-    } else {
+
         var ajaxConfig = {
             method: 'PUT',
-            url: 'http://localhost/Product/rest/products/update/',
+            url: "http://localhost:8085/Funding/rest2/funds/update",
             async: true,
             contentType: 'application/json',
-            data: JSON.stringify(product)
+            data: JSON.stringify(funds)
         };
         $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
             selectedRow.find("td:nth-child(1)").text(funds.id);
-            selectedRow.find("td:nth-child(2)").text(funds.fundName);
-            selectedRow.find("td:nth-child(3)").text(funds.email);
-            selectedRow.find("td:nth-child(4)").text(funds.address);
-            selectedRow.find("td:nth-child(5)").text(funds.contactNumber);
-            selectedRow.find("td:nth-child(6)").text(funds.amount);
-            selectedRow.find("td:nth-child(7)").text(funds.fundMethod).src;
+            selectedRow.find("td:nth-child(2)").text(funds.fundID);
+            selectedRow.find("td:nth-child(3)").text(funds.fundName);
+            selectedRow.find("td:nth-child(4)").text(funds.email);
+            selectedRow.find("td:nth-child(5)").text(funds.address);
+            selectedRow.find("td:nth-child(6)").text(funds.contactNumber);
+            selectedRow.find("td:nth-child(7)").text(funds.amount);
+            selectedRow.find("td:nth-child(8)").text(funds.fundMethod).src;
 
 
         }).fail(function (jqXHR, status, error) {
@@ -138,7 +120,7 @@ $("#btnsubmit").click(function () {
         }).always(function(){
             $("#btnClear").click();
         });
-    }
+
 
 
 });
