@@ -8,7 +8,6 @@
 </head>
 <body class="nav-md" style="cursor: pointer">
 <!-- Sign up form -->
-<small style="font-weight: bolder"><a href="onlineDashboard"> << Back to Home</a> </small>
 <h2> GadgetBadget Admin Portal</h2>
 <div class="container" id="container">
     <div class="form-container sign-in-container">

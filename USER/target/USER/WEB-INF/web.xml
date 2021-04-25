@@ -6,7 +6,11 @@
 
     <display-name>demo2</display-name>
     <welcome-file-list>
+<<<<<<< HEAD
         <welcome-file>buyerRegistration.html</welcome-file>
+=======
+        <welcome-file>adminLogin.jsp</welcome-file>
+>>>>>>> 731be9789d280e8e7175d89af2334d7b437e9489
     </welcome-file-list>
     <servlet>
         <servlet-name>Jersey1</servlet-name>
