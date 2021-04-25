@@ -67,7 +67,7 @@ public class BuyerModel {
         return  id + 1;
     }
 
-    public String updateBuyerDetail(String fName, String lName, String email, String contactNo, String address, String zipCode){
+    public String updateBuyerDetail(String fName, String lName, String email, String contactNo, String address, String zipCode,String pass){
         String output = "";
         try{
             Connection connection = connect();
@@ -75,7 +75,7 @@ public class BuyerModel {
             if(connection == null){
                 return "Error connecting to the database";
             }
-            String query = "UPDATE buyers SET fName=?, lName=?, email=?, contactNo=?, address=? , zipCode=? , WHERE id=?";
+            String query = "UPDATE buyers SET fName=?, lName=?, email=?, contactNo=?, address=? , zipCode=? ,pass =? WHERE id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, fName);
@@ -84,6 +84,7 @@ public class BuyerModel {
             preparedStatement.setString(4, contactNo);
             preparedStatement.setString(5, address);
             preparedStatement.setString(6, zipCode);
+            preparedStatement.setString(7, pass);
             preparedStatement.setInt(8, id);
 
             preparedStatement.execute();

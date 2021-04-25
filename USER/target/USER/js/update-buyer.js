@@ -22,3 +22,47 @@ function loadBuyer() {
         console.log(error)
     })
 }
+
+
+$("#btnsubmit").click(function () {
+
+    var product = {
+        fName: $("#first-name").val(),
+        lName: $("#last-name").val(),
+        email: $("#email").val(),
+        contactNo: $("#contactNo").val(),
+        address: $("#address").val(),
+        zipCode: $("#zipcode").val(),
+        password: $("#zipcode").val()
+    };
+    var ajaxConfig = {
+        method: 'PUT',
+        url: 'http://localhost:8081/USER/rest1/buyer/updateBuyer',
+        async: true,
+        contentType: 'application/json',
+        data: JSON.stringify(buyer)
+    };
+    $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
+
+    }).fail(function (jqXHR, status, error) {
+        console.log(error);
+    }).always(function () {
+        $("#btnClear").click();
+    });
+});
+
+$("#btnDelete").click(function () {
+
+    if (confirm("Are you sure whether you want delete this Item?")) {
+        $.ajax({
+            method: 'DELETE',
+            url: 'http://localhost:8081/USER/rest1/buyer/delete/' +  $("#id").val(),
+            async: true
+        }).done(function (response, status, jqXHR) {
+            row.remove();
+        }).fail(function (jqXHR, status, error) {
+            console.log(error);
+        });
+    }
+});
+
