@@ -38,7 +38,7 @@ $("#btnsubmit").click(function () {
             data: JSON.stringify(buyer) // send data to saveUser method in controller
         };
         $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
-            window.location.href = "http://localhost/Product/allProducts.jsp";
+            window.location.href = "http://localhost:8090/Payment/allProducts.jsp";
             $("#id").focus();
         }).fail(function (jqXHR, status, error) {
             console.log(error);

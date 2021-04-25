@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Modern POS | Manage Customers</title>
+  <title>Modern POS | Manage Products</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -44,21 +44,21 @@
           <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="allProducts.jsp" class="nav-link">
+            <a href="http://localhost:8090/Payment/" class="nav-link">
               <i class="fa fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="fa fa-users"></i>
               <p>Manage Customers</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="manage-item.html" class="nav-link">
+            <a href="manage-item.html" class="nav-link active">
               <i class="fa fa-sitemap "></i>
-              <p>Manage Items</p>
+              <p>Manage Products</p>
             </a>
           </li>
           <li class="nav-item">
