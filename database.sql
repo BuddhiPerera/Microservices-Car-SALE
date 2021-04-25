@@ -14,6 +14,20 @@ create table buyers
     zipCode   varchar(10) not null,
     pass      varchar(40) not null
 );
+-- auto-generated definition
+create table `order`
+(
+    id        int not null primary key,
+    itemId     varchar(50),
+    buyerId     varchar(50),
+    name     varchar(70) not null,
+    address varchar(1000) not null,
+    state   varchar(50) not null,
+    country   varchar(50) not null,
+    zip   varchar(60) not null,
+    contact   varchar(50) not null,
+    qty      int not null
+);
 
 -- auto-generated definition
 create table fund

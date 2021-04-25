@@ -5,6 +5,8 @@ $(document).ready(function () {
 var selectedRow = null;
 
 function loadProducts() {
+    var url = window.location.href;
+    alert(url)
     var ajaxConfig = {
         url: "http://localhost:8090/Payment/rest/payment/getProducts",
         method: "GET",
