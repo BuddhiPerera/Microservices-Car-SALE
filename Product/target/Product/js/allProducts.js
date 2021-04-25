@@ -38,18 +38,14 @@ function loadProducts() {
 
         $("td:nth-child(4)").hover(function(){
             $(this).css("background-color", "#56bb04");
-            $(this).css("top", "10px");
 
         }, function(){
             $(this).css("background-color", "#4c6a03");
-            $(this).css("top", "10px");
         });
         $("td:nth-child(5)").hover(function(){
             $(this).css("background-color", "#e80000");
-            $(this).css("top", "10px");
         }, function(){
             $(this).css("background-color", "#9e0808");
-            $(this).css("top", "100px");
         });
         console.log(product);
     }).fail(function (jqXHB, status, error) {
