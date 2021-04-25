@@ -310,7 +310,7 @@
                                     </div>
 
                                     <div class="">
-                                        <button type="button" class="btn btn-secondary btn-lg">Buy Now</button>
+                                       <a href="placeOrder.jsp"> <button  type="button" class="btn btn-secondary btn-lg">Buy Now</button></a>
                                         <button type="button" class="btn btn-success btn-lg">Add to Wishlist</button>
                                     </div>
 

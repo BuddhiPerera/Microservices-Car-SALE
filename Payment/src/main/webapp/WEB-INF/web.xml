@@ -6,7 +6,7 @@
 
     <display-name>Payment</display-name>
     <welcome-file-list>
-        <welcome-file>allProducts.jsp</welcome-file>
+        <welcome-file>placeOrder.jsp</welcome-file>
     </welcome-file-list>
 
     <servlet>
