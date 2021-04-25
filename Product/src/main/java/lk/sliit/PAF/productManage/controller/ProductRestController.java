@@ -26,9 +26,9 @@ public class ProductRestController {
     @Path("/getProducts")
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProDTO> list(@Context HttpServletRequest req) throws Exception {
-        HttpSession session= req.getSession(true);
+        HttpSession session = req.getSession(true);
         Object foo = session.getAttribute("foo");
-        if (foo!=null) {
+        if (foo != null) {
             System.out.println(foo.toString());
         } else {
             session.setAttribute("foo", "");
@@ -37,11 +37,12 @@ public class ProductRestController {
 
         return dao2.listAll();
     }
+
     @GET
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
-    public void list2( @Context HttpServletRequest req) throws Exception {
-        HttpSession session= req.getSession(true);
+    public void list2(@Context HttpServletRequest req) throws Exception {
+        HttpSession session = req.getSession(true);
         session.setAttribute("foo", "3333332");
     }
 //*******************************************************************************************************
@@ -55,21 +56,20 @@ public class ProductRestController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public void addProduct(ProDTO proDTO) {
-
-        itemObj.insertItem(proDTO.getName(), proDTO.getDescription(),proDTO.getPrice(),proDTO.getQty(),proDTO.getShipping(),proDTO.getImage());
-
+        itemObj.insertItem(proDTO.getName(), proDTO.getDescription(), proDTO.getPrice(), proDTO.getQty(), proDTO.getShipping(), proDTO.getImage());
     }
+
     @PUT
     @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public void updateProduct(ProDTO proDTO) {
+    public String updateProduct(ProDTO proDTO) {
 
-        itemObj.updateItem(proDTO.getId(),proDTO.getName(), proDTO.getDescription(),proDTO.getPrice(),proDTO.getQty(),proDTO.getShipping(),proDTO.getImage());
-
+        itemObj.updateItem(proDTO.getId(), proDTO.getName(), proDTO.getDescription(), proDTO.getPrice(), proDTO.getQty(), proDTO.getShipping(), proDTO.getImage());
+        return "success";
     }
 
-//*******************************************************************************************************
+    //*******************************************************************************************************
 //*******************************************************************************************************
 //*******************************************************************************************************
 //*******************************************************************************************************
@@ -91,9 +91,9 @@ public class ProductRestController {
     @Path("/buy/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public String  buyProduct(@PathParam("id") String id) throws Exception {
+    public String buyProduct(@PathParam("id") String id) throws Exception {
 
-       // Response.temporaryRedirect(URI);
+        // Response.temporaryRedirect(URI);
         return "";
     }
 //*******************************************************************************************************
@@ -102,13 +102,11 @@ public class ProductRestController {
 //*******************************************************************************************************
 
 
-
-
     @GET
     @Path("setProduct/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response setProduct(@PathParam("id") int id,@Context HttpServletRequest request) {
-        HttpSession session= request.getSession(true);
+    public Response setProduct(@PathParam("id") int id, @Context HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
         session.setAttribute("itemId", id);
         System.out.println("syyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
 
@@ -125,10 +123,9 @@ public class ProductRestController {
     public ProDTO getProduct(@Context HttpServletRequest request) throws Exception {
         HttpSession httpSession = request.getSession(true);
         Object userId = httpSession.getAttribute("itemId");
-        if(userId != null){
+        if (userId != null) {
             System.out.println(userId.toString());
-        }
-        else {
+        } else {
             httpSession.setAttribute("itemId", "");
         }
 
@@ -150,7 +147,6 @@ public class ProductRestController {
         String output = itemObj.insertItem(name, description, price, qty, shipping, image);
 
     }*/
-
 
 
 //////////////////////////////////////////////////////////////////////////////////////

@@ -66,6 +66,7 @@ $("#btnsubmit").click(function () {
             contentType: 'application/json',
             data: JSON.stringify(product)
         };
+        console.log(product)
         $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
             var html = "<tr>" +
                 "<td>" + product.id + "</td>" +

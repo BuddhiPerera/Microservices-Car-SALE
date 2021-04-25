@@ -1,17 +1,31 @@
 $(document).ready(function () {
+
     loadProducts();
 
 });
 var selectedRow = null;
 
 function loadProducts() {
+    // const slug = str.substring(str.indexOf('-') + 1);
+    var url = window.location.href;
+
+    var id = "-1";
+   var urlx = "http://localhost:8090/Payment/rest/payment/getProducts/";
+
+    id = url.split('?').pop();
+    if(url === "http://localhost:8090/Payment/"){
+        urlx = urlx +"allProducts.jsp?-1";
+        alert(url +"sssssssssssssssss")
+    }
+
     var ajaxConfig = {
-        url: "http://localhost:8090/Payment/rest/payment/getProducts",
+        url: urlx + id,
         method: "GET",
         async: 'json'
     }
     var i = 0;
-
+    document.getElementById("userName").innerHTML ="Sign In";
+    document.getElementById("name2").innerHTML ="Sign In";
     $.ajax(ajaxConfig).done(function (product, status, jQXHB) {
         for (var i = 0; i < product.length; i++) {
             var html =
@@ -27,24 +41,27 @@ function loadProducts() {
                 + '<h5>' + product[i].shipping + '</h5>'
                 + '</td>'
                 + '<td class="addWish" style=" background-color: #5b7f07"><i style=" top: 100px; position: relative; color: white" class="fa fa-shopping-cart"></i></td>'
-                +'<td class="buy" style=" background-color: #9e0808"><i style="top: 100px; position: relative; color: white" class="fa fa-shopping-bag"></i></td>'
-                +'</tr>';
+                + '<td class="buy" style=" background-color: #9e0808"><i style="top: 100px; position: relative; color: white" class="fa fa-shopping-bag"></i></td>'
+                + '</tr>';
 
             $("#datatable tbody").append(html);
-
+            if(product[i].buyerName !== "") {
+                document.getElementById("userName").innerHTML = product[i].buyerName;
+                document.getElementById("name2").innerHTML = product[i].email;
+            }
             var elem = document.querySelector('#some-element');
 
         }
 
-        $("td:nth-child(4)").hover(function(){
+        $("td:nth-child(4)").hover(function () {
             $(this).css("background-color", "#56bb04");
 
-        }, function(){
+        }, function () {
             $(this).css("background-color", "#4c6a03");
         });
-        $("td:nth-child(5)").hover(function(){
+        $("td:nth-child(5)").hover(function () {
             $(this).css("background-color", "#e80000");
-        }, function(){
+        }, function () {
             $(this).css("background-color", "#9e0808");
         });
         console.log(product);
@@ -52,7 +69,6 @@ function loadProducts() {
         console.log(error);
     });
 }
-
 
 
 /*$("#datatable tbody").on('click', 'tr td', function () {
@@ -76,7 +92,8 @@ $("#datatable tbody").on('click', "tr td:last-child", function (eventData) {
         };
         $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
 
-            window.location.href = "http://localhost:8090/Payment/e-commers.jsp";;
+            window.location.href = "http://localhost:8090/Payment/e-commers.jsp";
+            ;
 
         }).fail(function (jqXHR, status, error) {
 

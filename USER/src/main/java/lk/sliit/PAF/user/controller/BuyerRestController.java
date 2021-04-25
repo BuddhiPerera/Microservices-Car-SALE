@@ -37,7 +37,7 @@ public class BuyerRestController {
         // save the buyer id in the session
         HttpSession session= request.getSession(true);session.setAttribute("buyerId", s);
         if (s != 0) {
-            return Response.ok().build();
+            return Response.ok().entity(s).build();
         } else {
             return Response.notModified().build();
         }
@@ -62,18 +62,20 @@ public class BuyerRestController {
 
     //update buyer account
     @PUT
-    @Path("/update")
+    @Path("/updateBuyer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public void updateBuyer(BuyerDTO buyerDTO){
+    public String updateBuyer(BuyerDTO buyerDTO){
         buyerObject.updateBuyerDetail(
                 buyerDTO.getfName(),
                 buyerDTO.getlName(),
                 buyerDTO.getEmail(),
                 buyerDTO.getContactNo(),
                 buyerDTO.getAddress(),
-                buyerDTO.getZipCode()
+                buyerDTO.getZipCode(),
+                buyerDTO.getPassword()
         );
+        return "Update Success";
     }
 
     //delete buyer account
