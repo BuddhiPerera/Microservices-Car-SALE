@@ -1,5 +1,5 @@
 
-# PAF - Microservices 🎉
+# Microservices 🎉
 [![Bash Shell](https://badges.frapsoft.com/bash/v1/bash-150x25.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 ![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
 ![Repo Size](https://img.shields.io/github/repo-size/rivinduchamath/PAF)
